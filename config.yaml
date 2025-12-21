@@ -1,12 +1,12 @@
 categories: ["cs.NE", "cs.LG", "cs.AI"]
 keywords:
-  - "open vocabulary"
-  - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
-  - "vision language model"
-  - "training-free"
-  - "training free"
+  - "data-driven evolutionary algorithm"
+  - "reinforcement learning"
+  - "Black-box optimization"
+  - "Data-driven optimization"
+  - "Evolutionary algorithm"
+  - "Large language models"
+  - "LLM"
 
 # exclude_keywords: # 选择排除的关键词
 #   - "Large Language Model"
