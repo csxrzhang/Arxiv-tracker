@@ -1,12 +1,7 @@
 categories: ["cs.NE", "cs.LG", "cs.AI"]
 keywords:
-  - "data-driven evolutionary algorithm"
-  - "reinforcement learning"
-  - "Black-box optimization"
-  - "Data-driven optimization"
-  - "Evolutionary algorithm"
-  - "Large language models"
-  - "LLM"
+  - "black-box optimization"
+  - "bayesian optimization"
 
 # exclude_keywords: # 选择排除的关键词
 #   - "Large Language Model"
