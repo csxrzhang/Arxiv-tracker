@@ -155,7 +155,7 @@ def _card(it: Dict[str, Any],
     digest_zh = (sum_zh or {}).get("digest_zh") or (sum_en or {}).get("digest_zh") or ""
 
     parts = [f'<div class="card">', f'<div class="title">{_esc(t)}</div>']
-
+    parts.append(f'<div class="mono"><b>标题：</b>{_esc(zh_title)}</div>')
     # 元信息分行
     parts.append(f'<div class="meta-line">Authors: {_esc(au)}</div>')
     if venue:
@@ -170,8 +170,8 @@ def _card(it: Dict[str, Any],
         # parts.append(f'<div class="meta-line">Comments: {_esc(comm)}</div>')
 
     # 链接
-    links = _join_links(it)
-    if links: parts.append(f'<div class="links" style="margin-top:8px">{links}</div>')
+    # links = _join_links(it)
+    # if links: parts.append(f'<div class="links" style="margin-top:8px">{links}</div>')
 
     # 摘要（英文原文，可折叠）
     # if absu:
@@ -179,11 +179,8 @@ def _card(it: Dict[str, Any],
     #     parts.append(f'<div class="mono">{_esc(absu)}</div></details>')
 
     # 中文标题/摘要（可选）
-    if zh_abs or zh_title:
-        parts.append('<details class="detail"><summary>中文标题/摘要</summary>')
-        if zh_title: parts.append(f'<div class="mono"><b>标题：</b>{_esc(zh_title)}</div>')
-        if zh_abs:   parts.append(f'<div class="mono" style="margin-top:8px">{_esc(zh_abs)}</div>')
-        parts.append('</details>')
+    if zh_abs:   parts.append(f'<div class="mono" style="margin-top:8px">{_esc(zh_abs)}</div>')
+
 
     # ✅ 只渲染双语总结（英文→中文），去掉 TL;DR & 方法卡
     # if digest_en or digest_zh:
