@@ -131,7 +131,7 @@ def _card(it: Dict[str, Any],
           sum_zh: Optional[Dict[str,str]],
           sum_en: Optional[Dict[str,str]]) -> str:
     t = it.get("title") or ""
-    au = ", ".join(it.get("authors") or [])
+    au = ", ".join(it.get("authors")[:3] or [])
     venue = it.get("venue_inferred") or (it.get("journal_ref") or "")
     pub = it.get("published") or "—"
     upd = it.get("updated") or "—"
@@ -166,8 +166,8 @@ def _card(it: Dict[str, Any],
         f'类别：{_esc(category_text)}'
         f'</div>'
     )
-    if comm:
-        parts.append(f'<div class="meta-line">Comments: {_esc(comm)}</div>')
+    # if comm:
+        # parts.append(f'<div class="meta-line">Comments: {_esc(comm)}</div>')
 
     # 链接
     links = _join_links(it)
