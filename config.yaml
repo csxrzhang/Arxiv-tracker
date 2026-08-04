@@ -1,15 +1,15 @@
 categories: ["cs.NE", "cs.LG", "cs.AI"]
-keywords:
-  - "black-box optimization"
-  - "bayesian optimization"
-  - "data-driven optimization"
-  - "data-driven evolutionary algorithm"
-  - "reinforcement learning"
-  - "evolutionary algorithm"
-  - "particle swarm optimization"
-  - "differential evolution"
-  - "evolution strategy"
-  - "neural architecture search"
+keywords: []
+  # - "black-box optimization"
+  # - "bayesian optimization"
+  # - "data-driven optimization"
+  # - "data-driven evolutionary algorithm"
+  # - "reinforcement learning"
+  # - "evolutionary algorithm"
+  # - "particle swarm optimization"
+  # - "differential evolution"
+  # - "evolution strategy"
+  # - "neural architecture search"
 
   
 
