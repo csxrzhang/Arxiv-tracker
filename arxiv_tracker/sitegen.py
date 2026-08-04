@@ -161,9 +161,11 @@ def _card(it: Dict[str, Any],
     if venue:
         parts.append(f'<div class="meta-line">Venue: {_esc(venue)}</div>')
     # parts.append(f'<div class="meta-line">First: {_esc(pub)} · Latest: {_esc(upd)}</div>')
+    links = _join_links(it)
     parts.append(
         f'<div class="meta-line">'
-        f'类别：{_esc(category_text)}'
+        f'类别：{_esc(category_text)}，'
+        f'链接：{links}'
         f'</div>'
     )
     # if comm:
