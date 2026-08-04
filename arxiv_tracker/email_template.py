@@ -80,9 +80,9 @@ def _render_card(it: Dict[str, Any],
     links = _join_links(it)
     if links: out.append(f'<div class="links" style="margin:8px 0">{links}</div>')
 
-    if summary:
-        out.append('<div class="section"><h4>Abstract</h4><div style="white-space:pre-wrap">'
-                   + _esc(summary) + '</div></div>')
+    # if summary:
+    #     out.append('<div class="section"><h4>Abstract</h4><div style="white-space:pre-wrap">'
+    #                + _esc(summary) + '</div></div>')
     if zh_title or zh_sum:
         zh_parts = []
         if zh_title: zh_parts.append(f"<p><b>标题：</b>{_esc(zh_title)}</p>")
@@ -90,13 +90,13 @@ def _render_card(it: Dict[str, Any],
         out.append('<div class="section"><h4>中文标题/摘要</h4>'+"".join(zh_parts)+'</div>')
 
     # ✅ 仅 Summary / 总结（英文→中文）
-    if digest_en or digest_zh:
-        inner = ""
-        if digest_en:
-            inner += "<div style='white-space:pre-wrap'>" + _esc(digest_en) + "</div>"
-        if digest_zh:
-            inner += "<div style='white-space:pre-wrap;margin-top:8px'>" + _esc(digest_zh) + "</div>"
-        out.append('<div class="section"><h4>Summary / 总结</h4>'+ inner +'</div>')
+    # if digest_en or digest_zh:
+    #     inner = ""
+    #     if digest_en:
+    #         inner += "<div style='white-space:pre-wrap'>" + _esc(digest_en) + "</div>"
+    #     if digest_zh:
+    #         inner += "<div style='white-space:pre-wrap;margin-top:8px'>" + _esc(digest_zh) + "</div>"
+    #     out.append('<div class="section"><h4>Summary / 总结</h4>'+ inner +'</div>')
 
     out.append('</div>')
     return "\n".join(out)
