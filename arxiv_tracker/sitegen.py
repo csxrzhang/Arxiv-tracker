@@ -137,6 +137,15 @@ def _card(it: Dict[str, Any],
     upd = it.get("updated") or "—"
     comm = it.get("comments") or ""
     absu = it.get("summary") or ""
+    # 提取论文的所有cs类别，例如cs.AI、cs.LG、cs.NE
+    cs_categories = [
+        category
+        for category in (it.get("categories") or [])
+        if category.startswith("cs.")
+    ]
+    # 去重并保持原顺序
+    cs_categories = list(dict.fromkeys(cs_categories))
+    category_text = " · ".join(cs_categories) or "—"
 
     zh_title = (trans_zh or {}).get("title_zh")
     zh_abs   = (trans_zh or {}).get("summary_zh")
@@ -151,7 +160,12 @@ def _card(it: Dict[str, Any],
     parts.append(f'<div class="meta-line">Authors: {_esc(au)}</div>')
     if venue:
         parts.append(f'<div class="meta-line">Venue: {_esc(venue)}</div>')
-    parts.append(f'<div class="meta-line">First: {_esc(pub)} · Latest: {_esc(upd)}</div>')
+    # parts.append(f'<div class="meta-line">First: {_esc(pub)} · Latest: {_esc(upd)}</div>')
+    parts.append(
+        f'<div class="meta-line">'
+        f'类别：{_esc(category_text)}'
+        f'</div>'
+    )
     if comm:
         parts.append(f'<div class="meta-line">Comments: {_esc(comm)}</div>')
 
