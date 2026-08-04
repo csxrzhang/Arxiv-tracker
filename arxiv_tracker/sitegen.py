@@ -172,13 +172,13 @@ def _card(it: Dict[str, Any],
         parts.append('</details>')
 
     # ✅ 只渲染双语总结（英文→中文），去掉 TL;DR & 方法卡
-    if digest_en or digest_zh:
-        parts.append('<details class="detail"><summary>Summary / 总结</summary>')
-        if digest_en:
-            parts.append(f'<div class="mono">{_esc(digest_en)}</div>')
-        if digest_zh:
-            parts.append(f'<div class="mono" style="margin-top:8px">{_esc(digest_zh)}</div>')
-        parts.append('</details>')
+    # if digest_en or digest_zh:
+    #     parts.append('<details class="detail"><summary>Summary / 总结</summary>')
+    #     if digest_en:
+    #         parts.append(f'<div class="mono">{_esc(digest_en)}</div>')
+    #     if digest_zh:
+    #         parts.append(f'<div class="mono" style="margin-top:8px">{_esc(digest_zh)}</div>')
+    #     parts.append('</details>')
 
     parts.append('</div>')
     return "\n".join(parts)
