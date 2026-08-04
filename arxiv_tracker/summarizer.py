@@ -104,6 +104,14 @@ def build_two_stage_summary(item: Dict[str, Any], mode: str, lang: str, scope: s
       {"digest_en": "...", "digest_zh": "...", "tldr": "", "full_md": ""}
     其中 tldr/full_md 留空，供模板判断“不渲染卡片”
     """
+    # 新增：none时不生成任何中英文总结
+    if mode == "none":
+        return {
+            "digest_en": "",
+            "digest_zh": "",
+            "tldr": "",
+            "full_md": "",
+        }
     if mode == "llm":
         cfg = llm_cfg or {}
         api_key = (cfg.get("api_key") or os.getenv(cfg.get("api_key_env") or "OPENAI_API_KEY", ""))
