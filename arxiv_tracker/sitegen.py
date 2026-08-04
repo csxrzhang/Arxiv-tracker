@@ -160,9 +160,9 @@ def _card(it: Dict[str, Any],
     if links: parts.append(f'<div class="links" style="margin-top:8px">{links}</div>')
 
     # 摘要（英文原文，可折叠）
-    if absu:
-        parts.append('<details class="detail"><summary>Abstract</summary>')
-        parts.append(f'<div class="mono">{_esc(absu)}</div></details>')
+    # if absu:
+    #     parts.append('<details class="detail"><summary>Abstract</summary>')
+    #     parts.append(f'<div class="mono">{_esc(absu)}</div></details>')
 
     # 中文标题/摘要（可选）
     if zh_abs or zh_title:
