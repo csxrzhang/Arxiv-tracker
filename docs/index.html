@@ -74,14 +74,732 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-14 07:10</span>
+        <span class="badge">2026-10-15 06:04</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"></div>
+    <div class="row"><div class="card">
+<div class="title">ChunkAct: Action Chunking for Agentic Robotics</div>
+<div class="mono"><b>标题：</b>ChunkAct：面向智能体机器人的动作分块</div>
+<div class="meta-line">Authors: Bingxin Xu, Wenrui Bao, Xinxin Liu</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.CL · cs.CV，链接：<a href="https://arxiv.org/abs/2610.18874v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18874v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">智能体机器人将大型语言模型（LLM）智能体置于机器人控制回路中，在记忆的引导下组合感知、运动和视觉-语言-动作（VLA）工具，从而无需重新训练即可泛化到新任务。这种通用性以效率为代价。每个基元都需要LLM对完整交互历史进行一轮推理，因此回合成本随基元数量增长。我们发现这种推理在很大程度上是冗余的：一旦选定子目标，其基元便遵循记忆已规定的例行程序。我们提出ChunkAct，将动作分块引入智能体机器人。在线时，单次调用启动一串链式基元，自主执行且仅在失败时返回控制。离线时，ChunkAct将记忆编译为这些块，因此测试时执行无需记忆，规划器仅用于需要推理的决策。LLM计算因此随决策数量而非基元数量扩展。在LIBERO-Pro上，ChunkAct相比智能体机器人最先进方法将任务成功率提高5.0个百分点，同时所需LLM调用减少2.9倍、输入token减少4.4倍、输出token减少2.3倍。</div>
+</div>
+<div class="card">
+<div class="title">Cepheid: Decoupling Scale from Structure for Cross-Family Motion Completion</div>
+<div class="mono"><b>标题：</b>Cepheid：解耦尺度与结构以实现跨族运动补全</div>
+<div class="meta-line">Authors: Chih-Hai Su, Tsung-Wei Ke, Yu-Lun Liu</div>
+<div class="meta-line">类别：cs.CV · cs.GR · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18871v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18871v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://su-terry.github.io/cepheid-website/">Project1</a></div>
+<div class="mono" style="margin-top:8px">稀疏到稠密的运动补全从稀疏顶点位移恢复稠密网格运动。在一个几何族上训练的残差先验往往无法在族外超越无参数的调和延拓。此外，跨族训练面临缩放障碍：残差幅度在不同几何族之间变化超过一个数量级，并随着观测变得更稠密而坍缩。由于该尺度取决于未知的目标运动，无法在测试时直接测量。我们通过学习一个无量纲先验，将残差结构与物理尺度解耦，从可观测量估计幅度，并使用仅在训练源上拟合的轻量级校正。我们的统一模型在所有评估的族上超越了调和延拓，包括未见过的布料和腿式身体，且无需骨架、配准或跨网格对应。同一先验无需重新训练即可应用于点跟踪的动物视频以及机器人抓取软体。项目页面：https://su-terry.github.io/cepheid-website/</div>
+</div>
+<div class="card">
+<div class="title">What Matters in Quality-Aware VLA Pretraining: A Benchmark and Empirical Study</div>
+<div class="mono"><b>标题：</b>质量感知VLA预训练中什么最重要：基准与实证研究</div>
+<div class="meta-line">Authors: Mingxuan Yan, Litian Gong, Dihong Huang</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18869v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18869v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://axis-bench.github.io/">Project1</a></div>
+<div class="mono" style="margin-top:8px">在视觉-语言-动作（VLA）预训练中，应如何利用演示质量来提升目标任务微调后的性能？我们使用5,000个自然次优人类演示和24个目标任务，在多种奖励定义与标签粒度下比较加权、过滤和条件化。在每个VLA内，我们匹配演示与训练预算。额外比较考察预训练数据规模以及质量标签在微调和推理中的作用。在三个VLA上，我们发现方法感知的回合条件化相比普通行为克隆提高了平均成功率；条件化和过滤平均分别偏好回合标签和块标签，且存在模型相关的反转；在条件化预训练后，使用带标签或不带标签推理时，恒定标签微调均提高平均成功率。我们提出AXIS-Bench以支持这些受控比较。它基于众包仿真演示构建，提供记录的对象和接触状态，以便在共享轨迹上重新计算质量标签。可重放轨迹支持工作区对齐渲染和用户定义的真实世界目标任务。在我们的真实世界实验中，仿真预训练将成功率从9.6\%提高到31.7\%。项目页面：https://axis-bench.github.io/。</div>
+</div>
+<div class="card">
+<div class="title">Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards</div>
+<div class="mono"><b>标题：</b>Tev：用密集进度奖励扩展长时程智能体环境</div>
+<div class="meta-line">Authors: Wenbo Hu, Shraman Pramanick, Krishna Kumar Singh</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.CV · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18868v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18868v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://tev-agent.github.io/">Project1</a></div>
+<div class="mono" style="margin-top:8px">长时程智能体因其能够在具有经济价值的任务上自主工作数小时至数天而日益受到关注，这一能力对自动化发现和递归自我改进（RSI）至关重要。然而，开源模型在长时程任务上仍然表现不佳，主要原因是缺乏训练数据和工作配方，而扩展两者都很困难：长而复杂的任务难以策划和验证，且其奖励稀疏。我们同时解决这两个问题。首先，我们提出 Tev-Gym，这是首个具有可验证、密集、渐进奖励的长时程智能体训练数据集——涵盖 7 个领域的 1,170 个已验证任务环境。它基于潜在世界优先的方法构建，该方法首先构建一个潜在世界：对任务领域、工作流以及每一步之后的预期状态的完整且正确的隐藏规范。然后，每个任务从该规范逐步渲染为面向智能体的环境，从而实现可控的复杂度和自然的进度度量。其次，我们将该度量转化为训练配方：通过进度潜力奖励塑形（PPRS），我们将进度转换为密集的每步奖励，从而提高训练效率，并使原本难以处理的任务变得可训练。使用该配方训练得到 Tev-27B，其在 Agents&#x27; Last Exam 计算与数学科学领域（ALE-CM）上取得显著提升，在 Pass@5 上匹配 GPT-6 Astra 和 Claude Opus 5。尽管仅在 ALE 相关数据上训练，它仍能泛化到 Terminal-Bench（TB）3.0 和 4.0 子集，超越 GLM 5.2 和 Gemini 3.7 Flash，并在 TB 2.1 等中等时程任务上达到 Claude Opus 4.8 级别的性能。</div>
+</div>
+<div class="card">
+<div class="title">Data Free Training of Diffusion Models for Lattice Field Theories</div>
+<div class="mono"><b>标题：</b>格点场论扩散模型的无数据训练</div>
+<div class="meta-line">Authors: Dennis Grinwald, Ankur Singha, Khaled Kahouli</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18863v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18863v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">采样平衡场构型仍是格点场论中的主要计算瓶颈，这促使人们开发能够生成独立构型的生成式采样器。扩散模型在此方面很有前景，但其标准去噪分数匹配目标需要来自目标分布的样本，似乎重新引入了原始采样问题。在此，我们表明，只要能够获得未归一化的概率密度，扩散模型就可以利用目标分数恒等式从自身生成的样本进行训练。该恒等式的重要性加权形式在整个训练过程中产生一致的目标，而未加权变体则定义了一种自洽的不动点训练方案。我们在二维 \(φ^4\) 理论中对不同方法进行了基准测试，并确定了能够在对称相、临界相和破缺相中实现高效训练和采样的有效选择。最终，我们的无数据训练方法达到了与使用 HMC 参考数据训练相当的性能。</div>
+</div>
+<div class="card">
+<div class="title">DoubtLess: Training-Free Contrastive Decoding for Efficient Reasoning</div>
+<div class="mono"><b>标题：</b>DoubtLess：面向高效推理的免训练对比解码</div>
+<div class="meta-line">Authors: Minghao Luo, Liang Chen</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18862v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18862v1">PDF</a> · <a href="https://github.com/leoluolol/DoubtLess">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">推理模型通过长思维链（CoT）取得强劲性能，但往往花费比解决问题所需更多的token。现有的缩短CoT方法需要为每个模型额外训练、在模型隐藏状态中加入固定引导向量，或使用提前停止、禁止“wait”等词之类的解码启发式，这些都可能降低准确率。我们提出DoubtLess，一种免训练的解码方法，由一个小得多的推理模型引导大模型走向简洁。小模型两次读取大模型目前的CoT，一次被提示要简洁（简洁思考者），一次被提示要冗长（冗长思考者），其两个logit向量之差按强度缩放后，在CoT的每一步加到大型模型的logits上。在竞赛数学、研究生水平科学和竞技编程的七个基准上，DoubtLess将Qwen3-32B的CoT缩短31%且准确率不变，优于五个推理时基线。我们还表明，在自调试编码智能体中，DoubtLess将每轮思考token减少20%且任务性能不变。它也能泛化到另外两个模型家族且准确率不变。与基于训练的压缩结合时，它能进一步缩短已为简洁而训练的模型的CoT。消融和行为分析表明，DoubtLess减少了重复检查，大部分token节省发生在正确答案首次出现在CoT之后。我们的代码见https://github.com/leoluolol/DoubtLess。</div>
+</div>
+<div class="card">
+<div class="title">AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards</div>
+<div class="mono"><b>标题：</b>AesCode：解耦跨模态奖励的美学代码生成</div>
+<div class="meta-line">Authors: Xin Gao, Yifan Yang, Xin Li</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.18860v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18860v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">生成幻灯片、海报和仪表板等信息丰富的视觉产物作为代码具有吸引力，因为输出结构化、可编辑且可验证。然而，代码模型无法看到其布局和颜色选择在画布上如何组合，往往限制了空间规划和美学质量。图像生成器擅长视觉设计，但可能错误渲染所请求的内容，使其输出无法作为直接复现的可靠目标。因此，我们引入AesCode，它基于内容提示生成代码，同时使用由同一提示生成的图像作为美学指导。为此，AesCode将目标表示为描述整个画布并使每个属性可归因的设计图。从该图中，我们推导出互补的跨模态奖励：确定性验证器对可从代码和渲染中解析的属性进行评分，而VLM评判器则使用与图元素和关系绑定的样本特定视觉图评分标准（VGR）评估不可解析的属性。我们通过带逐通道归一化的强化学习优化这些解耦奖励，以共同提升空间规划、美学质量和可验证正确性。为评估这一设定，我们构建了一个分别对可验证正确性和视觉质量进行评分的基准，其视觉分数与人类判断高度一致。我们发现参考图像显著提升了现有模型生成代码的视觉质量，消融实验表明AesCode从参考图像作为模型输入和视觉奖励来源两方面获益。相对于在相同参考下同规模的Qwen3-VL基线，AesCode-8B和AesCode-32B的视觉质量分别提升了31.1和22.4个百分点，达到与GPT-5.5和Claude Opus 4.8等闭源前沿模型相当的水平。</div>
+</div>
+<div class="card">
+<div class="title">Hybrid Reasoning Agents</div>
+<div class="mono"><b>标题：</b>混合推理智能体</div>
+<div class="meta-line">Authors: Jiaru Zou, Yunzhe Qi, Sirui Chen</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18861v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18861v1">PDF</a> · <a href="https://github.com/togethercomputer/HybridAgent">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">我们如何构建一个超越人类语言思考、却仍通过语言在外部环境中行动的智能体？现代LLM智能体仍通过文本进行推理和交互，而潜在推理提供了高效的内部媒介，但缺乏原生工具访问和推理透明度。我们通过混合推理智能体（HybridAgents）连接这两个方向，它在统一的生成过程中动态地在潜在推理和基于文本的交互之间切换。在架构上，轻量级HybridLink实现文本与潜在模式之间的无缝转换，而智能体的连续工作记忆在多个轮次中保留无损的混合上下文。这些设计在保留工具集成智能体能力的同时，使潜在思维可直接检查。基于此架构，我们进一步开发了用于混合推理的专用后训练算法：HybridSFT通过教导主干网络与HybridLink协调，稳定工具集成的混合生成；随后HybridRL通过学习何时在潜在空间中思考、何时通过文本行动，扩展推理能力。我们在3种模型规模上，针对涵盖数学、科学、医学、搜索和智能体推理的11个基准评估HybridAgent。与涵盖基于文本和潜在方法的前沿LLM智能体及智能体框架相比，HybridAgent持续提升性能10.4%，同时实现35.5%-54.7%的token减少、1.8倍-2.6倍的推理加速和2.7倍-3.7倍的成本节省。代码和数据可在https://github.com/togethercomputer/HybridAgent获取。</div>
+</div>
+<div class="card">
+<div class="title">Exact Topological Compliance: Generating Persistence-Equivalent Graphs</div>
+<div class="mono"><b>标题：</b>精确拓扑合规：生成持久等价图</div>
+<div class="meta-line">Authors: Mattie Ji, Indradyumna Roy, Vikas Garg</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18856v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18856v1">PDF</a> · <a href="https://github.com/Aalto-QuML/ExactCompliance">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">持久同调将图的拓扑演化概括为持久图（PD）。生成拓扑与目标描述符匹配的图日益重要，然而现有的拓扑感知生成模型依赖软正则化，产生的图的PD可能仅近似相似。我们开创性地对生成问题展开原理性研究：生成精确实现目标PD的图。我们提出两种方法，分别由目标PD施加的隐式局部与全局约束引导。局部方法迭代地构建基于度数的PD等价图，我们证明每个输出都实现目标PD，且每个基于度数的PD等价图都可到达。然而，如后文所示，局部生成必然在样本多样性与到达不可行状态之间权衡。因此，我们将生成重新表述为全局约束满足问题，其完整编码可由现代约束编程求解器求解。这适用于任何基于顶点的置换等变过滤方案，且在度数过滤下是最小的。在四个标准图生成基准上的实验证实，两种方法都精确实现目标PD。我们的方法共同为严格拓扑合规的图生成提供了原理性处理。代码见 https://github.com/Aalto-QuML/ExactCompliance。</div>
+</div>
+<div class="card">
+<div class="title">Telling FIBS: Probes Effectively Detect Sabotage and Catch Unverbalized Deception</div>
+<div class="mono"><b>标题：</b>识别FIBS：探针有效检测破坏行为并捕捉未言明的欺骗</div>
+<div class="meta-line">Authors: Oskar J. Hollinsworth, Alex F. Spies, Tigist Diriba</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.12445v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.12445v2">PDF</a> · <a href="https://github.com/AlignmentResearch/caught-in-the-act-probes">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">近期事件凸显了监控LLM代理的挑战以及模型欺骗人类的危险。我们表明，通过探针进行的白盒欺骗检测可以扩展到前沿监控场景：我们收集了迄今为止最大的欺骗数据集用于训练探针，并引入了一种新颖的探针架构，能够跨多层和多token聚合信息。我们的探针在SHADE-Arena中达到98.4%的AUROC，在BASH-Arena中达到98.0%（相比之下，仅基于动作的文本监控器分别为97.9%和97.6%），并且随着底层模型规模扩大，其效果有所提升。我们进一步在若干仅凭上下文无法确定欺骗的案例中测试了探针。在这些我们称为内省欺骗的案例中，真实标签只能通过仔细引导或对模型训练数据的充分了解来确定。在其中一项此类评估中，我们表明探针能够以高达99.7%的AUROC区分包含模型真实隐藏目标的记录与其他目标的记录。我们的探针还能轻松检测出知名开放权重模型在政治敏感话题上以及在被施压时对其信念撒谎的欺骗行为。我们发布了名为FIBS的训练数据集，以帮助推动有效探针的前沿部署，并鼓励社区用更多欺骗和破坏行为的示例来扩展它。</div>
+</div>
+<div class="card">
+<div class="title">Two Clocks: Why Larger Rollout Batches Learn Slower but Fail on Schedule in Reinforcement Learning with Verifiable Rewards</div>
+<div class="mono"><b>标题：</b>两个时钟：为什么更大的 rollout 批次在可验证奖励强化学习中学习更慢却按计划失败</div>
+<div class="meta-line">Authors: Yuante Li, Junwei Quan, Kai Qiu</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18853v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18853v1">PDF</a> · <a href="https://github.com/WinstonLiyt/two-clocks-rlvr">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">可验证奖励强化学习（RLVR）依赖代价高昂的模型生成响应，这促使采用更大的 rollout 批次和平方根学习率缩放。该规则被报道为在每次 rollout 一个优化器步时大致保持每样本进展，但在实际多步训练中理解不足。我们提出一个双时钟框架，将取得进展所需的样本与崩溃前消耗的样本分开。在局部二次模型下，平方根规则保持每样本一阶漂移但不保持进展：更大的批次进行更少、更长的更新，并在曲率上损失更多，产生一个依赖学习率的临界批次，超过该批次后样本效率下降。漂移阈值假设预测一个互补的失败时钟，其样本数在平方根规则下大致不变。在 Qwen2.5-Math-1.5B 上跨 $16\times$ 批次范围的受控 GRPO 实验支持这两个预测。比率裁剪会延迟失败，尤其是对更大的批次，但若不裁剪，进展差距仍然存在。放宽裁剪以稳定性换取短暂的速度提升。进展差距在另一个数据集、一个通用检查点和一个 7B 模型上再次出现。最后，我们使用双时钟框架推导出一个简单的多步 RLVR 调度：从低于临界批次开始，并在失败前切换到更大的批次。我们的代码可在 https://github.com/WinstonLiyt/two-clocks-rlvr 获取。</div>
+</div>
+<div class="card">
+<div class="title">MFG: Multi-turn Feedback Guided Molecular Optimization</div>
+<div class="mono"><b>标题：</b>MFG：多轮反馈引导的分子优化</div>
+<div class="meta-line">Authors: Trieu Nguyen, Frazier N. Baker, Ruoxi Gao</div>
+<div class="meta-line">类别：cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18851v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18851v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">多目标分子优化是药物发现中的关键过程，旨在修改给定分子以同时改善多种性质，同时保持整体结构相似。该过程通常需要基于计算或实验反馈进行迭代修改。近期基于大语言模型（LLM）的方法已开始探索这种迭代方式；然而，这些方法并未明确训练以利用此类反馈，而现有方法主要关注单轮分子优化。为弥补这一空白，我们提出多轮反馈引导（MFG）分子优化，一种强化学习框架，训练LLM利用前几轮的反馈逐步优化分子。MFG引入一个反馈向量，捕捉性质改进和源分子相似性，并引入与反馈对齐的奖励函数，促进跨轮次的逐步改进。我们将MFG应用于$\text{GeLLM}^{3}\text{O}$——一种用于多目标分子优化的最先进LLM模型，在十个多目标分子优化任务上评估$\text{GeLLM}^{3}\text{O-MFG}$。结果表明，$\text{GeLLM}^{3}\text{O-MFG}$实现了最高的平均相似性约束成功率（$81.50%$），优于基础模型$\text{GeLLM}^{3}\text{O}$（$70.81%$）。</div>
+</div>
+<div class="card">
+<div class="title">Dex4D: Task-Agnostic Point Track Policy for Zero-Shot Dexterous Manipulation</div>
+<div class="mono"><b>标题：</b>Dex4D：面向零样本灵巧操作的任务无关点轨迹策略</div>
+<div class="meta-line">Authors: Yuxuan Kuang, Sungjae Park, Katerina Fragkiadaki</div>
+<div class="meta-line">Venue: CoRL 2026</div>
+<div class="meta-line">类别：cs.RO · cs.CV · cs.LG，链接：<a href="https://arxiv.org/abs/2602.15828v2">Abs</a> · <a href="https://arxiv.org/pdf/2602.15828v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://dex4d.github.io/">Project1</a></div>
+<div class="mono" style="margin-top:8px">学习能够完成各种日常任务的通用策略仍然是灵巧操作中的一个开放挑战。特别是，通过真实世界遥操作收集大规模操作数据成本高昂且难以扩展。虽然在仿真中学习提供了一种可行的替代方案，但为训练设计多个任务特定的环境和奖励同样具有挑战性。我们提出了 Dex4D，一个转而利用仿真来学习任务无关灵巧技能的框架，这些技能可以被灵活重组以执行多样化的真实世界操作任务。具体而言，Dex4D 学习一种领域无关的 3D 点轨迹条件策略，能够将刚性物体从当前位姿变换到目标位姿。我们在仿真中跨数千个具有多样位姿配置的物体训练这种“任意位姿到任意位姿”策略，覆盖了可在测试时组合的广泛机器人-物体交互空间。在部署时，该策略可以零样本迁移到真实世界任务而无需微调，只需用从生成视频中提取的所需以物体为中心的点轨迹进行提示。在执行过程中，Dex4D 使用在线点跟踪进行闭环感知和控制。在仿真和真实机器人上的大量实验表明，我们的方法能够实现多样化灵巧操作任务的零样本部署，并相较先前基线取得一致改进。此外，我们展示了对新物体、场景布局、背景和轨迹的强大泛化能力，凸显了所提出框架的鲁棒性和可扩展性。项目页面：https://dex4d.github.io/。</div>
+</div>
+<div class="card">
+<div class="title">LIBERO-RIG: A Hardware-Setup Robustness Benchmark for Vision-Language-Action Models</div>
+<div class="mono"><b>标题：</b>LIBERO-RIG：面向视觉-语言-动作模型的硬件设置鲁棒性基准</div>
+<div class="meta-line">Authors: Andrea Yaoyun Cui, Hanyu Wang, Xinyi Wang</div>
+<div class="meta-line">类别：cs.RO · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18843v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18843v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">机器人策略应能在不同部署环境中泛化，包括机器人自身的变化：相机被碰撞和重新安装、标定漂移、控制器以不同速率运行、末端执行器垫片磨损。我们提出 LIBERO-RIG，一个仅扰动机器人硬件与设置、同时保持所有 LIBERO 任务不变的基准。该基准涵盖十一个扰动轴，包括相机安装与光学、相机到机械臂的标定、驱动增益、控制频率、本体感觉噪声、基座姿态、桌面高度和夹爪垫片。每个轴有五个严重程度，在四个 LIBERO 套件中产生 210 种条件。我们使用每种条件 500 个回合评估九个近期视觉-语言-动作模型，并用严格的统计检验证实每项发现。汇总成功率从中等严重程度下的 0.932 降至 0.767，在最高严重程度下降至 0.509。性能退化在不同扰动轴和动作接口之间差异显著，且对视觉扰动进行训练并不能缓解那些不改变相机图像的故障。我们发布该基准以及指定每个回合固定扰动参数的清单。</div>
+</div>
+<div class="card">
+<div class="title">Who Improves the Robot? Toward Physical Recursive Self-Improvement</div>
+<div class="mono"><b>标题：</b>谁在改进机器人？迈向物理递归自我改进</div>
+<div class="meta-line">Authors: Hai Zhou, Fan Yang, Zeyi Chen</div>
+<div class="meta-line">类别：cs.AI · cs.LG · cs.RO，链接：<a href="https://arxiv.org/abs/2610.18842v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18842v1">PDF</a> · <a href="https://github.com/SAIL-Research-Lab/Physical-RSI">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">机器人在任务执行中日益自主，但其改进仍主要由人类驱动。本研究探讨物理递归自我改进（Physical RSI），即物理经验引导对机器人能力及其改进程序的持久更新，使后续改进在跨任务中更有效。Physical RSI 面临噪声观测、连续动力学、高成本试验和不可逆后果等挑战。我们提出 L0-L5 框架，区分能力级与元级更新、任务内与跨任务增益，并将 L5 保留给经独立验证的递归增益。我们围绕执行框架适配与模型训练研究现有方法，以及治理执行与后续更新的安全与控制机制。分析表明，尽管自我改进取得显著进展，所综述文献尚未展示符合我们框架定义的 Physical RSI。我们指出可靠反馈、因果归因、安全保持和基准测试方面的研究重点，勾勒出通向机器人在确保安全的同时自主改进其学习方式的路径。Physical RSI 的 GitHub 仓库见 https://github.com/SAIL-Research-Lab/Physical-RSI。</div>
+</div>
+<div class="card">
+<div class="title">Fast Rates for Offline Q-Learning with KL Regularization</div>
+<div class="mono"><b>标题：</b>KL正则化离线Q学习的快速速率</div>
+<div class="meta-line">Authors: Yize Hao, Guangxin Jiang, Shuang Qiu</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18839v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18839v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">本文研究了带有Kullback-Leibler（KL）正则化的有限时域马尔可夫决策过程的离线Q学习。近期研究表明，KL正则化可以在离线决策问题中产生快速速率。然而，采用增量随机逼近更新的Q学习能否在离线设置中达到这样的快速速率仍不清楚。我们首先提出了KL正则化Q学习（KLQ），这是经典Q学习的一个简单变体。通过利用KL正则化，我们证明了KLQ无需显式悲观主义即可达到$\widetilde{O}(1/ε)$的样本复杂度。然而，这一保证对KL正则化参数和时域具有指数依赖性。为了解决这一局限性，我们进一步提出了KL正则化悲观Q学习（KLPQ），它将悲观主义融入KLQ。我们证明了KLPQ保持了相同的\(\widetilde O(1/ε)\)速率，同时消除了显式指数依赖性，从而进一步提高了样本复杂度。据我们所知，这些结果建立了表格型有限时域KL正则化MDP中离线Q学习的首个快速速率保证。</div>
+</div>
+<div class="card">
+<div class="title">Scaling Online Optimal Transport Minibatches for Flow Matching</div>
+<div class="mono"><b>标题：</b>扩展在线最优传输小批量用于流匹配</div>
+<div class="meta-line">Authors: Peter Chen, Sergey Levine</div>
+<div class="meta-line">类别：cs.LG · cs.CV，链接：<a href="https://arxiv.org/abs/2610.18838v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18838v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">扩展流模型的一个核心挑战是保持训练和积分的稳定性。在流匹配中，这种稳定性关键取决于源样本如何与数据配对。独立随机配对引入了大量随机性，促使使用小批量最优传输（OT）来构建在线源-目标耦合以减少这种随机性（Tong et al., 2024）。然而，随着应用扩展到更大和更高维的数据集，小批量可能限制这些优势，而在每次迭代中将耦合扩展到显著更大的小批量在计算上是不可行的。此外，OT耦合如何影响完整随机梯度和积分在理论上仍未解决。在这项工作中，我们开发了一种可扩展的在线熵OT近似，能够实现显著更大的源-目标耦合，同时保留OT的优势。我们通过证明相对于独立配对，完整随机梯度方差和积分误差的严格减少，填补了无正则化和熵OT的理论空白，并进一步刻画了这些改进如何随着在线耦合小批量的增长而增强。在单细胞基因插值流和图像流训练上的实验验证了这些预测，表明更大的在线耦合持续改善训练稳定性和最终生成性能。</div>
+</div>
+<div class="card">
+<div class="title">RoboSimStudio: An Interactive Toolkit for Rapid Real2Sim of Robot Manipulation Tasks</div>
+<div class="mono"><b>标题：</b>RoboSimStudio：用于机器人操作任务快速Real2Sim的交互式工具包</div>
+<div class="meta-line">Authors: Kaiyuan Chen, Shuangyu Xie, Uksang Yoo</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.GR · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18835v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18835v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://robosimstudio.github.io">Project1</a></div>
+<div class="mono" style="margin-top:8px">准确建模机器人与被操作物体之间相互作用的物理过程十分困难，包括接触力学、耦合接触动力学、形变、刚度和摩擦。我们提出RoboSimStudio（RSS），一个交互式工具包，它将求解器、接触模型和物理参数的选择显式化并可编辑，使人类和编码智能体都能基于观察到的物理行为迭代改进仿真。我们使用开放Newton物理仿真系统实现RSS，并描述了在人类引导的real2sim下的实验，采用（1）视觉评估、（2）力反馈和（3）智能体式Real2Sim2Real。代码、视频和更多信息可在项目网站上找到。</div>
+</div>
+<div class="card">
+<div class="title">Localized Operator Learning with Adaptive Partition-of-Unity Mixture-of-Expert Networks</div>
+<div class="mono"><b>标题：</b>基于自适应单位分解专家混合网络的局部算子学习</div>
+<div class="meta-line">Authors: Madison Cooley, Ramansh Sharma, Shandian Zhe</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.04708v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.04708v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">DeepONets和FNO等算子学习方法通常难以处理具有尖锐界面、非均质系数和局部多尺度结构的偏微分方程族。我们提出了一种用于局部算子学习的单位分解（POU）专家混合框架，其中几何感知门控网络生成平滑的空间划分，以混合局部专家网络的贡献。我们的主要贡献是HiRefPOU，一种用于DeepONets的残差式分层POU架构，通过嵌套的父子划分组织局部表示，同时保持全局连续性。我们还表明，相同的POU原理可以融入傅里叶神经算子，在不修改底层谱层的情况下引入空间自适应性。在非均质Darcy和反应扩散基准上，HiRefPOU的误差显著低于全局DeepONet和静态POU-MoE基线，而更广泛的算子学习实验表明，局部化的收益取决于偏微分方程结构和所选的神经算子主干。学习到的划分具有可解释性，并与界面和快速解变化区域对齐。这些结果表明，显式几何局部化可以提高神经算子学习的准确性和可解释性。</div>
+</div>
+<div class="card">
+<div class="title">Joint Neural Posterior Estimation and Model Selection for Chemical Reaction Networks</div>
+<div class="mono"><b>标题：</b>化学反应网络的联合神经后验估计与模型选择</div>
+<div class="meta-line">Authors: J. Arturo Esquivel, Jorge A. Campos-Gonzalez-Angulo, Sergio Pablo-García</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18825v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18825v1">PDF</a> · <a href="https://github.com/Esquivel-Arturo/JNPE">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">化学反应网络（CRN）的基于模拟的贝叶斯推断必须同时解决两个计算上困难的问题：区分重叠的反应路径和估计反应速率常数。经典方法，如序贯蒙特卡洛ABC，依赖于手工设计的摘要统计量，并且在大参数空间上扩展性差。为克服这一点，我们引入了一种神经推断架构。我们的流程利用共享的一维CNN和置换不变的集合注意力机制，从变长、多实验时间序列数据中学习低维摘要统计量。这些统计量同时为一个模型选择网络提供条件，以计算后验模型概率，并为特定模型的条件下可逆神经网络（cINN）提供条件，以估计参数后验分布。我们在一个真实的原脱硼化示例上展示了我们方法的实际效用，说明它如何处理结构模糊性，并从竞争的催化剂失活路径中提取动力学参数。</div>
+</div>
+<div class="card">
+<div class="title">Read the Room Before Your Model Generates</div>
+<div class="mono"><b>标题：</b>在模型生成前读懂场景</div>
+<div class="meta-line">Authors: Muyao Kong, Zhihao Lin</div>
+<div class="meta-line">类别：cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18820v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18820v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大型语言模型（LLM）通常依赖采样温度来调节其输出中的随机性程度。主流的温度选择方法通常采用固定的、启发式的全局设置以及上下文或词元级校准，而非对交际场景的几何可解释表示。在这项工作中，我们引入了一个简单且可解释的温度选择框架——\textbf{Scenario-Actor}，它使解码适应推断出的情境特征。Scenario-Actor 从 Transformer 隐藏状态中提取场景相关结构，并根据场景嵌入（交际场景的结构化几何表示）确定温度。实证结果表明，在 Llama-3.1-8B-Instruct 上，与多个基线相比，Scenario-Actor 在交互式社交场景中实现了较强的目标完成性能，在开放式指令遵循上取得显著提升，并在多轮对话中具有竞争力的表现。</div>
+</div>
+<div class="card">
+<div class="title">Back-Translation Still Matters: Leveraging Monolingual Data for Low-Resource Machine Translation with LLMs</div>
+<div class="mono"><b>标题：</b>回译仍然重要：利用单语数据结合大语言模型进行低资源机器翻译</div>
+<div class="meta-line">Authors: Divyanshu Bathla, Parag Singla, Jitin Singla</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18818v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18818v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">预训练大语言模型（LLM）在零样本和少样本设置下对许多任务有效。对于低资源语言的机器翻译，显而易见的选择是少样本提示和在小型平行集上微调。我们提出：如果还有中等数量的低资源单语数据可用呢？我们认为，与其继续预训练，更有效地利用这些数据是前LLM时代的回译（BT）技术。当前微调的LLM翻译每种语言的单语句子，生成的配对以相反方向训练它。平行集上的更新交错进行以实现稳定学习。在奥里亚语和斯瓦希里语上使用1K平行对，BT在领域内比继续预训练到低资源语言高出7.7至16.4 XCOMET-XXL点。使用束解码的中间翻译，它还击败了拥有10倍平行数据的模型。从平行数据中检索的上下文示例进一步改善了BT。我们还分析了单语文本的来源、数量和质量。在五种低资源语言中，以印地语作为高资源对照，以及两个3B骨干，BT将翻译到低资源语言的XCOMET-XXL比仅平行微调提高了16%至173%。对奥里亚语和梵语的盲人人类评估与自动指标一致。</div>
+</div>
+<div class="card">
+<div class="title">Self-Evolving Agent Harness</div>
+<div class="mono"><b>标题：</b>自进化智能体框架</div>
+<div class="meta-line">Authors: Chuyang Wei, Haoxiang Guan, Minghang Zhu</div>
+<div class="meta-line">类别：cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18813v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18813v1">PDF</a> · <a href="https://github.com/zgcagi/Harness-RSI">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">框架自进化在保持模型权重不变的情况下，修改智能体的软件脚手架，包括提示、记忆、工作流和可执行组件。我们形式化了一个反馈驱动过程，其中被接受的修订在多次运行中持续存在。该框架将更新目标与提议和准入机制分离。它区分了对解释状态的更改与对工具和代码、仓库级控制逻辑以及插件组合的修订。我们通过进化优化来刻画搜索，并通过持续PAC学习考察其可靠性。在明确假设下，该分析给出了期望泛化界、以历史回归预算为条件的保留界，以及使用全新独立验证数据的高概率准入规则。我们考察持久框架修订如何影响知识共享和组织工作流，并讨论其对科学可靠性、物理安全和机构问责的影响。先前工作中的案例说明了模型-框架协同设计、分布式执行和插件复用。可靠部署需要随着任务分布和评估器变化而持续验证，并为学习、运行时权限和后果性行动提供独立保障。我们在https://github.com/zgcagi/Harness-RSI 提供了关于Harness RSI的相关工作、理论、算法、评估、应用及更广泛影响的全面66页讨论，以及持续更新的代码和补充材料。</div>
+</div>
+<div class="card">
+<div class="title">Statistical Vignettes on the Grokking Phenomenon</div>
+<div class="mono"><b>标题：</b>Grokking现象的统计小插曲</div>
+<div class="meta-line">Authors: Baye Malick Gning, Elvis Dohmatob</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18811v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18811v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在这项工作中，我们在一个简单且解析可处理的设定下研究grokking现象，其丰富的现象学使我们能够分离初始化、信号强度、权重衰减、样本大小和输入维度的影响。这些因素可以通过不同机制产生表面上相似的学习曲线，从而使其解释复杂化。我们的分析区分了通过无关特征进行的早期拟合、核心特征学习以及延迟泛化。我们确定了grokking可证明发生的尖锐条件，并推导出泛化平台长度的解析渐近表达式。我们的结果还刻画了早期泛化和未能达到规定测试准确率目标的区域。我们表明，插值边缘构成一个独特的动力学区域，其中消失的谱隙将核心学习与泛化分开，有助于阐明接近插值在现有grokking解释中的作用。由此得到的图景类似于化学动力学中的快相和慢相，并表明文献中讨论的从懒惰到丰富的转变可能反映了类似的动力学时间尺度分离。我们的理论结果得到了大量实验的忠实支持。</div>
+</div>
+<div class="card">
+<div class="title">Proofs Without Nominals: Gödel&#x27;s Ontological Argument, its Shallow Embedding, and the Open Questions of the Monatshefte Notes</div>
+<div class="mono"><b>标题：</b>无名义词的证明：哥德尔的本体论论证、其浅层嵌入以及《Monatshefte笔记》的开放问题</div>
+<div class="meta-line">Authors: Christoph Benzmüller</div>
+<div class="meta-line">类别：cs.LO · cs.AI，链接：<a href="https://arxiv.org/abs/2609.36279v3">Abs</a> · <a href="https://arxiv.org/pdf/2609.36279v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在经典高阶逻辑中对高阶模态逻辑的浅层嵌入，被用于Benzmüller和Scott的《关于哥德尔和Scott本体论论证变体的笔记》，其范围超出了模态对象语言：其性质量词的范围涵盖包含混合逻辑的名义词和满足算子的域。使用其中一个进行的证明证明的是嵌入的定理，而不一定是模态逻辑的定理。该框架提供这一点并不新鲜。一个结果是否属于模态逻辑，可以通过在显式演算中逐一重放来判定。更廉价地，并且一次性针对所有结果，可以通过分析嵌入的证明替换了什么来处理。《笔记》所证明的每个陈述在嵌入中都有一个不在对象语言之外替换任何东西的证明：其中294个是显式证明，经过机器检查，没有一个使用名义词。《笔记》自己的证明也没有替换任何东西；检查所标记的是证明器引入的项。
+  《笔记》留下的三个开放问题也得到了解决，没有使用名义词，而是通过合取公理的空实例，过于廉价而无法令人信服。正如《笔记》将其推广以涵盖哥德尔的“任意数量的合取项”，该公理涵盖了空合取和单元素。本文将限制为至少两个不同的合取项，这是对哥德尔脚注的非退化解读，并再次解决了这些问题，没有使用名义词。实际上，该限制只排除了空合取；单元素情况随其他公理回归。在三个变体之一中，该限制反驳了一个类似上帝的存在者的可能存在；一旦《笔记》的非空子句被限制在哥德尔的本质上，答案就在没有附带条件的情况下回归。本文陈述的每个定理都在Isabelle/HOL中验证，并独立地在Lean 4中验证；反模型是Nitpick的，由构建检查。</div>
+</div>
+<div class="card">
+<div class="title">Beyond Single-Model Optimization: Preserving Plasticity in Continual Reinforcement Learning</div>
+<div class="mono"><b>标题：</b>超越单模型优化：在持续强化学习中保持可塑性</div>
+<div class="meta-line">Authors: Lute Lillo, Nick Cheney</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.NE，链接：<a href="https://arxiv.org/abs/2604.15414v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.15414v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">持续强化学习必须平衡保持与适应，然而许多方法仍依赖\emph{单模型保持}，将单一演化策略作为跨任务的主要可复用方案。即使保留了先前成功的策略，在干扰之后它也可能不再为快速适应提供可靠的起点，这反映了一种单策略保持无法解决的\emph{可塑性丧失}。受质量-多样性方法启发，我们提出\textsc{TeLAPA}（迁移启用的潜在对齐策略档案），这是一个持续强化学习框架，将行为多样的策略邻域组织为每个任务的档案，并维护共享潜在空间，使档案中的策略在非平稳漂移下仍可比较和复用。这一视角将持续强化学习从保留孤立解转变为维护\emph{技能对齐邻域}，其中包含有能力且行为相关的策略，以支持未来的再学习。在我们的MiniGrid CL设置中，\textsc{TeLAPA}成功学习更多任务，在干扰后重新访问任务时更快恢复能力，并在任务序列中保持更高性能。我们的分析表明，源最优策略往往不是迁移最优的，即使在局部有能力邻域内也是如此，而有效复用取决于保留并在多个邻近替代方案中进行选择，而非将它们坍缩为一个代表。总之，这些结果重新构建了持续强化学习，围绕可复用且有能力的策略邻域，为超越单模型保持、迈向更具可塑性的终身智能体提供了一条路径。</div>
+</div>
+<div class="card">
+<div class="title">Depth Memory</div>
+<div class="mono"><b>标题：</b>深度记忆</div>
+<div class="meta-line">Authors: David González-Martínez, Philipp Nazari, T. Konstantin Rusch</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18809v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18809v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">残差连接通过逐层输出的加性累积在网络中传播信息。近期提出的替代方案，如流形约束超连接（mHC）和注意力残差（AttnRes），则采用更具表达力的深度聚合机制，在规模化语言建模中提升了性能。在本工作中，我们将跨深度的表示混合视为跨层存储与检索信息的问题。形式化这一视角，我们提出深度记忆（DM），一个统一框架，用携带表示通过网络的数据流来描述标准预层归一化（PreLN）Transformer、mHC 和 AttnRes。例如，其中一条流可以是显式记忆流，被查询以丰富每一层的输入，其输出随后写回记忆供后续层使用。对于 AttnRes，该记忆流是显式层表示的不断增长的缓存。对于 mHC，它是扩展的残差流。基于这一视角，我们提出线性深度记忆（LDM），将跨深度的信息检索形式化为使用递归最小二乘求解的回归问题。所得架构跨深度传播三条流：标准残差流、线性联想记忆流和逆协方差流。为高吞吐量训练和推理，我们提出 LDM 的硬件感知实现，降低峰值激活内存和内存流量。在 4 亿和 15 亿参数规模下，LDM 在 PreLN、mHC 和 AttnRes 基线中始终取得最低困惑度，并具有有竞争力的零样本准确率。</div>
+</div>
+<div class="card">
+<div class="title">Optimizing Team Behavior via Extremum-seeking Control in Multi-agent Reinforcement Learning</div>
+<div class="mono"><b>标题：</b>多智能体强化学习中基于极值搜索控制的团队行为优化</div>
+<div class="meta-line">Authors: Svar Rajankumar Patel, Kshitij Jerath</div>
+<div class="meta-line">类别：cs.MA · cs.AI · cs.RO，链接：<a href="https://arxiv.org/abs/2610.18808v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18808v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在协作式多智能体强化学习（MARL）中，智能体必须学会协调其动作以实现共同目标。有效协调的一个关键指标是行为多样性，即在给定相同观测集的情况下，智能体制定出不同但互补的控制策略的潜力。尽管行为多样性能够实现角色专门化和更丰富的联合行为，但其适当水平高度依赖于上下文和任务，且通常调节成本高昂。我们提出自适应多样性控制（ADiCo），一个在训练过程中在线自适应行为多样性的双时间尺度框架。在快时间尺度上，多样性控制（DiCo）将系统多样性调节至目标值。在较慢的时间尺度上，极值搜索控制器（ESC）仅使用平均回合回报来调整该目标，无需多样性-性能景观的显式模型或解析梯度。我们在两个协作式MARL任务的六种配置上评估ADiCo，它维持了适合任务的多样性水平：当同质策略有利时保持低多样性，当需要异质策略时保持较高多样性。通过这种自适应，ADiCo达到或超过了DiCo（最佳网格搜索多样性目标）和无约束DiCo（允许多样性在无目标调节下自然涌现）的平均性能。这些结果表明，将经典反馈控制融入MARL训练，通过提供一种系统性替代方案来取代针对特定任务手动选择多样性目标，从而实现有效协调。</div>
+</div>
+<div class="card">
+<div class="title">SkillScaffold: Scaffolding Agentic Reinforcement Learning with Policy-Adaptive Skill Credit Assignment and Selective Injection</div>
+<div class="mono"><b>标题：</b>SkillScaffold：基于策略自适应技能信用分配与选择性注入的智能体强化学习脚手架</div>
+<div class="meta-line">Authors: Wenlin Zhong, Hao Wang, Kun Yuan</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18807v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18807v1">PDF</a> · <a href="https://github.com/Vaidurya00/SkillScaffold">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">智能体强化学习（RL）使大语言模型（LLM）能够从具有可验证结果的多轮交互中学习。文本技能通过将先前交互提炼为可复用指导来改善探索。然而，现有基于技能的RL方法通常要么假设技能注入是有益的，要么依赖间接反馈或大量采样的评估来判断其效用。我们的初步研究表明，在有限采样下，基于采样的技能信用分配效用估计成本高且不稳定，而技能收益因候选技能而异，并取决于当前策略在每个查询上的能力。为应对这些挑战，我们提出SkillScaffold，一种策略自适应训练脚手架，将低成本技能效用估计与选择性技能注入相结合。通过复用结果验证的训练轨迹，SkillScaffold生成候选技能，并通过结果感知的似然比较估计其效用，无需针对候选技能的环境采样。所得效用指导是否注入以及注入哪个技能，当估计没有候选技能有帮助时，保留无技能执行。联合训练使生成器能够生成适应不断演化的执行器的技能。脚手架式RL鼓励技能内化以实现无技能推理。在ALFWorld、WebShop、ScienceWorld和$τ^2$-Bench上的实验表明，在短时和长时任务上均优于强智能体RL和基于技能的RL基线。消融实验和进一步分析支持基于效用的选择和弃用的重要性。我们的代码可在https://github.com/Vaidurya00/SkillScaffold获取。</div>
+</div>
+<div class="card">
+<div class="title">Registration is a Representation Problem: Solving Whole-Body PET/CT Registration</div>
+<div class="mono"><b>标题：</b>配准是一个表示问题：解决全身PET/CT配准</div>
+<div class="meta-line">Authors: Neel Dey, Adrian V. Dalca</div>
+<div class="meta-line">Venue: MICCAI</div>
+<div class="meta-line">类别：cs.CV · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18804v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18804v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在对应问题中，原始图像强度是图像间相似性的糟糕替代。此外，虽然辅助分割标签可以提供语义识别并改善匹配，但它们只能为细粒度解剖结构分配粗略身份，并且通常只覆盖部分结构，尤其是在全身设置中。我们提出了一种方法，转而使用解剖结构的互补表示来建立对应关系，并展示了其在Learn2Reg 2026 PSMAReg挑战赛中用于纵向全身PET/CT配准的效用。我们的3D基础模型anatomix用于推导跨体积一致的细粒度、逐体素语义表示，我们进一步使用现成的分割模型来获得粗略的解剖身份。这些表示共同驱动一个GPU加速的迭代配准求解器（FireANTs）在混合多阶段框架中运行：第一阶段从密集多通道特征估计对齐，之后第二阶段使用基于anatomix和分割的损失来细化变形。最后，由于配准不应随时间引入非生物性肿瘤体积变化，我们开发了病变特异性组件级体积保持方案。在没有任何任务特定训练的情况下，我们的系统在PSMAReg挑战赛排行榜上获得第一名。代码和交互式可视化可在http://www.neeldey.com/reps-for-reg获取。</div>
+</div>
+<div class="card">
+<div class="title">SEAR: Self-Evolving Agentic Robotics</div>
+<div class="mono"><b>标题：</b>SEAR：自进化智能体机器人</div>
+<div class="meta-line">Authors: Xinyi Wang, Bangzheng Li, Hanyu Wang</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18792v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18792v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">前沿语言模型智能体如今能自主改进机器人：它们编写控制代码、进行测试，并将有效方案保留为技能和记忆，用于下一任务。我们提出SEAR（自进化智能体机器人），一个围绕两个问题构建的框架与基准：智能体是在真正学习，还是只是更频繁地尝试？以及它所学到的东西在新任务、新模拟器和真实机器人上是否仍然有效？该框架以三种模式运行智能体：编写成为策略的代码（代码即策略）、在控制回路中实时行动（智能体即策略），或作为微调视觉-语言-动作模型的研究者（自动研究）。该基准增加了控制项，以区分保留的经验与重复尝试、熟悉任务、特权模拟器状态、更大预算和运气。在七个前沿语言模型、330个模拟任务和五个物理任务，以及超过四年的智能体运行时间中，我们强调三项发现。第一，机器人智能体的学习曲线既取决于总时间预算，也取决于任务难度相对于模型能力的关系。更难的任务使更长的会话更有价值；在较容易的任务上，重新进行短尝试效果一样好。第二，控制代码和共享例程可跨任务和模拟器迁移，而任务特定解决方案则不能。在真实机器人上，我们观察到智能体设计的练习与新颖的人类设计场景之间存在性能差距。第三，不同模型以不同方式更有效地进化。有些最擅长实时行动，另一些则先编写代码。而且纯文本模型能与相当的多模态模型保持同步：感知有助于错误评估，但智能体推理和工具使用可能更重要。我们发布该基准和代码库以支持未来研究。</div>
+</div>
+<div class="card">
+<div class="title">Bytes to Threats: Byte-Sequence Transformer For Malware Detection</div>
+<div class="mono"><b>标题：</b>从字节到威胁：用于恶意软件检测的字节序列Transformer</div>
+<div class="meta-line">Authors: Abdelrahman Yassin Eljamal, Abdeltawab Hendawi</div>
+<div class="meta-line">Venue: 2026 IEEE International Conference on AI and Data Analytics (ICAD), Boston, MA, USA, 2026, pp. 1-7</div>
+<div class="meta-line">类别：cs.CR · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18787v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18787v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">现有的恶意软件检测方法严重依赖从可执行文件的静态或动态分析中提取的手工特征。这些方法需要专业领域知识、专用分析工具和耗时的分析，限制了其面对日益复杂多样的现代恶意软件时的可扩展性和鲁棒性。因此，直接处理原始字节的方法日益受到关注，因为原始字节包含丰富的语义和结构信息。然而，捕获可执行文件中的长距离依赖关系对传统静态方法和基于CNN的方法仍然具有挑战性。本文提出了MalwareFormer，一种基于Transformer的字节级恶意软件检测框架，直接处理原始字节，无需领域知识或特征提取。MalwareFormer达到了98.35%的准确率、98.32%的平衡准确率、98.32%的宏F1值以及1.94%的假阳性率，在所有依赖阈值的分类指标上均优于两个基线，表明Transformer为字节级恶意软件检测提供了一种强大且可扩展的方法。</div>
+</div>
+<div class="card">
+<div class="title">Where Do LLM Ensemble Gains Come From? Decomposing Candidate Value, Diversity, and Aggregation</div>
+<div class="mono"><b>标题：</b>LLM集成增益从何而来？分解候选价值、多样性与聚合</div>
+<div class="meta-line">Authors: Donghwan Kim</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18786v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18786v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">LLM集成增益通常以单一基线衡量，但归因于额外候选的价值会随所用比较而变化。我们在四种匹配条件下研究LLM聚合器：Direct（无候选）、Single-slot（多槽界面中一个候选）、Duplicate（一个候选重复）和Multi-candidate（分别生成的候选）。在任一非多样性控制下，总体候选增益（CIV）在代数上分解为额外候选对比（DSV）和候选上下文对比（CCV）；该分解而非CIV取决于所选控制。在MultiHopRAG模型多样性（k=2）上，重复差距Rep=-8.33个百分点[-13.25, -3.75]，量化了以Duplicate和Single-slot为基准测得的增益差异。在匹配的FRAMES更强面板扩展（n=200，k=3，聚合器输出限制4096）上，配对Delta Rep=+9.67个百分点[+6.00, +13.50]；面板内Rep变号（原始-6.33；更强+3.33）。在FRAMES证据聚合中，候选上下文对比在两种非多样性控制下均保持强烈负值。我们的结果表明，为何集成评估在将增益归因于额外候选之前应说明参考控制。</div>
+</div>
+<div class="card">
+<div class="title">Trading Depth for Time in Recurrent Transformers</div>
+<div class="mono"><b>标题：</b>在循环Transformer中以深度换取时间</div>
+<div class="meta-line">Authors: Zeyi Huang, Xuehai He, Yelong Shen</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2609.21605v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.21605v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">循环Transformer通过时间循环增加计算深度，将每个token的高层隐藏状态馈入下一个token的计算。这引出一个自然的问题：额外的计算是更好地用于更多时间步还是更大的物理深度？我们使用潜在循环Transformer（LRT）研究这个问题，它在解码期间每个词汇token保留一次主干前向传播，为比较这两种增加计算的方式提供了受控设置。我们在连续词汇token之间插入一个潜在思维token，在预测下一个token之前通过共享主干添加一个隐藏状态细化步骤。在16层和20层的NanoChat MoE主干上，我们将该模型与双倍深度普通Transformer以及LRT、双循环Transformer和带一个思维token的PonderLM-2进行比较。所有配置在解码期间每个词汇token执行2L个块。在匹配的训练FLOPs下，带一个思维token的LRT优于PonderLM-2，并随着计算增加超过双循环Transformer。其与普通双倍深度的差距从每字节0.014比特缩小到0.001比特，尽管参数约少46%，唯一训练token约少一半。在我们主要比较所用的训练预算下，一个思维token在两种主干规模上平均恢复了将LRT深度加倍所获增益的89%，而参数约少48%。这些结果凸显了时间思考作为一种参数高效的方式，在循环Transformer中扩展计算。</div>
+</div>
+<div class="card">
+<div class="title">Pack Light, CarryOn: Building Object-Oriented Context for Long-Horizon Agents</div>
+<div class="mono"><b>标题：</b>轻装前行，CarryOn：为长时程智能体构建面向对象的上下文</div>
+<div class="meta-line">Authors: Yuchen Lu, Julian McAuley, Lei Zhang</div>
+<div class="meta-line">类别：cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18784v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18784v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://ethannju.github.io/carryon">Project1</a></div>
+<div class="mono" style="margin-top:8px">长时程智能体在持久任务状态中积累进展，却反复处理描述该进展如何实现的交互历史。这引出一个自然的问题：长时程上下文能否围绕可复用的进展而非产生它的历史来组织？本文提出CarryOn，一种面向对象的上下文运行时，围绕可复用任务对象组织延续。CarryOn不以压缩历史或重建的进展叙述作为延续的主要依据，而是从延续载体、互补执行上下文以及近期交互的实时尾部构建上下文视图。核心挑战在于：当周围历史被淘汰后，如何保持这一可复用基础的有效性——CarryOn如何在不于每次折叠时重建完整表示的情况下更新该基础？CarryOn跨折叠维护载体记录，依据绑定证据和适用环境检查修订受影响的记录，同时沿用未受影响的记录并联合更新执行上下文。在OSWorld 2.0和BrowseComp-Plus上的实验显示，分别提升5.8%和7.0%，同时将总token使用量分别减少51.9%和22.9%。项目页面：https://ethannju.github.io/carryon</div>
+</div>
+<div class="card">
+<div class="title">BLADE: Auditing Information Use for Failure Attribution in LLM Multi-Agent Systems</div>
+<div class="mono"><b>标题：</b>BLADE：面向LLM多智能体系统故障归因的信息使用审计</div>
+<div class="meta-line">Authors: Xiaoguang Guo, Yaohao Long, Chuxu Zhang</div>
+<div class="meta-line">类别：cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18780v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18780v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大语言模型多智能体系统通过跨专业角色、工具和工作流的协作扩展单个智能体的能力。然而，协作使故障更难诊断：一个智能体可能误解正确结果，而其他智能体则将错误传递下去。因此，故障归因旨在识别责任智能体和决定性错误步骤。近期方法追踪依赖关系，但知道信息来自何处并不等同于知道其在哪里出错。我们提出BLADE（通过审计依赖证据进行责任定位），一个免训练框架，超越信息追踪，转向审计信息的使用。BLADE使用Jev进行结构化概率判断，利用依赖概率选择相关的源决策交接点进行审计。在这些交接点，它检查接收决策是否忠实于其来源并在任务要求范围内使用来源，区分错误引入、传播和修复。这些发现为考虑所有执行步骤的全局诊断提供依据。在没有参考答案的情况下，BLADE在共享Jev决策接口下，于五个Who&amp;When和Who&amp;When Pro子集的1,228次失败运行中，在八种策略中取得最佳或并列最佳的步骤准确率，比All-at-once高出2.2-11.1个百分点。使责任证据显式化，为更可解释、更可靠的智能体系统提供了路径。</div>
+</div>
+<div class="card">
+<div class="title">From Clicks to Intent: Cross-Platform Session Embeddings with LLM-Distilled Taxonomy for Financial Services Recommendations</div>
+<div class="mono"><b>标题：</b>从点击到意图：面向金融服务推荐的跨平台会话嵌入与LLM蒸馏分类体系</div>
+<div class="meta-line">Authors: Dianjing Fan, Yao Li, Kyaw Hpone Myint</div>
+<div class="meta-line">类别：cs.IR · cs.AI · cs.CE · cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2606.26277v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.26277v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">序列用户行为建模在工业推荐系统中被广泛采用；然而在金融服务领域仍存在显著空白，因为登录前网页交互与认证后应用内体验差异巨大。具体而言，登录前网页用户通常探索新产品，而登录后应用用户专注于账户服务。由于跨渠道实体解析（例如将匿名网页会话与已认证移动账户匹配）的挑战，基于网页的意图信号在认证后个性化中仍未得到充分利用。现有捕捉网页意图的方法往往是临时且狭窄的，缺乏灵活性以支持大规模定量下游推荐和定性理解。在这项工作中，我们提出了一种可扩展且双用途的基于网页交互的意图预测框架，并展示了其在个性化中的适用性。我们的方法将原始网页点击流转化为两个输出：一个自监督Transformer将多模态点击流编码为紧凑的会话嵌入，而基于LLM的分类体系生成与蒸馏管道产生可解释的意图标签。我们的系统表明，自监督点击流表示与LLM蒸馏分类体系相结合，可以在生产中共同服务于定量任务和定性理解：在移动主页磁贴排序任务上，会话嵌入相比生产基线将宏Recall@1提高了1.88%，并将Log Loss降低了13.38%。在用户转化预测任务上，嵌入在微F1上优于LLM标签4.3%，而蒸馏层以超低延迟提供可解释标签，性能仅下降7%。</div>
+</div>
+<div class="card">
+<div class="title">Jeva: System One Models from First Principles</div>
+<div class="mono"><b>标题：</b>Jeva：从第一性原理构建的系统一模型</div>
+<div class="meta-line">Authors: Qi Li, Xinchao Wang</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.18773v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18773v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">系统一模型能够实现直接、低延迟的决策。然而，近期从序列化文本预测答案的做法本身并未尊重决策问题的结构。我们认为当前设计低估了四项重要的结构性要求。(i) 空值感知：模型应区分答案缺失与候选之间的不确定性；(ii) 排列不变：重排备选项不应改变决策；(iii) 选项可扩展：候选集增长不应要求重新定义输出空间；(iv) 可缓存：对重复出现的备选项进行的与请求无关的计算应可跨请求复用。我们提出 Jeva，一种决策原生架构，联合解决这些要求。共享编码器独立表示请求与每个选项，而紧凑的决策栈仅针对不可变的选项记忆精炼请求状态。对称聚合产生排列等变概率；共享评分适应可变大小的候选集。单独的覆盖估计区分答案缺失与候选竞争，从而支持显式空值结果。与请求无关的选项表示和层投影支持在新组装的集合中复用。这些机制统一了 Choice、Noul 和 Score 输出。在各项评估中，Jeva 兼具强类型化决策性能与近乎完美的空值检测，且在任何测试排列下均无决策翻转。它可扩展至数千个候选，并通过跨请求复用显著降低延迟而不改变决策。</div>
+</div>
+<div class="card">
+<div class="title">Watermarking Continuous Tabular Data Generation</div>
+<div class="mono"><b>标题：</b>连续表格数据生成的水印技术</div>
+<div class="meta-line">Authors: Hengzhi He, Peiyu Yu, Junpeng Ren</div>
+<div class="meta-line">类别：cs.CR · cs.LG，链接：<a href="https://arxiv.org/abs/2405.14018v2">Abs</a> · <a href="https://arxiv.org/pdf/2405.14018v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在本文中，我们提出了一种简单而有效的表格数据水印机制，并具有统计保证。我们从理论上证明了所提出的水印可以被有效检测，同时忠实保持数据保真度，并展示了对加性噪声攻击的良好鲁棒性。总体思路是通过基于简单数据分箱的策略性嵌入来实现水印。具体而言，它将特征的值范围划分为细粒度区间，并将水印嵌入到选定的“绿名单”区间中。为了检测水印，我们开发了一个原则性的统计假设检验框架，其假设极少：只要底层数据分布具有连续密度函数，该框架就仍然有效。通过严格的理论分析和实证验证展示了水印的有效性，突出了其在增强合成和真实数据集安全性方面的实用性。</div>
+</div>
+<div class="card">
+<div class="title">Policy Iteration Is Not Strongly Polynomial for Deterministic Markov Decision Processes: The Price of Algorithmic Anarchy</div>
+<div class="mono"><b>标题：</b>策略迭代对确定性马尔可夫决策过程不是强多项式的：算法无政府状态的代价</div>
+<div class="meta-line">Authors: Han Zhong, Yinyu Ye</div>
+<div class="meta-line">类别：cs.LG · cs.DS，链接：<a href="https://arxiv.org/abs/2609.40147v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.40147v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们建立了Howard策略迭代在确定性折扣和平均奖励马尔可夫决策过程（MDP）上关于状态数的指数迭代下界，每个状态的动作数恒定。这排除了Howard策略迭代在两种设置下的强多项式性。我们进一步证明，Howard策略迭代的Dantzig对应算法在确定性平均奖励MDP上以强多项式时间运行。结合已知的Dantzig规则在确定性折扣MDP上的强多项式界，这些结果在两种设置下建立了两种算法之间的指数分离。这种Howard的分散且同时自私改进与Dantzig在所有状态中协调选择具有最大改进的单一动作之间的分离，揭示了“算法无政府状态”的代价。</div>
+</div>
+<div class="card">
+<div class="title">Beyond the Verdict: Agentic Code Judging with Verifiable Feedback</div>
+<div class="mono"><b>标题：</b>超越裁决：具有可验证反馈的智能体代码评判</div>
+<div class="meta-line">Authors: Zheye Deng, Sha Li, Changlong Yu</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.18760v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18760v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大语言模型（LLM）的测试时扩展可涉及生成多个候选解以供选择或修正先前尝试。为引导选择与修正，我们需要一个能够估计候选正确性并提供失败证据的验证器。然而，在竞技编程中，官方评判系统在有限提交预算下提供权威裁决，但不揭示失败解释或失败输入。为了在不消耗官方提交的情况下提供有信息量的反馈，我们制定了一项任务，其中模型仅使用问题陈述和源代码来评判和诊断候选程序，生成的计数例作为可检查的证据。为评估该任务，我们基于 USACO 2026 竞赛构建了 USACO-JUDGE，使用由人类专家和多个 LLM 编写的接受和未接受程序。然后，我们在通用执行沙箱中通过强化学习训练了 ARBITER，一个 35B 混合专家（MoE）智能体验证器。训练将错误程序上的计数例成功率从 40.61% 提高到 62.67%，并将 USACO-JUDGE 上的平均二元裁决准确率从 71.41% 提高到 87.41%，接近前沿验证性能。除验证外，ARBITER 在代码选择和精炼方面均优于基线。在 IOI 2026 案例研究中，ARBITER 引导的精炼将 GPT-OSS-120B 的预期得分提高到官方提交限制下的金牌阈值以上。</div>
+</div>
+<div class="card">
+<div class="title">PreciseCoder: Faithful and Generalizable Debugging Beyond Unit-Test Rewards</div>
+<div class="mono"><b>标题：</b>PreciseCoder：超越单元测试奖励的忠实且可泛化的调试</div>
+<div class="meta-line">Authors: Yunkai Zhan, Miaosen Chai, Shangshang Wang</div>
+<div class="meta-line">类别：cs.SE · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18755v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18755v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">基于单元测试的强化学习（RL）是代码模型后训练的常见方案，但单元测试只关注最终程序是否通过。我们分析了这种仅依赖单元测试的奖励在调试过程中教会了模型什么，发现它在提高通过率的同时，也教会模型进行更多编辑，并在本已正确的代码中臆造缺陷。我们提出 PreciseCoder，一种训练算法，在单元测试奖励之外增加一个针对语义验证的局部化编辑的信号，该信号与更小的编辑量和更高的通过率相关。在 4B、9B 和 27B 模型上，PreciseCoder 将平均编辑行数从 7-15 行降至 3 行，通过率与仅用单元测试训练相当。仅在单行缺陷上训练，PreciseCoder 即可泛化到仓库级程序修复，以更小的补丁解决更多问题。其精确性还能从较弱模型迁移到较强模型：给定 9B PreciseCoder 模型的推理轨迹，GPT-5.6 Sol 和 Qwen3.8-Max 等前沿模型在无需额外训练的情况下，编辑精确性提升 4.6-12.4 分。对思维轨迹的语言学分析表明，我们的奖励鼓励模型逐行推理、指出有缺陷的行，并形成一致的缺陷假设。</div>
+</div>
+<div class="card">
+<div class="title">Probabilistic Circuits for Irregular Multivariate Time Series Forecasting</div>
+<div class="mono"><b>标题：</b>面向不规则多元时间序列预测的概率电路</div>
+<div class="meta-line">Authors: Christian Klötergens, Lars Schmidt-Thieme, Vijaya Krishna Yalavarthi</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2604.27814v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.27814v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">联合概率建模对于预测不规则多元时间序列（IMTS）以准确量化不确定性至关重要。现有方法往往难以在模型表达能力和一致边缘化之间取得平衡，常导致不可靠或矛盾的预测。为此，我们提出 CircuITS，一种基于和积网络（SPN）的新型概率 IMTS 预测架构。我们的模型能够灵活捕捉时间序列通道之间的复杂依赖关系，同时在结构上保证有效的联合分布。在五个真实世界数据集上的实验表明，与最先进的基线相比，CircuITS 实现了更优的联合密度估计和边缘密度估计。</div>
+</div>
+<div class="card">
+<div class="title">Specification-Guided Synthesis of Deadlock-Free Communication Protocol Refinements with Large Language Models</div>
+<div class="mono"><b>标题：</b>基于大语言模型的规范引导无死锁通信协议精化合成</div>
+<div class="meta-line">Authors: Yang Li, Ping Hou, Nobuko Yoshida</div>
+<div class="meta-line">类别：cs.SE · cs.AI，链接：<a href="https://arxiv.org/abs/2607.27964v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.27964v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">确保通信协议的行为正确性是分布式软件系统中的一个核心挑战，因为细微的不一致可能导致死锁。在此类场景中，协议精化——即安全地替换协议，同时保持正确性及与其他组件的兼容性——至关重要。大语言模型（LLM）在代码生成和程序合成方面展现出强大能力，但缺乏可靠生成行为正确输出的机制。形式化规范方法，如多参与者会话类型（MPST），提供了严格的保证，包括无死锁性，但在自动构建协议精化方面支持有限。本文提出了 Syntropy，一个由 MPST 规范和 LLM 引导的协议精化合成框架。它将精化约束直接融入生成过程，确保生成的变体满足这些保证。我们的综合评估表明，Syntropy 在保持高语法正确性的同时达到了 95.6%-99.5% 的有效性，并在多个 LLM 上产生了多样且非平凡的精化。</div>
+</div>
+<div class="card">
+<div class="title">SolBehave: Evaluating the Behavioural Correctness of LLM-Generated Smart Contracts</div>
+<div class="mono"><b>标题：</b>SolBehave：评估LLM生成智能合约的行为正确性</div>
+<div class="meta-line">Authors: Giovanni Pio Delvecchio, Stefano Fantazzini, Giacomo Frisoni</div>
+<div class="meta-line">类别：cs.SE · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18745v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18745v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大型语言模型越来越多地生成Solidity智能合约，这些合约一旦部署便永远无法修补，使得单个潜在故障成为永久且可被利用的漏洞。然而，当前评估大多只关注生成的代码能否编译。我们提出SolBehave，一个用于大规模评估模型生成合约正确性的基准，超越了临时的单元测试。在250个真实、可复现的以太坊合约上，我们应用三种互补的行为保真度测试：差分模糊测试、历史交易重放，以及作为我们核心贡献的、由动态条件响应（DCR）图引导的合成交易重放，该图枚举了合法函数调用序列的空间。差分模糊测试在自动生成的输入上比较每个生成函数与原始函数；历史重放在实际链上收到的交易上比较整个合约；DCR引导的重放在其预期使用的调用序列上比较合约，包括链上从未出现过的顺序。我们在进行一轮自动修复后评估了七个最先进的开源权重模型。编译成功率从26.4%到92.7%不等，但在差分模糊测试下，跨模型和样本汇总，所有能编译的生成函数体中只有31.4%与原始函数等价。合约层面的分歧是常态而非例外：对于七个模型中的六个，在历史重放下，13%到31%的能编译的生成合约与原始合约发生分歧，在DCR引导的重放下则为13%到44%；只有Gemma-4-31B在两者上都保持在3%以下。因此，编译是正确性的必要条件，但远非充分条件。</div>
+</div>
+<div class="card">
+<div class="title">Emergent Loop Geometry in Gauge-Equivariant Graph Neural Networks</div>
+<div class="mono"><b>标题：</b>规范等变图神经网络中的涌现环路几何</div>
+<div class="meta-line">Authors: Ali Rayat, Gia-Wei Chern</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18742v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18742v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">规范等变图神经网络通过局部消息传递生成规范链的有序乘积，但这些内部结构的几何性质不能仅由感受野刻画。我们独立于网络训练，研究了由递归节点和边特征操作生成的闭合格点行走的统计系综。解析与数值结果表明，轮廓长度的快速增长与空间扩展的缓慢得多之间存在分离：更深的组合通过反复遍历相对紧凑的区域生成越来越长的路径。费米子可观测量的环路展开为这一层级结构提供了物理解释，表明空间局域性如何与对邻近规范场的高阶依赖相容。这些发现揭示了网络深度在扩展空间可达范围与丰富该范围内所构建表示方面的互补作用，为学习格点规范可观测量提供了几何视角。</div>
+</div>
+<div class="card">
+<div class="title">FinTradeBench: A Financial Reasoning Benchmark for LLMs</div>
+<div class="mono"><b>标题：</b>FinTradeBench：面向LLM的金融推理基准</div>
+<div class="meta-line">Authors: Yogesh Agrawal, Aniruddha Dutta, Md Mahadi Hasan</div>
+<div class="meta-line">类别：cs.CE · cs.AI · cs.CL · cs.IR，链接：<a href="https://arxiv.org/abs/2603.19225v6">Abs</a> · <a href="https://arxiv.org/pdf/2603.19225v6">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">金融分析需要推理异构信号，包括来自监管文件的公司基本面和源自市场价格的交易信号。然而，现有金融基准几乎只关注监管文件，忽视了市场动态和跨信号交互。我们提出FinTradeBench，一个包含1400个问题的基准，覆盖纳斯达克100股票十年窗口。为全面评估金融推理，FinTradeBench包含三类推理问题：基本面聚焦、交易信号聚焦以及需要跨信号推理的混合问题。我们的基准从150个专家编写的种子问题开始，然后扩展到1400个。为确保可靠评估，我们创建了Core400子集，其中每个项目都经过专家审查。在零样本（No-RAG）响应生成中，我们观察到所有模型在交易聚焦问题上的表现都远差于基本面聚焦问题。为识别失败原因，我们在受控设置下评估LLM，包括基于检索的基线、工具辅助计算、oracle条件和时间序列专用管道。LLM进行计算和证据选择的能力对推理失败贡献最大。此外，检索显著改善了交易信号推理，但未改善基本面推理，其中识别相关信号仍是主要失败模式。最后，与其依赖小型微调模型进行时间序列推理，不如总结时间序列数据并利用LLM的推理能力。</div>
+</div>
+<div class="card">
+<div class="title">Towards Financial World Modeling</div>
+<div class="mono"><b>标题：</b>迈向金融世界建模</div>
+<div class="meta-line">Authors: Humzah Merchant, Alec Guthrie, Simon Mahns</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.09048v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.09048v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">构建世界模型需要一种对规划和决策有用的状态表示——可能涉及训练时未知的任务。在金融市场背景下，规划和决策可能要求模型对全市场状况、资产特定预期收益、流动性、波动性以及跨资产关系进行推理。然而，金融表示学习在很大程度上是在单个预测任务上评估的，且往往是在单一时间段上使用相对狭窄的数据集。我们通过三项主要贡献来解决这一问题。第一，我们引入Market-1T，一个包含2008年至2025年美国股票近一万亿条观测、分辨率为1 Hz的数据集。第二，我们开发并实施了一套严格的评估协议。第三，我们对金融表示学习进行了系统性大规模研究，在近二十年的市场制度中比较了18种编码器训练策略。我们既通过其在常见金融任务上的预测效用，也通过对潜在结构的探测来评估学习到的表示。我们发现，预测性能相似的编码器可能以非常不同的方式组织市场状态。总体而言，我们为训练和评估金融市场表示奠定了基础，以支持诸如DINO-WM、V-JEPA 2和LeWM等世界模型。</div>
+</div>
+<div class="card">
+<div class="title">A Rate Transfer Method: Convergence Rates in Stochastic Gradient Descent via Stochastic Calculus</div>
+<div class="mono"><b>标题：</b>一种速率传递方法：通过随机微积分实现随机梯度下降的收敛速率</div>
+<div class="meta-line">Authors: Neil Walton</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18739v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18739v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们提出了一种速率传递方法，将相关随机微分方程（SDE）的有限时间Lyapunov估计转化为随机梯度算法的有限时间收敛界。在一般的矩条件与光滑性条件下，随机梯度方法的收敛性分析归结为一个微积分论证，即验证SDE的Lyapunov生成元不等式。该方法恢复了经典随机梯度方法的已有速率，并提供了一种途径：通过对其相关SDE应用微积分论证，为新优化算法建立收敛速率。</div>
+</div>
+<div class="card">
+<div class="title">HybridStitch: Pixel and Timestep Level Model Stitching for Diffusion Acceleration</div>
+<div class="mono"><b>标题：</b>HybridStitch：用于扩散加速的像素与时间步级模型拼接</div>
+<div class="meta-line">Authors: Desen Sun, Jason Hon, Jintao Zhang</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2603.07815v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.07815v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">迭代扩散生成在不同token位置需要不同的模型容量。先前的模型组合按去噪步或按草拟与验证角色分配容量。我们提出HybridStitch，一个无需训练的框架，利用token级反馈来选择为每个采用的更新提供模型的模型。连续图像细化与离散语言承诺在共享生成状态上运行，而模型特定的KV缓冲区为选定的查询提供注意力上下文。HybridStitch在四个主要基准上实现1.63--1.68$\times$更快的图像生成和1.15--1.58$\times$的扩散大语言模型（dLLM）吞吐量。估计的dLLM解码查询成本降低50--66%，且生成质量相当。</div>
+</div>
+<div class="card">
+<div class="title">Enabling Token-wise Importance Sampling in Off-Policy RLVR with Proximal KL Regularization</div>
+<div class="mono"><b>标题：</b>在离策略RLVR中启用基于令牌的重要性采样与近端KL正则化</div>
+<div class="meta-line">Authors: Hao Bai, Jiarui Yao, Tong Zhang</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18738v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18738v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在具有可验证奖励的强化学习（RLVR）中，离策略数据可能来自异步生成、部署与训练不匹配以及响应重用。基于令牌的重要性加权避免了在响应中乘以似然比，但通常会偏置策略梯度。我们证明，在覆盖和局部表达性条件下，完整的未来KL信用使精确近端优化器成为更新的唯一平稳策略，即使对于旧策略的混合，也无需全响应权重或拟合评论家。我们进一步在持续覆盖和时变行为策略下建立了连续时间表格群体更新的收敛性，并在额外假设下为线性逻辑模型提供了有限样本奖励保证。这些结果启发了近端KL，一种实用的离策略RLVR方法，它将近端参考与采样策略分离，并用有界未来KL信用替代PPO裁剪。在Qwen3-1.7B和Qwen3-4B上的所有七项匹配离策略比较中，涵盖两种学习率、响应重用和部署陈旧性，近端KL在八个数学基准的微平均准确率上比GRPO高出多达2.58%。一项单独的在策略比较产生了可比的总体准确率。在周期性刷新实验中，近端KL避免了PG和CISPO中观察到的崩溃，超过了GRPO的训练准确率，并在更少的策略更新中达到更高的准确率。消融实验表明，基于令牌的校正优于序列级和无加权控制。在保留基于令牌校正的情况下，未来KL反馈相对于PPO裁剪降低了对测试基线扰动的敏感性。有限的未来视野改善了AIME24的mean@16和pass@16，优于完整尾部，而固定策略测量表明，截断在测试视野上减少了校正方差。</div>
+</div>
+<div class="card">
+<div class="title">DualOPSD: Closing the Feedback Loop in On-Policy Self-Distillation</div>
+<div class="mono"><b>标题：</b>DualOPSD：在策略自蒸馏中闭合反馈回路</div>
+<div class="meta-line">Authors: Yutong Chen, Guangfu Guo, Zhichao Xu</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2608.26019v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.26019v2">PDF</a> · <a href="https://github.com/on1262/DualOPSD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">在策略自蒸馏（OPSD）将学生生成的轨迹与同一模型的特权教师提供的密集监督相结合。其逐点裁剪保护学生免受局部不兼容的教师方向影响，但固定教师无法获得学生拒绝的监督反馈，这限制了从教师处有效学习。我们提出DualOPSD，它在耦合的师生系统中交替更新。学生保留OPSD的裁剪前向KL目标。特权教师在每次学生步骤后适应更新后的学生。基于冻结初始模型的残差目标在教师适应过程中保留特权上下文的效果。在Qwen3-8B/4B/1.7B和三个数学基准上，DualOPSD将avg@12准确率较OPSD提升9.83个百分点。进一步的诊断分析显示更低的双向KL、更少持续不匹配，并保留对特权参考的敏感性。总之，这些结果表明DualOPSD可以是一种更有效的特权自蒸馏形式。代码见：https://github.com/on1262/DualOPSD。</div>
+</div>
+<div class="card">
+<div class="title">Constraint-Aware Influence Estimation in Deep Constrained Learning</div>
+<div class="mono"><b>标题：</b>深度约束学习中的约束感知影响估计</div>
+<div class="meta-line">Authors: Xin Wang, R. Tyrrell Rockafellar, Xuegang</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2607.23388v4">Abs</a> · <a href="https://arxiv.org/pdf/2607.23388v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">约束学习已越来越多地应用于各个领域，以确保由于公平性、安全性、鲁棒性、正则化以及物理或逻辑约束而产生的显式可行性要求。理解训练样本如何影响约束学习的解（例如学习到的参数）对于可解释性和鲁棒性至关重要。经典影响函数在约束设置中可能变得不可靠：数据扰动可能同时改变目标和可行域，导致估计违反可行性。为此，我们提出了方向影响函数（DIF），这是一种新的估计器，将约束显式地纳入影响估计。DIF 将约束学习的最优性条件表述为变分不等式（VI），并分析扰动训练数据如何影响该 VI。我们在约束线性回归中验证了 DIF，并证明它能够恢复留一法重训练结果，而 IF 和基于惩罚的 IF 则表现出显著偏差。我们进一步将 DIF 应用于公平性约束的 CNN，其中 DIF 准确预测数据移除下的测试损失变化，并与实际重训练高度一致。我们的结果确立了 DIF 作为约束学习中数据归因的一种高效且可靠的工具。</div>
+</div>
+<div class="card">
+<div class="title">SP$^2$ec: Adaptive Self-Speculative Decoding for Vision-Language Models</div>
+<div class="mono"><b>标题：</b>SP$^2$ec：面向视觉语言模型的自适应自推测解码</div>
+<div class="meta-line">Authors: Yuqi Huang, Xingyao Li, Yunlong Hou</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18735v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18735v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">推测解码（SD）已被证明能有效加速大语言模型推理，但对于视觉语言模型（VLM），输入模态的多样性使得小型训练草稿模型难以持续实现高吞吐量。自推测解码复用目标模型的部分作为草稿模型，保留了VLM的多模态能力，但其效率取决于为每个提示选择合适的草稿配置。我们提出单峰推测解码（SP$^2$ec），一种无需训练的bandit算法，在生成过程中自适应调整草稿配置。SP$^2$ec利用了现有自推测方法（包括SWIFT、KnapSpec、SpecVLM以及我们简单的cosSim）中观察到的单峰吞吐量模式。我们的算法设计显式地最小化针对每个给定查询的一种新颖的墙钟时间遗憾概念，对应于经验墙钟时间延迟。关于墙钟时间遗憾的理论保证表明，SP$^2$ec能够以可忽略的探索成本利用最优草稿配置。在Qwen2.5-VL-7B-Instruct和LLaVA-NeXT-Mistral-7B上跨视觉和文本任务的大量实验表明，相比原始自推测方法，性能一致提升最高达11\%，证明了所提出的SP$^2$ec算法的广泛适用性。</div>
+</div>
+<div class="card">
+<div class="title">OracleProto: A Reproducible Framework for Benchmarking LLM Forecasting via Knowledge Cutoffs and Temporal Masking</div>
+<div class="mono"><b>标题：</b>OracleProto：通过知识截止与时间掩蔽进行LLM预测基准测试的可复现框架</div>
+<div class="meta-line">Authors: Yiding Ma, Chengyun Ruan, Kaibo Huang</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2605.03762v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.03762v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">预测是一项综合能力，涵盖信息收集、证据整合、态势评估和决策制定。大语言模型（LLM）结合推理与工具使用，为自动化预测和决策支持提供了新途径。然而，LLM预测评估面临结构性挑战：实时基准支持前瞻性评估，但问题复用有限且信息条件变化，使结果难以复现和比较；回顾性基准提供可复现性，但存在信息泄露风险。我们提出OracleProto，一个在受控时间掩蔽环境中评估LLM预测的可复现框架。通过模型知识截止约束和时间掩蔽，OracleProto为真实世界网络检索构建时间沙盒，通过泄露检测审计信息边界，并将已解决事件重构为预测实例。离散答案归一化和分层评分实现统一评估。我们在300个源自FutureX-Past的问题上评估27个模型-配置对，进行24,300次预测试验，在受控信息边界下评估预测质量、采样稳定性和成本效率。审计发现，时间掩蔽和泄露过滤后，检索结果中仅残留1.37%的泄露。OracleProto将已解决的预测任务保留为显式时间边界下的可复用评估资源，支持预测数据集的持续积累和预测能力的系统评估。代码见https://anonymous.4open.science/r/OracleProto-2E3A/。</div>
+</div>
+<div class="card">
+<div class="title">Learning When to Transfer: Reinforcement Learning for Carbon-Footprint Modeling in New Manufacturing Domains</div>
+<div class="mono"><b>标题：</b>学习何时迁移：面向新制造领域碳足迹建模的强化学习</div>
+<div class="meta-line">Authors: Muhammad Umar Farooq, Daniel R. Cooper</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18730v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18730v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">制造商往往需要在获得足够运行数据以训练可靠预测模型之前，对新材料、新工艺或新产品进行表征。现有制造运营中蕴含可能有助于加速这一表征的知识，但当制造领域差异足够大时，不加区分地复用现有源领域数据会在新目标领域的学习中造成负迁移。本文提出一种用于选择性知识迁移的强化学习方法，其奖励对每个迁移机会与监督替代方案进行评分，从而在前向预测过程中避免并控制负迁移，而非事后诊断。在来自新目标领域的有限数据下，学习到的策略基于单个源操作、源子集或监督替代方案（完全池化源或仅目标数据）在预测器之间进行选择。验证门仅在迁移预测优于监督替代方案时才部署该预测。该方法旨在学习支持碳核算以及性能和质量结果的变量。我们通过量化材料挤出增材制造所生产零件的隐含温室气体排放来演示该方法，使用涵盖五种材料（ABS、PETG、TPU、PLA和再生PLA）的729次实验数据。响应变量结合了实测制造电力与聚合物特定的从摇篮到大门的生产因子，同时用22个材料、工艺和刀具路径特征表征每次实验。在留一材料评估中，该方法实现了每零件5.2 g CO2e的平均测试RMSE，比仅目标训练低20.00%（当仅有5-10%的目标训练数据可用时低32.5%），比不加区分的源-目标池化低10.30%。</div>
+</div>
+<div class="card">
+<div class="title">Bayesian Optimization under Uncertainty for Training a Scale Parameter in Stochastic Models</div>
+<div class="mono"><b>标题：</b>不确定性下的贝叶斯优化用于训练随机模型中的尺度参数</div>
+<div class="meta-line">Authors: Akash Yadav, Ruda Zhang</div>
+<div class="meta-line">Venue: ASCE-ASME J. Risk Uncertainty Eng. Syst., Part A: Civ. Eng. 12(4): 04026050 (2026)</div>
+<div class="meta-line">类别：cs.LG · cs.CE，链接：<a href="https://arxiv.org/abs/2510.06439v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.06439v2">PDF</a> · <a href="https://github.com/UQUH/SO-BO-scale">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">超参数调优是一个具有挑战性的问题，尤其当系统本身涉及不确定性时。由于函数评估存在噪声，不确定性下的优化可能计算代价高昂。本文提出了一种新颖的贝叶斯优化框架，专为不确定性下的超参数调优而设计，重点优化随机模型中的尺度或精度类参数。所提方法对潜在随机变量采用统计代理模型，从而能够解析地计算期望算子。此外，我们推导出随机采集函数优化器的闭式表达式，显著降低了每次迭代的计算成本。数值实验表明优化效率大幅提升：相对于基于蒙特卡洛的一维优化方案，数据使用量减少约40倍；相对于基于高斯过程的贝叶斯优化基线，提升一个数量级。</div>
+</div>
+<div class="card">
+<div class="title">On the Monitorability of Natural Language Autoencoders: Identification vs Discrimination</div>
+<div class="mono"><b>标题：</b>论自然语言自编码器的可监控性：识别与判别</div>
+<div class="meta-line">Authors: Kevin Yandoka Denamganaï</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18727v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18727v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">自然语言自编码器（NLA）被提出作为语言模型的监督工具：激活言语化器（AV）用英语解释激活向量，激活重构器（AR）将解释映射回向量。其监督价值取决于人类监控者能否根据AV的解释区分激活的真实描述与虚假描述。我们将NLA训练和NLA监督部署形式化为涌现通信中的两种不同指称游戏：训练是生成式指称游戏，而监督是在被监控语言模型的激活与其真实描述之间的多对多关系上进行的判别式、多模态、部分可观察的指称游戏。两种游戏之间的差距预测，AV的解释将识别其描述的是哪个激活，而无法区分真实描述与紧密匹配的虚假描述，因为训练从未要求解释排除任何内容。使用NLA自身的AR作为最大同情的代理监控模型，我们在一个已发布的检查点上实验证实了这一理论洞见：在全部320次比较中，真实描述均击败其他激活的描述，但仅以60.2%的概率击败仅有一项声明不同的流畅对手（标准误6.7%，随机概率50%，n=35）。由无关模型进行的保持语义的改写仅消耗到另一激活描述距离的2.1%，因此该失败并非由于NLA对在AV的解释中形成了私有约定。我们的对手描述仅测试对话记录层面的真相，这由被监控语言模型的对话决定，因此这些结果界定了最简单的情况，而关于被监控模型自身处理过程的声明尚未测试。我们陈述了使这两个结果成为该框架之推论的猜想。</div>
+</div>
+<div class="card">
+<div class="title">Learning Source Structure: Bayesian Prediction with Transformers</div>
+<div class="mono"><b>标题：</b>学习源结构：基于Transformer的贝叶斯预测</div>
+<div class="meta-line">Authors: Meir Feder, Ruediger Urbanke</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18725v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18725v1">PDF</a> · <a href="https://github.com/urbanke/learning-source-structure">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">一个Transformer在源参数每次重新抽取的序列上训练时，只能学到序列共享的内容：源族及其先验。同时知道两者的贝叶斯预测器（我们称为知情贝叶斯）是训练损失的唯一最小化者，且仅从源族即可计算；我们将其用作定量、可证伪的参照。此前工作比较了Transformer与贝叶斯在上下文可独立学习的源上的表现，而我们构建了最多64个符号的马尔可夫源，其中一个上下文中的观测会影响另一个上下文的预测：具有已知或隐藏编码的乘积源、共享未知基础规律和深度的转移行，以及三个族的混合。我们的主要结果是，知情贝叶斯仅从源族和先验就能预测训练后的Transformer在四项超越学习曲线的测试中的行为：训练族之外的源下残留的损失（预测2.237比特，实测2.309）、两个独立成分变化而非一个时额外损失翻倍（预测0.345，实测0.350）、一个token首次出现时其他上下文的益处，以及复制先前延续开始有利的深度。在学习曲线本身上，当共享结构在token中可见时，小型Transformer与知情贝叶斯匹配；隐藏结构需要更多层和训练，最大模型的每token差距低于0.01比特。我们解释了为何这种模仿是可能的以及它必然失败之处：知情贝叶斯分解为注意力选择并累积的充分统计量，以及由先验固定、前馈网络学习的估计器；训练支付了知情贝叶斯在架构先验下的复杂度，而有限记忆通用预测限制了有界网络能达到多接近。</div>
+</div>
+<div class="card">
+<div class="title">AIRRI: Towards a Human-Readable, Machine-Resistant Reading Interface</div>
+<div class="mono"><b>标题：</b>AIRRI：迈向人类可读、机器抗性的阅读界面</div>
+<div class="meta-line">Authors: Emory Salaun, Syed Ayon, Kaleel Mahmood</div>
+<div class="meta-line">类别：cs.CV · cs.HC · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18724v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18724v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">图像到文本提取系统和大语言模型（LLM）的快速发展给教育评估带来了新挑战，因为作业材料很容易被转录并以最少的人力投入求解。为解决这一问题，我们提出了AIRRI（人工智能抗性阅读界面），一个生成机器抗性教育内容的框架、一个用于评估的高等教育作业数据集，以及对AIRRI机器抗性文本设计的人类可读性的初步评估。AIRRI采用两类机器抗性技术。首先，AIRRI应用图像变换，包括字符间距、单词间距、行间距、字符不透明度变化、条纹叠加和图像噪声。其次，AIRRI应用基于决策的对抗攻击：RayS、SurFree和ADBA。我们针对三种图像到文本系统评估AIRRI：Tesseract、EasyOCR和基于Transformer的GOT-OCR2模型。我们的结果表明，AIRRI大幅降低了自动文本提取性能。AIRRI提高了EasyOCR（6.9%至55.9%）、Tesseract（2.3%至100.0%）和GOT-OCR2（30.7%至48.1%）的字符错误率。EasyOCR（24.9%至96.7%）和Tesseract（10.7%至100.0%）的单词错误率也有所提高。在所评估的基于决策的攻击中，ADBA始终对图像到文本性能造成最大程度的降低，而RayS和SurFree造成的降低较为温和。EasyOCR和Tesseract通常比基于Transformer的GOT-OCR2模型更容易受到基于图像和对抗性扰动的影响。我们的发现表明，AIRRI可以显著降低图像到文本再到LLM工作流的可靠性，增加AI辅助完成作业所需的投入。</div>
+</div>
+<div class="card">
+<div class="title">Photonic reservoir computing with complex networks</div>
+<div class="mono"><b>标题：</b>复杂网络的光子储备池计算</div>
+<div class="meta-line">Authors: Sion Park, Kohei Watabe, Satoshi Sunada</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2607.23285v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.23285v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">光子储备池计算作为一种快速、低成本的时间序列预测方法，已引起越来越多的关注。光子储备池计算利用光的高速、宽带宽和空间并行性。然而，对于大规模光子储备池，内部连接结构（网络拓扑）对计算性能的影响尚未得到研究。在本研究中，我们通过实验和数值模拟展示了使用空间光调制器的光子储备池计算，以系统评估网络拓扑与储备池计算性能之间的关系。我们引入了储备池内部节点的复杂网络结构，如小世界和无标度网络拓扑。我们进行了记忆容量测量和混沌时间序列的一步超前预测任务，以比较性能。我们发现小世界网络表现出最大的记忆容量和最佳的预测性能。我们的数值计算表明，通过改变网络的重连概率和储备池的泄漏率，可以优化时间序列预测的性能。我们还实现了光子人脑网络作为储备池，该网络由人脑活动的连接组设计而成。我们发现网络拓扑强烈影响储备池计算的性能，且小世界网络结构优于其他配置。</div>
+</div>
+<div class="card">
+<div class="title">On Collusion-Free Teaching in Planar Graphs</div>
+<div class="mono"><b>标题：</b>论平面图中的无串通教学</div>
+<div class="meta-line">Authors: Khazaliya Liana, Kuske Clemens</div>
+<div class="meta-line">类别：cs.DM · cs.CC · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18714v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18714v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">无冲突教学在满足Goldman--Mathias避免串通准则的模型中最小化教学复杂度。Vapnik--Chervonenkis维（VCdim）衡量从样本学习的复杂度，而无冲突教学维（NCTD）衡量教师可选择示例时所需的示例数量。NCTD是否总以VCdim为上界，仍是学习理论中的一个基本未决问题。
+本文针对平面图中闭邻域的概念类研究此问题。我们证明其NCTD的紧上界为二，从而为该族建立所猜想的不等式。对于仅含正例教学集的NCTD+变体，我们得到紧上界为四。最后，我们证明判定NCTD+或NCTD是否至多为一为NP完全，即使对平面图中闭邻域的概念类也是如此。特别地，尽管此类NCTD的上界为二，区分NCTD值一与二仍为NP难。</div>
+</div>
+<div class="card">
+<div class="title">Steertuning Policies from a Few Human Videos</div>
+<div class="mono"><b>标题：</b>从少量人类视频中进行引导调优的策略</div>
+<div class="meta-line">Authors: Billy Yan, Isaac Tu, Kelly Lee</div>
+<div class="meta-line">类别：cs.RO · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18711v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18711v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://steertuning.github.io">Project1</a></div>
+<div class="mono" style="margin-top:8px">当前的机器人学习方案需要大量机器人演示才能获得鲁棒且自适应的策略。在本工作中，我们提出了Steertuning，一个使机器人能够在不到5分钟内从5个人类演示中学习新环境中新任务的系统。Steertuning由两部分组成。(1) 我们在以自我为中心的人类数据集上预训练了一个4亿参数的扩散策略，该数据集包含100小时密集标注的随机交互。这种预训练使Steertuning对背景差异具有鲁棒性，并在部署到新任务时实现空间和物体泛化。(2) 给定新任务的5个演示，我们仅微调模型2分钟（2000次训练更新），并在反向采样过程中使用其观测与部署环境最接近的演示来引导策略的动作。结合精心设计的用于具身迁移的数据处理流程，这使Steertuning在12个新环境中的12个任务上达到了71%的成功率，环境范围从实验室环境到新住宅中的厨房。从新任务的数据收集到机器人策略部署的整个过程耗时不到5分钟。我们的完整数据集、模型权重、代码库和机器人视频将在我们的网站提供：https://steertuning.github.io。</div>
+</div>
+<div class="card">
+<div class="title">Unlocking Token Rewards via Training-Free Reward Attribution</div>
+<div class="mono"><b>标题：</b>通过免训练奖励归因解锁Token奖励</div>
+<div class="meta-line">Authors: Sitong Wu, Haoru Tan, Bin Xia</div>
+<div class="meta-line">Venue: CVPR 2026</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.18704v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18704v1">PDF</a> · <a href="https://github.com/stonewst/P2T">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">在本文中，我们提出了一种极其高效、免训练的方法，直接从现有的深度奖励模型中提取token级奖励信号。我们的核心思想是通过估计每个token的影响力，将整体过程奖励归因到单个token。该影响力定义为当某个token被替换为语义空token时，最终宏观奖励（例如过程奖励）的变化。直接计算这种影响力在计算上不可行，因为对于长度为N的token序列，需要对PRM进行N次前向传播。我们通过提出一种高效的基于梯度的估计器来克服这一瓶颈。具体而言，我们使用一阶泰勒近似，将影响力计算简化为token嵌入与空token嵌入之差，与奖励对token嵌入的梯度的内积。这仅需一次前向和反向传播。由此得到的token级奖励使标准RL算法能够进行精确的信用分配，而无需额外的奖励模型训练。在具有挑战性的推理基准上的实验表明，我们的方法显著提高了策略优化效率，并增强了LLM推理能力的泛化性。我们的P2T在Qwen2.5-VL-7B-Instruct上于MathVista上比结果奖励高出+4.9%，在Qwen2.5-Math-7B上于AIME24上高出+11.5%。代码将通过https://github.com/stonewst/P2T发布。</div>
+</div>
+<div class="card">
+<div class="title">FIRE: Multi-fidelity Regression with Distribution-conditioned In-context Learning using Tabular Foundation Models</div>
+<div class="mono"><b>标题：</b>FIRE：使用表格基础模型进行分布条件上下文学习的多保真回归</div>
+<div class="meta-line">Authors: Rosen Ting-Ying Yu, Nicholas Sung, Faez Ahmed</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2601.22371v2">Abs</a> · <a href="https://arxiv.org/pdf/2601.22371v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">多保真（MF）回归常处于极端数据不平衡的情形，常用的高斯过程（GP）代理模型受制于三次方缩放成本，并会过拟合稀疏的高保真观测，限制了实际应用中的效率和泛化能力。我们提出 FIRE，一种免训练的 MF 框架，它耦合表格基础模型（TFM），通过一个以低保真模型的后验预测分布为条件的高保真校正模型，执行零样本上下文贝叶斯推断。这种通过分布摘要进行的跨保真信息传递捕捉了异方差误差，无需重新训练模型即可实现稳健的残差学习。在涵盖合成和真实任务（如 DrivAerNet、LCBench）的 31 个基准问题上，FIRE 相比七种最先进的基于 GP 或深度学习的 MF 回归方法，提供了更强的性能-时间权衡，在准确性和不确定性量化方面排名最高，并具有运行时优势。局限性包括上下文窗口约束以及对预训练 TFM 质量的依赖。</div>
+</div>
+<div class="card">
+<div class="title">Training data attribution in diffusion models via mirrored unlearning and noise-consistent skew</div>
+<div class="mono"><b>标题：</b>通过镜像遗忘与噪声一致偏斜的扩散模型训练数据归因</div>
+<div class="meta-line">Authors: Joan Serrà, Dipam Goswami, Fabio Morreale</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2605.17938v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.17938v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">训练数据归因（TDA）应能实现生成模型的可解释性，并促进各种相关下游任务。然而，当前的TDA方法缺乏可靠性和鲁棒性，阻碍了其在现实场景中的应用。在本文中，我们朝着更可靠、更鲁棒的扩散模型TDA迈出了决定性的一步。我们提出通过镜像遗忘与噪声一致偏斜（MUCS）进行TDA。其思想是用有界镜像梯度上升微调第二个模型，并使用一致的噪声样本测量该模型相对于原始模型的归一化偏斜。我们表明，尽管MUCS在概念上简单且通用，但它在三个不同数据集上系统性地大幅优于现有方法。我们还研究了核心设计选择对最终性能的影响，并分析了关于生成项之间影响实例重叠以及TDA方法集成潜力的新方面。我们相信，我们的发现可能对更一般的遗忘设置以及需要比较扩散损失的任务具有更广泛的意义。</div>
+</div>
+<div class="card">
+<div class="title">UniW(A)M: A Unified Mixture-of-Experts Framework for World and World-Action Models</div>
+<div class="mono"><b>标题：</b>UniW(A)M：面向世界模型与世界-动作模型的统一混合专家框架</div>
+<div class="meta-line">Authors: Jingbo Xu, Jianjie Fang, Zhuohang Li</div>
+<div class="meta-line">Venue: ICLR 2027</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.CV · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18697v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18697v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">世界模型（WM）与世界-动作模型（WAM）分别聚焦于未来世界预测与可执行动作生成。尽管这些模型从具身轨迹中学习共享的物理动力学与交互语义，但它们通常被孤立训练，限制了预测与控制之间的知识复用。因此，核心挑战在于开发一个统一的学习框架，在共享这些动力学的同时，保留每种范式所需的独特建模能力。
+  我们提出 UniW(A)M，一个基于扩散 Transformer 的混合专家世界-（动作）模型，统一了动作条件世界建模与多种 WAM 变体。共享专家捕获共同动力学，而原子能力专家在各接口间复用，使每个接口保留其自身的条件通路。在部署时，一个插件式自适应接口路由器（PAIR）从目标任务 chunk 场景的一小部分子集中学习，为每个执行 chunk 选择合适的 WAM 接口，在保持主干冻结的同时平衡任务成功率与执行效率。
+  我们在 LIBERO、RoboTwin 2.0 和三个真实世界操作任务上评估 UniW(A)M，其平均真实世界成功率达到 88.3%，而最强基线为 76.7%。在 WorldArena 上，它在全部三个任务上领先动作条件世界建模。AC-WM 协同训练对每个动作接口的动作生成均有贡献，PAIR 将 OOD 成功率从 63.3% 提升至 76.7%。</div>
+</div>
+<div class="card">
+<div class="title">How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense</div>
+<div class="mono"><b>标题：</b>叙事包装如何影响LLM拒绝：跨语言基准与防御</div>
+<div class="meta-line">Authors: Zhankai Ye, Yanning Wang, Yukai Jin</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.11005v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.11005v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">安全对齐的语言模型通常会拒绝直接陈述的有害请求，但会回答置于角色扮演或叙事包装中的同一请求。我们跨语言和语域测量了这一脆弱性：Qwen3-1.7B上的攻击成功率在英语中已达89.4%，在现代汉语中为93.0%，在文言文中达到95.7%。我们构建了GUISE，一个用于系统研究这一脆弱性的基准。它包含英语、现代汉语和文言文的平行请求、匹配的有害与良性配对、留出用于评估的包装类型，以及将先警告后回答的响应计为攻击成功的更严格标准。表征分析表明，语言和语域仅使有害请求表征稍微偏离模型的拒绝方向，而叙事包装则使其偏离得多得多。我们提出AXIS，它将偏好优化与一个旋转目标（使有害请求表征与拒绝方向对齐）和一个承诺目标（训练模型完全拒绝，而不是产生先警告后回答的响应）相结合。在Qwen3-1.7B、Qwen3-4B和GLM-4-9B上，AXIS在所比较的方法中取得了最高的综合安全性和可用性得分。</div>
+</div>
+<div class="card">
+<div class="title">A Refresh Interval Does Not Fully Specify a Refresh Schedule: Learning-Rate-Dependent Placement in Kronecker-Preconditioned Language Model Training</div>
+<div class="mono"><b>标题：</b>刷新间隔不能完全指定刷新计划：Kronecker预条件语言模型训练中依赖于学习率的放置</div>
+<div class="meta-line">Authors: Xinyu Wang, Zhiwei Zhai, Yu Gu</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18695v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18695v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">Kronecker预条件优化器仅定期重新计算缓存的曲率特征分解，实现和自适应方法通过刷新频率控制这一点。我们表明频率留下了部分计划自由：在固定刷新次数下，刷新发生的时间在相同计算量下改变留出损失。使用Mousse优化器训练GPT风格模型，跨模型大小，我们移动四次刷新计划的中间刷新，同时固定第一次和最后一次。在FineWeb上，两种放置随着学习率上升交换排名（较低学习率时较晚放置更好，较高学习率时较早放置更好），因此单一学习率比较可能报告任一排名。这种反转在包括已发布优化器内部结构的控制下保持，并且在已发布刷新密度下放置仍然重要。偏好翻转的学习率随模型大小下降，与留出的较小模型一致，并随训练长度变化。谱宽度陈旧度分数在每个学习率下预测相同排名，但错过了反转。刷新计划应完整报告，并在其将使用的学习率下进行比较。</div>
+</div>
+<div class="card">
+<div class="title">GeoReader: Learning Latent Geometry for Spatial Reasoning in Vision-Language Models</div>
+<div class="mono"><b>标题：</b>GeoReader：为视觉语言模型的空间推理学习潜在几何</div>
+<div class="meta-line">Authors: Rong Li, Shijie Li, Jiangyong Huang</div>
+<div class="meta-line">类别：cs.CV · cs.AI · cs.LG · cs.MM，链接：<a href="https://arxiv.org/abs/2610.18694v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18694v1">PDF</a> · <a href="https://github.com/iris0329/GeoReader">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a> · <a href="https://iris0329.github.io/georeader-homepage/">Project1</a></div>
+<div class="mono" style="margin-top:8px">视觉语言模型（VLM）难以处理RGB观测中隐含的度量和多视图关系。几何基础模型能从RGB中恢复这种结构，但现有方法要么将估计特征与视觉token融合并仅从问答中学习使用，要么将VLM潜在表示与几何特征对齐。然而，捕获几何并不保证其被使用：将已发布特征对齐模型的对齐潜在表示置零，其准确率保持不变。我们提出GeoReader，一个为读取几何的VLM学习几何表示的框架。首先，我们训练轻量级几何读取器生成连续输入token，并用冻结VLM解码的几何描述进行监督，使读取器以目标模型已能读取的形式表达几何。然后，我们冻结读取器以保持该接口，同时在空间问答上微调VLM，几何注入以问题为条件。几何描述仅作为训练目标：推理时，VLM直接从连续几何token作答，无需生成几何思维链。在从RGB图像预测几何的情况下，我们的方法在Qwen3-VL-4B上于MindCube-Tiny达到94.3，并在多源问答混合下，使用Qwen3.5-9B在六个额外空间基准上平均达到72.5。这些结果表明，有用的几何表示是接收模型能够使用的表示，而不仅仅是能够从中重建几何的表示。</div>
+</div>
+<div class="card">
+<div class="title">Composition without a Host: Carrying the Spatiotemporal-Composability Guarantee of Plugin-Based Agents across Processes</div>
+<div class="mono"><b>标题：</b>无宿主组合：跨进程携带基于插件智能体的时空可组合性保证</div>
+<div class="meta-line">Authors: Hanzhang Jia, Liheng Zeng, Hao Cheng</div>
+<div class="meta-line">类别：cs.AI · cs.MA，链接：<a href="https://arxiv.org/abs/2608.28553v4">Abs</a> · <a href="https://arxiv.org/pdf/2608.28553v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">基于插件的智能体在运行时组装能力，而时空可组合性演算为这种组装证明了可逆性保证。然而，该保证由单个进程承载，将所有组件、会话和恢复记录限制在一个故障域内，故障会越过插件边界传播，进程死亡会中断该进程承载的所有会话。本文仅基于演算已陈述的假设和模型调用的无状态接口，将演算的单进程限制放宽为组件和记录到进程的任意分配，给出四个充分条件，并通过由四个引理推导出的定理1证明：当满足这些条件时，可逆性保证跨进程成立。基于定理1，本文构建了Logos，一种采用ROS的对等进程和名称路由形式的跨进程基于插件智能体，其中插件是一个进程，路由器仅持有可重建的路由表，恢复所需的会话状态存在于无进程拥有的仅追加记录中。在三个配置的二百个基准任务上发生一次故障时，单进程参考丢失了所有会话，在官方验证器上得分1.5%，MCP配置保留了会话，但在一个失效端点上花费了1099次调用，而Logos保持了所有会话存活，零浪费调用，并在120个任务上成功，而两种配置合计为102个。在机制层面，八十个在工具调用周期四个点终止的会话全部恢复且无重复动作，3500个并发调用配对零违规，一次总线跳转的成本为模型首个token的1/823。结果表明，可逆性保证跨进程成立，且组装本身可以离开宿主进程。</div>
+</div>
+<div class="card">
+<div class="title">Lifelong In-Context Learning with Transformers Requires Parametric Forms of Attention</div>
+<div class="mono"><b>标题：</b>Transformer的终身上下文学习需要参数化注意力形式</div>
+<div class="meta-line">Authors: Luke McDermott, Robert W. Heath, Rahul Parhi</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2606.25342v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.25342v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">终身持续学习仍是通往类人智能道路上的障碍。现代Transformer通过上下文学习展现出智能的火花。然而，注意力的二次方特性使Transformer无法在任意长序列上执行这一过程。在本工作中，我们认为将上下文学习扩展到终身场景是AI智能体持续学习的实用解决方案。特别地，我们认为需要在固定硬件预算下用Transformer理解一生的上下文，因此需要参数化注意力形式。这些注意力机制在测试时通过参数回归学习键与其关联值之间的关系。我们对参数化方法（线性注意力、状态空间模型、快速权重编程器和测试时训练层）的推广与非参数化对应物（如softmax注意力）形成对比。它们用可在线训练的神经网络替代不断增长的键值缓存，保持恒定的内存占用。我们强调，由于内存容量有限或在线更新成本高昂，参数化注意力目前尚不足以实现终身学习。为解决这些问题，我们提出了一系列带有新见解的开放问题，以引导该领域走向长时程智能体。</div>
+</div>
+<div class="card">
+<div class="title">Approximate reservoir computing with a semiconductor laser for reducing energy consumption</div>
+<div class="mono"><b>标题：</b>使用半导体激光器的近似储备池计算以降低能耗</div>
+<div class="meta-line">Authors: Tatsuki Ito, Kazutaka Kanno, Satoshi Kawakami</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2607.23288v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.23288v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">光子储备池计算是一种有前景的用于时间序列预测的物理机器学习方法。储备池响应信号的量化是光子储备池计算实现中的一个重要考虑因素，需要优化量化比特数和采样频率以实现高预测性能和低能耗。然而，很少有研究探讨量化比特数和采样频率对预测性能和能耗的影响。在本研究中，我们通过量化储备池节点状态和输出权重，引入了使用半导体激光器的近似储备池计算概念。我们数值评估了混沌时间序列预测任务的性能，并使用组件级模型估计了每个样本的能耗。通过优化量化比特数、采样频率和半导体激光器的注入电流，我们在保持预测性能的同时显著降低了估计的每个样本能耗。我们还获得了所提出的储备池计算系统在吞吐量、能效和每次操作能耗方面的基于模型的估计。</div>
+</div>
+<div class="card">
+<div class="title">Just Respect the Semantics: Image-Token Compression via Pre-LLM Semantic Variable-Resolution Tokenization and In-LLM Relevance Pruning</div>
+<div class="mono"><b>标题：</b>只需尊重语义：通过预LLM语义可变分辨率标记化和LLM内相关性剪枝进行图像标记压缩</div>
+<div class="meta-line">Authors: Tianhao Fu, Austin Wang, Charles Chen</div>
+<div class="meta-line">类别：cs.CV · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18690v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18690v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">图像标记压缩必须在降低计算量的同时不损害语义。我们提出Varest，其指导原则是语义可替代性：连贯语义区域内的标记可以粗略概括，而物体边界和文字则需要更精细的区分。物体和文字定位器引导可变分辨率合并，在边界和文字处保留空间覆盖和更精细的细节。学习到的[REL]寄存器在解码器早期处理后剪枝视觉标记。跨预算训练使每个骨干网络只需一个检查点。在三个骨干网络和13个基准上，Varest在每个评估预算下的平均性能保持率均优于15个基线，仅用原始层平均图像标记数的5.56%就保持了完整标记性能的86.10-92.33%。</div>
+</div>
+<div class="card">
+<div class="title">RadarGSOcc: Doppler-Aware 3D Semantic Occupancy Prediction Using 4D Radar Tensor with Geometric-Semantic Feature Extraction</div>
+<div class="mono"><b>标题：</b>RadarGSOcc：基于4D雷达张量与几何-语义特征提取的多普勒感知3D语义占用预测</div>
+<div class="meta-line">Authors: Christofel Rio Goenawan, Dong-Hee Paek, Seung-Hyun Kong</div>
+<div class="meta-line">类别：cs.CV · cs.AI · cs.RO，链接：<a href="https://arxiv.org/abs/2610.18686v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18686v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">3D语义占用预测对自动驾驶至关重要，但基于相机的方法在低光照条件下性能下降，基于激光雷达的方法对恶劣天气敏感。4D雷达更鲁棒，但其稀疏性和雷达张量处理的高成本限制了其应用。我们提出雷达几何-语义占用预测（RadarGSOcc），一种高效框架，通过分别提取几何和语义特征（包括多普勒信息）直接处理4D雷达张量，其关键组件是基于可变形注意力的几何细化模块。我们还引入了K-Radar 3DSemOcc基准，这是首个使用4D雷达张量进行3D语义占用预测的大规模基准，基于K-Radar数据集并 refined 激光雷达标注构建。RadarGSOcc在51.2m范围内预测15个类别，达到38.2% IoU、7.6% mIoU和25.5%加权mIoU，在加权mIoU上相对RadarOcc提升17%（25.5 vs. 21.9），同时使用更少参数和更低计算量。它大幅改善卡车预测，但牺牲了汽车精度，优于基于相机的方法，并缩小了与基于激光雷达方法的差距。为在恶劣天气下无逐帧真值评估鲁棒性，我们进一步提出一种新颖的代理指标——基于环境的KL散度（EBKL），在此指标下4D雷达被证明是3D语义占用预测的可靠且高效模态。数据集和代码将公开。</div>
+</div>
+<div class="card">
+<div class="title">Knowing the User Is Not Knowing What We Established: Grounding Awareness in Personal Agents</div>
+<div class="mono"><b>标题：</b>了解用户不等于了解我们共同确立的内容：在个人代理中扎根意识</div>
+<div class="meta-line">Authors: Jiajun Chen, Xinyue Chen, Yicheng Jiang</div>
+<div class="meta-line">类别：cs.AI · cs.HC · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18684v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18684v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">个人代理记忆主要关注学习用户知道、偏好和想要的内容。然而，了解用户并不一定意味着了解用户与代理共同确立的内容。助手的提议不应仅因其被记住就成为授权指令。我们引入扎根意识，即在选择行动时区分已接受、未确认、已修订和限定范围的安排的能力。我们开发了一个受控基准，以测试代理能否区分用户已接受和未接受的提议，以及是否仅在适当情况下应用已接受的安排。在多个代理和记忆系统中，我们发现强大的记忆性能并不能确保扎根意识。更令人惊讶的是，提供更完整的用户信息会增加未确认提议的执行，而持久记忆可能导致代理将这些提议视为用户指令。我们通过记忆写入、检索和行动选择追踪这些失败。最后，我们引入扎根层，一种轻量级、免训练的扩展，明确跟踪扎根状态并检查重要行动，在不修改模型或记忆系统的情况下显著改善代理行为。</div>
+</div>
+<div class="card">
+<div class="title">ProAS: A Progress-Aware Advantage Shaping Framework for Multi-Turn Agentic Reinforcement Learning</div>
+<div class="mono"><b>标题：</b>ProAS：面向多轮智能体强化学习的进度感知优势塑造框架</div>
+<div class="meta-line">Authors: Bowen Ding, Mingda Wan, Yuhan Chen</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18683v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18683v1">PDF</a> · <a href="https://github.com/LINs-lab/ProAS">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">强化学习（RL）已成为优化大语言模型（LLM）智能体的主要范式，但高效的无评论家算法（如GRPO）存在一个根本性的均匀信用分配困境，即把轨迹级优势平等地广播给所有动作。我们的分析揭示，这种均匀性会固有地强化偏好轨迹中结构上无效的动作，并忽略非偏好轨迹中早期关键偏差的下游级联影响。为在不引入评论家开销的情况下解决该问题，我们提出进度感知优势塑造（ProAS），这是一个即插即用框架，利用动态演化的智能体参考图（ARG），通过掩蔽不合理激励（MUI）和非对称惩罚重分配（APR）实现细粒度信用分配。在Qwen2.5-1.5B-Instruct和Qwen2.5-7B-Instruct上的大量实验表明，ProAS普遍将主流基于组的基线提升至新的最先进性能，在ALFWorld上分别达到91.9\%和94.3\%的峰值成功率，在WebShop上分别达到66.7\%和70.8\%。此外，它将训练收敛速度提升至多$2.44\times$，同时对不完美或蒸馏的ARG保持强鲁棒性。代码：https://github.com/LINs-lab/ProAS。</div>
+</div>
+<div class="card">
+<div class="title">KerJEPA: Kernel Discrepancies for Euclidean Self-Supervised Learning</div>
+<div class="mono"><b>标题：</b>KerJEPA：欧几里得自监督学习的核差异</div>
+<div class="meta-line">Authors: Eric Zimmermann, Harley Wiltzer, Justin Szeto</div>
+<div class="meta-line">类别：cs.LG · cs.CV，链接：<a href="https://arxiv.org/abs/2512.19605v2">Abs</a> · <a href="https://arxiv.org/pdf/2512.19605v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">自监督联合嵌入预测架构（JEPA）的突破表明，将欧几里得表示正则化至各向同性高斯先验可带来训练稳定性和下游泛化能力的可证明提升。我们引入了一类新的、灵活的基于核正则化器的欧几里得联合嵌入自监督学习算法。该族的一个实例对应于 SIGReg Epps-Pulley 正则化器，它用高斯先验和高斯核近似切片最大均值差异（MMD）。通过扩展可行核与先验的类别，并计算切片差异的闭式高维极限，我们开发了具有改进训练稳定性和设计灵活性的替代方法，并利用这些技术大规模训练强视觉学习器。</div>
+</div>
+<div class="card">
+<div class="title">Model-Based Online Decision Making via Generative Trajectory Planning</div>
+<div class="mono"><b>标题：</b>基于模型的生成式轨迹规划在线决策</div>
+<div class="meta-line">Authors: Haldun Balim, Yilun Du, Na Li</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.RO，链接：<a href="https://arxiv.org/abs/2610.18677v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18677v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在线决策面临高效推理与长时程推理之间的张力。基于价值的方法依赖短时程自举，限制了长期信息的传播；而轨迹优化方法虽显式规划，却必须在每个决策步求解高维优化问题。我们提出生成式轨迹规划（GTP），一种基于模型的框架，通过将生成模型学习为动作序列上的提议分布来缓解这一张力。GTP 不从零开始优化序列，而是从扩散先验中采样候选序列，并利用学习到的动力学、奖励和价值模型对其进行精炼，从而实现高效的轨迹级推理。在连续控制与长时程操作任务中，GTP 达到或超越最主流的无模型、扩散策略和基于模型的基线，并在强基线性能退化的情形下保持稳定。我们的结果表明，生成模型最好被理解为用于规划的结构化提议分布，而非策略，这为如何将生成建模与基于模型的决策相结合提供了新视角。</div>
+</div>
+<div class="card">
+<div class="title">From Relation-Specific Heads to Shared Interventions: Contextual Entrainment in Language Models</div>
+<div class="mono"><b>标题：</b>从关系特定头到共享干预：语言模型中的上下文夹带</div>
+<div class="meta-line">Authors: Jinghan Zheng, Jiajun Shi</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18674v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18674v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大型语言模型依赖提示上下文进行上下文学习、遵循格式并适应局部证据。然而，这种能力也引发了鲁棒性担忧：模型在回答后续查询时可能复用先前上下文中不相关的词元。先前工作将这种行为识别为上下文夹带，并发现消融某些注意力头可减少该现象，认为这些头在很大程度上是任务或关系特定的。但上下文夹带背后的机制是否真正按关系隔离，还是关系条件搜索能恢复跨关系共享的可复用组件？我们使用涵盖19个词汇语义子类型的事实干扰项关系补全提示，识别消融后减少夹带的注意力头，并测试所得头集在精确关系、语义家族和混合关系分布之间迁移恢复能力的效果。同家族迁移优于不同家族迁移；一旦移除全局共享头，家族残差减弱；子类型特定搜索反复重新发现许多全局头。干净补全和上下文使用探测进一步表明，这种共享干预可以减少有害复制，同时保留普通关系补全和简单的上下文能力。我们的发现为上下文夹带及其缓解提供了更精确的视角：有害的上下文跟随最好不是通过搜索孤立的关系特定回路来解决，而是通过使用异质攻击提示来揭示可复用的干预目标，其效果受语义关系结构塑造。</div>
+</div>
+<div class="card">
+<div class="title">Efficient Learning of Survival Analysis Models Under Outcome-Dependent Truncation and Censoring</div>
+<div class="mono"><b>标题：</b>结果依赖性截断与删失下生存分析模型的高效学习</div>
+<div class="meta-line">Authors: Itai Zilberstein, Ioannis Anagnostides, Arman Kilic</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.12538v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.12538v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">现代机器学习模型通常假设训练数据能代表模型未来面临的预测任务，但实际数据集违背这一假设。我们关注结果依赖性截断，即观测是否出现在训练数据中取决于其标签。我们的工作连接了两个基本不同的文献领域：截断下的高效学习与生存分析。现有的截断生存分析方法未刻画优化景观，而是依赖期望最大化等迭代过程。我们填补这一空白，证明当基线风险已知时，尽管非凸，Cox回归可在截断和右删失数据下通过一阶优化高效学习。相反，当基线风险联合学习时，我们构造出可识别且正确设定的模型，其负对数似然包含严格次优局部极小值。在四个生存数据集上的实验表明，考虑截断可减少朴素Cox回归引起的预测偏差，并适用于神经网络。我们还展示了与标准期望最大化相比数量级的加速。</div>
+</div>
+<div class="card">
+<div class="title">SMI: Ontology-Grounded Semantic IDs for Hierarchy-Aware Medical Concept Representation</div>
+<div class="mono"><b>标题：</b>SMI：基于本体的语义ID用于层次感知的医学概念表示</div>
+<div class="meta-line">Authors: Ziyang Song, Lia Shen, Yixuan Li</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18672v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18672v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">生物医学语言模型（LM）为临床任务提供了强大的表示，但往往无法捕捉医学概念之间的层次结构。这一局限在长尾词汇表中罕见且细粒度的临床编码上尤为明显，随着概念频率降低，与层次无关的LM表示信息量减少。我们提出语义医学标识符（SMI），一个无需训练的框架，用于构建基于本体的语义ID和层次感知的医学概念表示。对于每个诊断、操作或药物概念，SMI将其语义ID定义为通过专家定义的医学本体的由粗到细路径。SMI随后聚合相应本体层级上的冻结生物医学LM嵌入，形成保留由粗到细临床语义的层次感知医学概念表示。基础SMI在本体层级间使用均匀聚合，而层级加权变体在验证数据上选择全局层级权重。我们的理论分析表明，SMI比与层次无关的LM嵌入产生更具信息量的医学概念表示，尤其对于罕见且细粒度的临床概念。实验表明，SMI捕捉到有意义的层次结构并改进临床关系预测。在MIMIC-IV上，SMI改进了死亡率预测、再入院预测、药物推荐和罕见药物预测。在eICU上，SMI在跨医院分布偏移下产生更稳健的患者表示。</div>
+</div>
+<div class="card">
+<div class="title">Known-Voice Cloning and the Limits of Personality Transfer for Character Design</div>
+<div class="mono"><b>标题：</b>已知声音克隆与角色设计中人格迁移的局限</div>
+<div class="meta-line">Authors: Johanna Magdalena Kuch, Maud van Lier, Daksitha Senel Withanage Don</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.HC · cs.RO，链接：<a href="https://arxiv.org/abs/2610.18669v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18669v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">近期零样本语音克隆系统的进展使得从简短录音中复制可识别的声音并将其附加到任意虚拟角色上成为可能。先前的研究表明，熟悉的声音身份可以将相关的人格印象传递到机器人或虚拟角色等新目标上。然而，这些工作主要考察熟悉度和个性化效应，而非直接检验克隆的熟悉声音是否系统性地将人格印象迁移到具身虚拟角色上。这种迁移引发了担忧：克隆声音可能被用来操纵人们将虚拟角色视为有能力的社交行动者。通过两项研究，我们考察了当虚拟角色使用熟悉人物的克隆声音说话时，人格印象是否会迁移。研究1在真实大学环境中使用参与学生熟悉的讲师的克隆声音检验了这一问题。研究2在线使用社交媒体内容创作者及其社区成员的声音检验了同一问题。基于身份激活、特质迁移和人物重建的概念，我们表明两项研究中人格迁移的证据均有限。观察到的效应具有选择性，并未在特质或研究情境中普遍化。特别是在在线研究中，可识别的声音身份线索激活了对说话者的预期，但并未重建更广泛的人物印象。定性回答进一步表明，判断常常受到感知到的人为性以及声音与外貌是否匹配的影响。我们的发现缓和了常见的担忧，即克隆声音会直接操纵人们将人工角色感知为有能力的社交行动者。</div>
+</div>
+<div class="card">
+<div class="title">Holistic Scaling Laws for Optimal Mixture-of-Experts Architecture Optimization</div>
+<div class="mono"><b>标题：</b>面向最优专家混合架构优化的整体缩放定律</div>
+<div class="meta-line">Authors: Weilin Wan, Jingtao Han, Debing Zhang</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2603.21862v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.21862v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">缩放定律指导大语言模型的宏观资源分配，但专家混合（MoE）模型的精确架构配置仍依赖启发式方法。现有 MoE 缩放研究要么将 MoE 特有变量纳入缩放公式，导致拟合系数在缺乏相应实验支持的情况下迅速增长，要么固定所有非 MoE 因素，隐含假设全局架构不影响局部 MoE 缩放。我们提出一个可复用的整体 MoE 架构优化框架。我们首先表明，MoE 架构将每 token 浮点运算量（$M$）、激活参数量（$N_a$）和总参数量（$N$）解耦，它们分别作为计算量、权重访问量和参数存储量的不同代理。因此，我们建立 $M$、激活参数量（$N_a$）和总参数量（$N$）的联合约束三元组，以严格刻画 MoE。为驯服由此产生的 $O(n^{16})$ 搜索空间，我们采用数学解耦：结构约束与隐藏维度的保秩性质将优化分解为 $O(n^3) + O(n^2)$ 的两阶段搜索。通过在覆盖 $10^{18}$ 至 $3 \times 10^{20}$ 浮点运算量的 670 多个 MoE 模型上进行广泛验证，我们推导出全局适用的缩放定律，可将任意计算预算映射到其最优架构。一个关键发现是，近最优配置带随规模扩大而变宽，为缩放定律建议与工程约束之间的权衡提供了定量依据。我们的工作为任意计算预算下的最优 MoE 设计提供了可操作的蓝图。</div>
+</div>
+<div class="card">
+<div class="title">BridgeTwist: Twisting Schrödinger Bridges for Training-Free Conditional Sampling</div>
+<div class="mono"><b>标题：</b>BridgeTwist：扭曲薛定谔桥用于免训练条件采样</div>
+<div class="meta-line">Authors: Mengyu Li, Qianqian Qu, Jun S. Liu</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18658v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18658v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">生成模型常需服务于众多下游条件任务。在免训练设置中，预训练的无条件模型被复用为先验，并与任务特定的似然结合，以从相应后验中采样。尽管此类免训练采样器已为扩散模型和流模型开发，但其针对薛定谔桥（SB）模型的对应方法仍未被探索，尽管SB作为一般源分布与目标分布之间灵活的随机传输模型日益受到关注。我们提出BridgeTwist，一种用于预训练SB生成模型的免训练条件采样器，形式化为退火扭曲序贯蒙特卡洛方案。其扭曲是一个闭式插件代理，通过将SB预训练所暴露的速度场和得分场结合为端点预测器并在该处评估似然而获得。由于该代理在源附近可靠性较低，我们用时变指数对扭曲进行退火，在早期步骤降低其影响。我们进一步引入桥形推理时扩散调度，将提议噪声集中在路径内部。伸缩重要性权重随后抵消所有中间扭曲因子，产生后验的渐近精确采样器。经验上，BridgeTwist在类条件与文本提示图像生成上优于免训练基线，并在修复、去模糊和超分辨率上与专用逆问题求解器具有竞争力。</div>
+</div>
+<div class="card">
+<div class="title">Bayesian Test-Time Inference of Task-Aligned Similarity from Weak Interactive Feedback</div>
+<div class="mono"><b>标题：</b>基于弱交互反馈的任务对齐相似度的贝叶斯测试时推断</div>
+<div class="meta-line">Authors: Weida Liang, Kenji Kawaguchi</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18656v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18656v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">语言模型系统在测试时通过比较相似度反复做出决策：检索示例、对候选排序并修订回复。然而相似度并非唯一：词汇、语义、结构和风格上的相似可能指向不同候选，且任务对齐的概念会因实例而异。我们提出 BASIS（通过交互信号进行贝叶斯轴选择），一种无需训练的贝叶斯方法，利用弱测试时反馈推断给定任务特定标准库中哪一标准主导当前决策。它维护候选目标与标准的联合后验，从标量分数、成对偏好或验证器输出更新，并通过期望信息增益选择探测。在有限噪声模型中，我们刻画了目标-标准对何时可恢复，并说明为何固定标准与固定混合规则在标准偏移下可能失效。在概念恢复、推理示例选择和回复精炼中，BASIS 相比调优的静态混合，将六次探测概念恢复 Success@1 从 56.0% 提升至 68.1%，推理准确率从 72.3% 提升至 73.1%，精炼胜率从 61.4% 提升至 63.8%。在推理（72.1%）和精炼（61.2%）上，它也超过计算量匹配的 best-of-N 选择。增益在标准不匹配和候选池更大时最大，匹配对照表明自适应标准加权解释了大部分收益，联合目标-标准推断进一步增加价值。BASIS 仅在给定标准中选择，不发现新标准。</div>
+</div>
+<div class="card">
+<div class="title">Texture Interpolation as Texton Matching</div>
+<div class="mono"><b>标题：</b>纹理插值作为纹理基元匹配</div>
+<div class="meta-line">Authors: Ido Madar, Gal Oren, Shai Avidan</div>
+<div class="meta-line">类别：cs.CV · cs.GR · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18655v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18655v1">PDF</a> · <a href="https://github.com/Scientific-Computing-Lab/TextureMatcher">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">纹理插值探讨两个纹理之间应存在什么。标准方法通常在对应空间位置混合像素或特征，隐含假设共位元素应被混合。然而对于不相关的纹理，这种对应是任意的：一个位置的裂纹与另一图像同一位置的纤维没有特定关系。我们研究这种隐藏的配对选择本身是否是插值质量的主要决定因素。我们将纹理表示为局部外观向量或纹理基元的集合，并用外观感知匹配替代位置配对，同时保持编码器、表示和解码器固定。这将对应关系的影响与模型容量或训练的变化隔离开来。在纹理对上，外观感知匹配始终比位置特征混合提高插值中点的分布质量。软匹配产生最强的中点统计，而一对一分配产生更平衡的过渡并与目标端点更接近。同样的干预也无需重新训练即可改进第二个预训练纹理插值器。这些结果将对应关系确定为纹理插值中的首要设计选择：有意义的过渡不仅取决于两个纹理混合的强度，还取决于哪些局部外观相互混合。</div>
+</div>
+<div class="card">
+<div class="title">Kwai Summary Attention V2 Technical Report</div>
+<div class="mono"><b>标题：</b>Kwai摘要注意力V2技术报告</div>
+<div class="meta-line">Authors: OneRec Team, Chenglong Chu, Guohong Mu</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.IR，链接：<a href="https://arxiv.org/abs/2610.18654v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18654v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">摘要令牌架构（如Kwai摘要注意力（KSA））将远距离上下文压缩为每个块的可学习摘要令牌，混合变体将这些层与全注意力交错，以保留对原始文本的精确访问。在这种混合KSA-全注意力架构中，插入的摘要令牌在不同层之间充当流式角色。尽管有效，但也引入了一些瓶颈：（1）不同层的摘要压缩块必须相同，因此难以实现灵活的KV缓存压缩，例如不同层设置不同的摘要压缩块窗口。（2）在全注意力层中，摘要令牌引入了额外计算成本，但这些层忽略它们，仍支付二次预填充成本，因此对计算侧不友好。受此启发，我们开发了KSA V2，它不仅实现了更灵活的KV缓存内存压缩，还降低了全注意力层的计算成本。具体而言，我们发现摘要令牌可以充当两种角色：KV内存和稀疏索引器。</div>
+</div>
+<div class="card">
+<div class="title">AMemOps: Evaluating Memory Updates in Long Audio Streams</div>
+<div class="mono"><b>标题：</b>AMemOps：评估长音频流中的记忆更新</div>
+<div class="meta-line">Authors: Peiwei Chang, Li Zhang, Mark D. Plumbley</div>
+<div class="meta-line">类别：cs.SD · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18652v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18652v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">音频记忆必须在声学变化中识别重复出现的来源，同时保持其属性最新。总体准确率无法揭示这些需求如何相互作用。我们提出音频记忆操作（AMemOps），一个用于长音频流中最新属性检索、未变属性保持和缺失来源拒绝的基准。配对控制变量改变录音、训练身份和早期事件，以考察它们对更新的影响。在测试乐器的其他录音上训练，使参考delta规则记忆相对于匹配注意力的更新优势提高13.4个百分点。在120秒的检索延迟下，匹配历史将一致重复的收益与冲突早期值的代价区分开来，而加性记忆控制则识别出擦除的收益。</div>
+</div>
+<div class="card">
+<div class="title">Does Pretraining Teach Chemical Language Models Chemistry?</div>
+<div class="mono"><b>标题：</b>预训练能让化学语言模型学会化学吗？</div>
+<div class="meta-line">Authors: Leif Sieben, Yoel Zimmermann</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.18651v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18651v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">化学语言模型（CLMs）在大型分子语料库上进行预训练，旨在学习可迁移到多种下游任务的表示。在此，我们使用一系列此类CLMs在64个分子性质预测数据集上系统研究了预训练的效果。我们发现，CLMs中预训练的下游收益并不随规模增长，且性能在梯度提升基线以下饱和。在所评估的各种设置中，只有基于传统物理化学描述符的监督预训练能持续提升所测试CLMs的下游性能，而某些形式的预训练导致模型比随机初始化的编码器更差。虽然模型能很好地解析分子结构，但其表现并不优于随机初始化的模型，这表明CLMs在预训练期间至多学到了类似描述符的性质以及低层词元统计，但令人惊讶的是，除了经典分子特征已捕捉的内容外，几乎没学到更多化学知识。</div>
+</div>
+<div class="card">
+<div class="title">Tiny Recursive Message Passing</div>
+<div class="mono"><b>标题：</b>微型递归消息传递</div>
+<div class="meta-line">Authors: Tommaso Salvatori, Matteo Forasassi, Alexis Toumi</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18649v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18649v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">消息传递神经网络在算法和约束推理中表现出卓越性能，因其能够将任务结构直接编码到架构中。近期工作表明，使用深度监督和截断递归训练的递归Transformer可取得更好结果，使极深循环训练稳定，并配备离散演绎格等测试时程序。在本工作中，我们将相同程序应用于消息传递网络，并表明这两个要素互补，可产生参数高效的模型：我们在Sudoku-Extreme上以16k参数的模型获得约99%的测试准确率，在H100上训练约10分钟，或在CPU上训练9小时。我们进一步表明，截断梯度的代价随信息穿越图所需轮数增长，使得连接方式的选择成为截断鲁棒性与跨问题规模迁移之间的权衡。最后，我们表明我们的模型可零样本迁移到比训练时更大的实例，在N皇后和布尔可满足性问题上以极少量参数超越流行的神经基线。</div>
+</div>
+<div class="card">
+<div class="title">End-to-End Spoken Grammatical Error Correction</div>
+<div class="mono"><b>标题：</b>端到端口语语法纠错</div>
+<div class="meta-line">Authors: Mengjie Qian, Rao Ma, Stefano Bannò</div>
+<div class="meta-line">类别：cs.CL · cs.LG · cs.SD，链接：<a href="https://arxiv.org/abs/2506.18532v2">Abs</a> · <a href="https://arxiv.org/pdf/2506.18532v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">语法纠错（GEC）和反馈在支持第二语言（L2）学习者、教育者和考官方面发挥着至关重要的作用。虽然书面GEC已较为成熟，但口语GEC（SGEC）旨在基于学习者的语音提供反馈，由于不流畅、转录错误以及缺乏结构化输入而带来额外挑战。SGEC系统通常采用由自动语音识别（ASR）、不流畅检测和GEC组成的级联流水线，使其容易受到跨模块错误传播的影响。本研究探讨了用于SGEC和反馈生成的端到端（E2E）框架，强调了开发这些系统时的挑战和可能的解决方案。比较了级联、部分级联和E2E架构，均基于Whisper基础模型构建。E2E系统的一个挑战是GEC标注口语数据的稀缺。为解决此问题，研究了一种自动伪标注框架，将训练数据从77小时增加到超过2500小时。为提高SGEC系统的准确性，研究了利用ASR输出的额外上下文信息。对其错误的候选反馈是提高性能的关键步骤。在E2E系统中，必须将SGEC输出与流利转录的估计进行比较以获得反馈。为提高此反馈的精确度，提出了一种新颖的参考对齐过程，旨在消除由流利转录错误导致的假设编辑。最后，将这些方法与编辑置信度估计方法相结合，以排除低置信度的编辑。在内部Linguaskill（LNG）语料库和公开可用的Speak &amp; Improve（S&amp;I）语料库上的实验表明，所提出的方法显著提升了E2E SGEC性能。</div>
+</div>
+<div class="card">
+<div class="title">ST-GRU PredRNN-V2: A GRU-Based Reformulation of PredRNN-V2 for Video Prediction</div>
+<div class="mono"><b>标题：</b>ST-GRU PredRNN-V2：基于GRU的PredRNN-V2重构用于视频预测</div>
+<div class="meta-line">Authors: Augusta van Haren, Hanna Hoogen, Luca Pattavina</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18645v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18645v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">视频预测要求模型捕捉复杂的时空依赖关系并在长序列中保留相关信息。PredRNN及其后继PredRNN-V2通过时空长短期记忆（ST-LSTM）单元应对这一挑战，该单元维护两个独立的记忆状态，但代价是循环构建块相对复杂。在本工作中，我们研究门控循环单元（GRU）更简单的门控机制能否迁移到时空预测学习。为此，我们开发了时空GRU（ST-GRU）单元，作为ST-LSTM基于GRU的替代方案。ST-GRU将ST-LSTM每个记忆状态的三个门替换为两个GRU风格的门（更新和重置），并将时间记忆状态合并到隐藏状态中，从而将参数量减少约5%。我们将ST-GRU融入PredRNN-V2，并遵循原始实验协议在Moving MNIST视频预测基准上评估所得模型。在十个预测帧上平均，基于ST-GRU的PredRNN-V2达到MSE为55.1、SSIM为0.883、LPIPS为0.065和PSNR为19.53dB。它在MSE、SSIM或PSNR上未超越原始基于ST-LSTM的PredRNN-V2，但实现了更低的LPIPS，并与早期基于ST-LSTM的PredRNN表现相当，同时使用了更简单的循环单元。这些结果表明ST-GRU是时空预测学习中有前景的构建块，并激励对其设计和集成开展进一步工作。</div>
+</div>
+<div class="card">
+<div class="title">MultiAlloc: Budget-Aware Precision Allocation for KV Cache Quantization</div>
+<div class="mono"><b>标题：</b>MultiAlloc：面向KV缓存量化的预算感知精度分配</div>
+<div class="meta-line">Authors: Yangchengyu Zhou, Zhiping Wu, Runchang Jiang</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.18642v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18642v1">PDF</a> · <a href="https://github.com/RL-MIND/MultiAlloc">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">键值（KV）缓存是大语言模型（LLM）推理过程中内存消耗的主要来源，在长上下文和复杂推理场景中尤为突出。现有KV缓存量化方法探索了不同的压缩粒度，包括逐层精度调整和令牌级信息保留。然而在实际部署中，关键挑战不仅是压缩，而是如何在固定KV缓存内存预算下，在异构精度保留策略之间分配有限的量化资源。我们提出MultiAlloc，一种面向KV缓存量化的性能分析引导精度分配框架，能够在逐层精度增强与逐令牌保留之间自适应地分配有限的量化资源。MultiAlloc采用轻量级离线性能分析来刻画层敏感性和令牌重要性，从而在固定内存约束下实现自适应精度分配。在性能分析得到的内存—精度权衡指导下，它无需在线分配搜索即可自动推导出有效的精度分配策略，并在推理过程中应用所得策略。在推理和长上下文基准上的大量实验表明，在匹配内存预算下，MultiAlloc在Mistral、Llama、DeepSeek-Qwen和QwQ等多种模型上均持续优于逐层、逐令牌以及近期多粒度KV缓存量化方法。</div>
+</div>
+<div class="card">
+<div class="title">To Align or Not To Align: Check Your COMPASS Before You Train</div>
+<div class="mono"><b>标题：</b>对齐与否：训练前先检查你的 COMPASS</div>
+<div class="meta-line">Authors: Fabian Gröger, Petar Damjanović, Maria Brbić</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.AI · cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18638v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18638v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">组合预训练模型是构建 AI 系统的常见策略，无论是将视觉编码器与语言模型对齐，还是合并微调检查点。然而，寻找兼容的模型对通常需要昂贵的经验性搜索，因为兼容性只有在对齐或合并之后才能知晓。我们提出 COMPASS（兼容性评估分数），一种有理论依据的诊断方法，可在对齐或合并之前估计一对模型是否兼容。基于表征收敛在局部邻域层面最为稳健这一观察，COMPASS 将模型兼容性分解为两个计算成本低廉的维度：配对特定的难易度，定义为两个编码器之间的 $k$-NN 重叠；以及范式级上限，刻画其训练范式所允许的最大重叠。这两个维度共同给出候选模型对的排序，并规定了对每一对应采取的行动：(i) 优先选择已经一致且范式兼容的配对，(ii) 对范式兼容但初始一致性低的配对投入额外算力，(iii) 当预训练范式无法支持足够一致性时更换该范式，或 (iv) 降低在两个维度上得分都差的配对的优先级。我们将 COMPASS 应用于 $72$ 个跨模态对齐实验和 $392$ 个任务算术模型合并，表明 COMPASS 的兼容性估计与下游成功高度相关，在跨模态对齐任务上平均皮尔逊相关系数为 $0.91$，在模型合并上为 $0.70$。</div>
+</div>
+<div class="card">
+<div class="title">One Skill, Two Masters: Serving Users and Attackers through Skill Injection</div>
+<div class="mono"><b>标题：</b>一技侍二主：通过技能注入同时服务用户与攻击者</div>
+<div class="meta-line">Authors: Haochang Hao, Dehai Min, Zhifang Zhang</div>
+<div class="meta-line">类别：cs.CR · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2606.07943v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.07943v3">PDF</a> · <a href="https://github.com/liofoil/SkillSafety">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">大语言模型智能体使用的技能封装了可复用的指令、代码和资源。现有的技能注入攻击通过添加恶意内容来利用对这些包的信任。然而，随着智能体能力增强，它们可以跳过不必要的步骤、检查代码并拒绝无关操作。我们提出 PERSIST，它将攻击者选定的动作与用于重复任务的有用函数连接起来，同时减少源码检查和表达的怀疑。它从模拟执行中构建这些辅助函数，无需访问真实评估任务或反馈。技能描述介绍这些辅助函数，使用说明解释如何调用它们。额外动作位于与辅助函数入口文件分离的导入模块中。执行辅助函数便可同时服务于用户任务和攻击者目标。在 SkillsBench 和 Skill-Inject 上的实验表明，冻结的包可在四种智能体—模型配置间迁移，并无需修改即可泛化到多个未见任务。有害效果可与任务成功完成同时发生。一项单独的匹配比较显示，与两个基线相比，有害效果率更高，而源码检查和表达的怀疑更少。配对案例研究说明了 PERSIST 如何规避拒绝，而消融实验证实了文档指导和模块分离的贡献。代码：https://github.com/liofoil/SkillSafety。</div>
+</div>
+<div class="card">
+<div class="title">Grid or Nodes? Probing Object Memory in World Models Under Partial Observability</div>
+<div class="mono"><b>标题：</b></div>
+<div class="meta-line">Authors: Justin McMillen, Yasin Yilmaz</div>
+<div class="meta-line">类别：cs.RO · cs.CV · cs.LG，链接：<a href="https://arxiv.org/abs/2610.18637v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18637v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+</div>
+<div class="card">
+<div class="title">DTScribe: Generating Models for Digital Twin Reporting using Local Large Language Models</div>
+<div class="mono"><b>标题：</b>DTScribe：使用本地大语言模型生成数字孪生报告模型</div>
+<div class="meta-line">Authors: Kérian Fiter, Angelica Portocarrero, Bentley Oakes</div>
+<div class="meta-line">类别：cs.SE · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18635v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18635v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">数字孪生的开发汇集了众多利益相关者和技术组件。我们此前已研究过将这些数字孪生的概念架构报告作为讨论工件。然而，我们发现为可视化和建立共识而对数字孪生进行建模的活动可能相当繁琐且耗时。
+  在本文中，我们探索使用大语言模型自动生成模型，针对数字孪生报告所需的模型。我们的方法旨在输入数字孪生文档，并输出概念架构可视化以及该数字孪生的报告页面。我们首先从输入中提取与先前工作中描述的二十一特征数字孪生描述框架相符的关键细节。然后，我们生成本体建模语言中的描述模型，将数字孪生表示为模型、数据、使能器与服务的星座。我们利用大语言模型作为评判者的精化循环和本体推理，以提高由我们的度量衡量的工件质量。
+  我们研究架构和参数选择如何影响工件质量，例如精化循环如何使本地大语言模型产生与更大模型相当的高质量结果。我们还详述了对实践者有用的见解和经验教训，以便他们可以整合我们的技术来加速其数字孪生报告或其他模型生成任务。这些见解包括使用中等规模的本地模型（约200亿参数）、避免使用大语言模型作为评判者和聚类进行特征提取，以及建议至少两个推理器循环用于本体建模语言精化。</div>
+</div>
+<div class="card">
+<div class="title">Geometric Calibration of Supervised Fine-Tuning</div>
+<div class="mono"><b>标题：</b>监督微调的几何校准</div>
+<div class="meta-line">Authors: Jianzhu Bao, Jia-Chen Gu, Qingyuan Liu</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.18634v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18634v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">近期研究通过权重的谱结构考察其几何特性，该结构刻画了权重如何变换不同输入方向。在此视角下，监督微调（SFT）被证明会引发稠密更新，沿主方向扰动SFT前权重的谱几何，可能破坏模型的先验知识。这些观察促使我们以SFT前权重的几何作为参考来精炼学到的SFT更新。我们将这一视角称为几何校准，并开发了SPACE（用于适配检查点增强的子空间投影），一种轻量级的事后方法，选择性地回退SFT前权重主 subspace 内的SFT更新分量，同时保留其正交补中的分量。SPACE是一种无需数据、无需训练的方法，仅需SFT前和SFT后的检查点。我们在Qwen2.5、Qwen3、Qwen3.5、Llama-3.1和Olmo-3模型（2B至14B）上评估SPACE，涵盖数学、编程和医学SFT以及若干SFT变体。总体而言，SPACE缓解了域外（OOD）能力退化，同时相比未校准的SFT检查点进一步提升了域内（ID）性能。对于数学SFT，SPACE在Qwen2.5-7B上平均ID/OOD增益为2.85/2.26分，在Qwen3-14B-Base上为2.41/1.52分。这些结果凸显了SFT更新与SFT前权重之间的几何关系如何塑造适配模型的能力，并更广泛地激励了面向持续模型改进的几何感知参数更新。</div>
+</div>
+<div class="card">
+<div class="title">Falsification-proof non-market allocation mechanisms</div>
+<div class="mono"><b>标题：</b>防伪证的非市场分配机制</div>
+<div class="meta-line">Authors: Eduardo Perez-Richet, Vasiliki Skreta</div>
+<div class="meta-line">类别：cs.AI · cs.GT，链接：<a href="https://arxiv.org/abs/2610.18625v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18625v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">依赖可操纵特征来定向分配资源困难重重。朴素最优规则会导致伪证和配置效率低下。在考虑伪证的情况下优化配置效率的规则通常会诱发伪证，给代理人带来沉重代价。此外，伪证会产生负外部性。我们在广泛的伪证技术下刻画了最优防伪证规则。我们还提供了一个诚实条件，在该条件下，这些规则解决了规划者最大化配置剩余与代理人福利加权和的无约束问题。</div>
+</div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261013_0906.html">20261013_0906</a>
+      <div class="history-list"><a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0906.html">20261013_0906</a>
 <a href="archive/20261012_0638.html">20261012_0638</a>
 <a href="archive/20261011_0613.html">20261011_0613</a>
 <a href="archive/20261010_0703.html">20261010_0703</a>
