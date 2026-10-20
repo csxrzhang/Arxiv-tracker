@@ -1,0 +1,1269 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-21 06:04</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261021_0604</div>
+    <div class="row"><div class="card">
+<div class="title">Text-to-Image Generative Modeling Without Language Pretraining</div>
+<div class="mono"><b>标题：</b>无需语言预训练的文本到图像生成建模</div>
+<div class="meta-line">Authors: Keshigeyan Chandrasegaran, Yue Zhao, Armin W. Thomas</div>
+<div class="meta-line">类别：cs.LG · cs.CV，链接：<a href="https://arxiv.org/abs/2610.26863v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26863v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">现代文本到图像（T2I）系统利用互联网规模的语言预训练来实现文本条件图像生成。我们探究语言预训练对于强大的T2I生成是否必要。我们提出Halcyon，一系列完全从头在GPIC（一个包含1亿图文对的数据集）上预训练的早期融合多模态自回归模型。Halcyon-0.52B以少18.2倍的预训练计算量优于LlamaGen-XL/8（48.0 vs. 63.3 gFD）。此外，Halcyon-1.6B以少275倍的预训练计算量优于JiT-T2I-XXL/8++（35.3 vs. 41.0 gFD）。控制实验表明，纯文本预训练并不能改善T2I生成。Halcyon还通过用I2T监督替换caption dropout来学习图像描述，在相同预训练预算下保持有竞争力的T2I生成质量。我们表明，强大的T2I系统可以在没有互联网规模语言预训练的情况下从头训练。代码和模型可在https://cs.stanford.edu/~keshik/halcyon获取</div>
+</div>
+<div class="card">
+<div class="title">OpenVLHarness: Real World Visual Agentic Tool-Use with Multimodal Memory</div>
+<div class="mono"><b>标题：</b>OpenVLHarness：基于多模态记忆的真实世界视觉智能体工具使用</div>
+<div class="meta-line">Authors: Yu Zhou, Cheng-Fu Yang, Rui Sun</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.CV · cs.LG · cs.MM，链接：<a href="https://arxiv.org/abs/2610.26860v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26860v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">多模态大语言模型（MLLMs）在视觉推理方面取得了快速进展，但许多任务所需的证据难以仅通过内部推理获得：我们在22个基准上的对照研究表明，单纯增加基础模型的推理预算只能带来有限提升。此类任务需要基于感知的接地、外部知识以及通过异构工具获得的数值测量，而这些工具的输出必须能被模型理解并在推理步骤间保留。我们提出OpenVLHarness，一个围绕能力层与持久多模态记忆组织的多模态推理框架。能力层将任务级工具接口与证据渲染相结合，提供对异构后端的一致访问，并将其输出转换为模型可读的观测。持久多模态记忆在整个查询过程中将相应的图像、结构化数据和网络引用保留为可寻址的工件。编码接口在存储数据上执行生成的程序，从而支持组合多个工具结果的计算。这些机制共同支持获取、检查和组合多模态证据的迭代过程。在22个基准上使用八个开源与专有骨干模型进行评估，OpenVLHarness相较匹配的无工具基线平均得分提升9.7-12.6分，其中Qwen3-VL-8B提升+11.2，Kimi K3提升+9.7，GPT-6 Astra提升+9.9。在中等推理努力下使用GPT-6 Luna时，OpenVLHarness在最大努力设置下比基础模型、Codex和Visual Sketchpad高出7.7-8.5分，同时模型token成本至多为其37%。</div>
+</div>
+<div class="card">
+<div class="title">Reinforcement Learning with Visually Attributable On-Policy Self-Distillation</div>
+<div class="mono"><b>标题：</b>基于视觉可归因同策略自蒸馏的强化学习</div>
+<div class="meta-line">Authors: Shiao Xie, Siyu Chen, Jianwei Lv</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26856v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26856v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">带可验证奖励的多模态强化学习（RLVR）提供了可靠的任务级监督，但对视觉推理中的错误定位指导有限。同策略自蒸馏（OPSD）通过来自具备以证据为中心视觉视角的特权教师的密集 token 级纠正来补充这种监督。然而，由此产生的纠正可能将视觉证据与由语言先验、回答风格或特权视角本身引起的非视觉偏移混为一谈。我们将这一现象形式化为特权纠正污染：当某个 token 级纠正的更新方向无法一致地归因于特权视觉证据时，该纠正即被污染。因此，直接蒸馏被污染的纠正可能会强化错误的 token 级更新。为解决这一问题，我们提出基于视觉可归因同策略自蒸馏的强化学习，这是一种证据一致的范式，用基于视觉证据的特权 token 级纠正来增强任务级 RLVR 监督。我们以视觉归因门控（VAG）实例化该范式，其使用验证器导出的优势作为优化锚点，并针对证据存在与证据退化教师视角之间的对比来验证每个特权纠正。通过仅接纳受该视觉对比方向性支持的纠正，VAG 在保留视觉 grounded 指导的同时抑制不一致的残差。在六个视觉推理基准上的实验表明，VAG 持续优于 GRPO 和 OPSD 方法，确立了新的最先进平均性能。</div>
+</div>
+<div class="card">
+<div class="title">CoopUQ: Robust Multi-Robot Social Navigation via Uncertainty-Aware Cooperative Forecasting</div>
+<div class="mono"><b>标题：</b>CoopUQ：基于不确定性感知协同预测的鲁棒多机器人社交导航</div>
+<div class="meta-line">Authors: Zehao Wang, Jianpeng Yao, Yuping Wang</div>
+<div class="meta-line">Venue: CoRL 2026</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26852v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26852v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://coopuq.github.io/">Project1</a></div>
+<div class="mono" style="margin-top:8px">强化学习使移动机器人能够在受限的人机共享环境中做出快速且可扩展的导航决策。然而，将单机器人方法直接扩展到多机器人场景往往无法保证安全性和效率，尤其是在遮挡和分布外（OOD）场景下，单个机器人可能忽视潜在风险或做出不准确的预测。有效利用协作进行预测和导航仍是一大挑战。我们提出CoopUQ，一种多机器人社交导航框架，将不确定性感知的协同占据预测与鲁棒决策相结合。CoopUQ通过跨机器人时空特征融合预测未来占据栅格地图，并进一步利用预测及其不确定性，通过约束多智能体强化学习引导策略，其中代价惩罚导航通过预测为被占据或高度不确定的区域。该设计使策略能够在分布偏移下调整其风险敏感度。在多个基于Unity3D的仿真环境中（包括分布内和OOD设置，涵盖多样布局、行人密度和匆忙行为）的实验结果表明，与代表性基线相比，预测性能和安全性均有提升。真实机器人实验进一步证明了其在各种场景下的鲁棒性。我们的代码和视频见 https://coopuq.github.io/。</div>
+</div>
+<div class="card">
+<div class="title">Where is Physical RSI capability from? An Observational Scaling Law of LLM-as-policy</div>
+<div class="mono"><b>标题：</b>物理RSI能力从何而来？LLM作为策略的观测缩放定律</div>
+<div class="meta-line">Authors: Zekai Li, Jiayi Yu, Jinlu Zhang</div>
+<div class="meta-line">类别：cs.RO · cs.AI · cs.CV，链接：<a href="https://arxiv.org/abs/2610.26848v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26848v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">本文系统研究了物理递归自我改进的机制、缩放行为与泛化性。我们提出PhysRSI-eval，通过五轴指标量化物理RSI：首次尝试性能、效率、成功率、预算以及从失败中改进。在固定交互预算下，对18个操作任务评估了不同的VLM。对实验结果的分析引出了物理桶假设：不同能力可能约束改进的不同部分。五轴指标还能区分公开基准平均分接近的系统，并表明高分未必伴随早期或高效增益。我们从两个角度研究观测缩放：从VLM智能体的公开能力预测其相对性能，以及从早期物理反馈预测后续进展。这些分析共同探讨智能体能以多快速度、多大程度改进。此外，我们进行工作区干预，然后分析改进留下了什么。移除历史会降低后期成功率，冻结的工作区在未见布局上仍然有用，三个跨任务案例更早取得成功。结果表明，场景特定适应与可复用经验可以共存。</div>
+</div>
+<div class="card">
+<div class="title">WeAct: Dynamic Weight Switching as Agent Actions</div>
+<div class="mono"><b>标题：</b>WeAct：将动态权重切换作为智能体动作</div>
+<div class="meta-line">Authors: Rui Shi, Xunjian Yin, Jiacheng Sang</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26847v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26847v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">长时程智能体必须从交错轨迹中学习异构能力。更新共享参数以学习新能力可能会损害先前获得的能力，导致灾难性遗忘。随着轨迹展开，不同阶段可能需要不同能力，但传统的联合训练和静态适配器合并在整个执行过程中保持固定的参数配置。我们提出WeAct（权重级内部动作），它在冻结的主干网络上训练独立的特定能力LoRA适配器，并将适配器选择加入智能体的动作空间。这些内部动作使用模型原生的工具调用接口，在共享上下文中按需进行能力组合。在八个深度研究基准上，使用WeAct的Qwen3-32B相比全量微调对应方法平均准确率提升6.2%，尽管计算量更少；相比最强的静态LoRA合并方法提升27.5%。WeAct还支持模块化持续适应，通过添加新的代码计算适配器来扩展智能体能力，并更新现有写作适配器以提高报告质量。两次更新均保持主干网络和其他适配器不变，支持智能体的模块化持续适应。</div>
+</div>
+<div class="card">
+<div class="title">Train An Imaginative Agent</div>
+<div class="mono"><b>标题：</b>训练一个富有想象力的智能体</div>
+<div class="meta-line">Authors: Jiaxin Ge, Junyi Zhang, Tianning Chai</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26845v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26845v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在推箱子（Sokoban）中，一个看似合理的推动可能使谜题变得无解。为避免此类错误，智能体必须在执行动作之前预判其后果，尤其是在真实环境反馈稀疏或动作不可逆的情况下。我们提出 Agentic Imagination（Agima），一个训练智能体在行动前进行想象的训练框架，即变得富有想象力。Agima 训练单个全能模型来提出动作、生成其结果的图像，然后对这些想象出的未来进行推理，以决定在真实环境中执行什么。智能体不必承诺于单一计划，而是可以模拟一系列动作、探索替代方案并比较可能的未来。我们首先使用监督微调（SFT）将策略与世界建模统一在单个全能模型中。这使智能体能够预测未来结果并执行基本形式的想象，例如前瞻思考和反事实分支。然后我们使用智能体强化学习（RL）教智能体对其想象的未来进行推理，并有效地将其用于规划。在涵盖 Maze2D、Sokoban、Pacman 和 PushT 的四个环境中，Agima 泛化到训练中未见过的更难设置。仅在双箱 Sokoban 上用 SFT 训练，Agima 解决了 40% 的四箱谜题，而每五步才看到一次真实棋盘，相比之下仅动作规划器只解决了 2%。经过 RL 后，Agima 使用其想象力的方式出现了新行为：它学习了一种在 SFT 阶段未见过的新的统一格式，学会了仅在必要时进行前瞻思考，并在关键决策点更频繁地分支。一个能够描绘其动作导向何处的智能体可以学会何时何地向前看，即进行规划。项目页面：https://agima.net/。</div>
+</div>
+<div class="card">
+<div class="title">AnyGoal: On World Model Generalization Beyond Expert Rollouts</div>
+<div class="mono"><b>标题：</b>AnyGoal：论世界模型在专家轨迹之外的泛化</div>
+<div class="meta-line">Authors: Heejeong Nam, Divyat Mahajan, Quentin Le Lidec</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26844v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26844v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://hazel-heejeong-nam.github.io/anygoal/">Project1</a></div>
+<div class="mono" style="margin-top:8px">世界模型的目标是捕捉环境的动力学。这具有很大的吸引力，因为它允许智能体借助世界模型来规划和模拟一系列动作。然而，要使这些用途可靠，学习到的动力学必须在专家轨迹中观察到的特定状态-动作组合之外表现良好。尽管如此，数据覆盖、动力学泛化和下游规划性能之间的关系仍未得到充分探索。我们通过组合泛化的视角研究这一关系：世界模型能否将熟悉的状态和动作因素重新组合成有效的动力学？为了回答这个问题，我们引入了 AnyGoal，一个由广泛使用的世界模型环境构建的目标偏移任务变体基准，以及一个开源库。每个任务都被设计为在学习到基础动力学的世界模型能力范围之内：单个状态因素和动作仍在其训练支持范围内，但它们的组合在专家轨迹中代表性不足。在多个环境和世界模型家族中，我们发现当前模型在这些重新组合下持续表现出失败。通过考察不同模型家族、交互机制和评估指标下的动力学和表示失败，我们研究了当前世界模型在何处泛化以及目标偏移预测和规划仍面临挑战之处。总之，这一框架、基准和分析为评估朝着泛化到新规划任务的世界模型进展提供了基础。</div>
+</div>
+<div class="card">
+<div class="title">How Well Do Vision-Language Models Understand Movies?</div>
+<div class="mono"><b>标题：</b>视觉语言模型对电影的理解程度如何？</div>
+<div class="meta-line">Authors: Emmanouil Zaranis, António Farinhas, Saul Santos</div>
+<div class="meta-line">Venue: EMNLP 2026</div>
+<div class="meta-line">类别：cs.CV · cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2506.06275v2">Abs</a> · <a href="https://arxiv.org/pdf/2506.06275v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">视觉语言模型（VLM）日益能够处理扩展上下文并回答关于长视频的问题——但它们能否像人类一样理解电影的叙事结构？为探究这一问题，我们提出 MF$^2$（Movie Facts and Fibs），这是一个完全人工整理的基准，旨在评估模型能否利用视觉和文本两种模态，识别、回忆并理解电影故事情节的核心信息。MF$^2$ 包含 50 多部开放许可电影，每部均配有人工构建的陈述对集合：一条真实陈述（事实）和一条看似合理但虚假的陈述（谎言），总计超过 850 对。我们对 20 个开源模型和 2 个专有模型的分析显示，与人类表现相比存在显著差距。虽然字幕为叙事理解提供了强信号，但其他文本来源（如剧情简介）信息量较少。相比之下，当视觉信息分布在整个电影中并与字幕联合嵌入时，模型难以识别并有效利用相关内容。然而，当视觉输入被限制为与陈述相关的视觉内容时，模型表现显著提升，这表明在处理大规模多模态上下文以及区分相关与无关信息方面仍有很大改进空间。总体而言，我们的发现凸显了当前 VLM 在多模态叙事理解方面持续存在的挑战。我们发布数据和代码以支持该方向的进一步研究。</div>
+</div>
+<div class="card">
+<div class="title">PACE: Geometry-Aware Bridge Transport for Single-Cell Trajectory Inference</div>
+<div class="mono"><b>标题：</b>PACE：用于单细胞轨迹推断的几何感知桥接传输</div>
+<div class="meta-line">Authors: Chenglei Yu, Chuanrui Wang, Bangyan Liao</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2605.18587v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.18587v3">PDF</a> · <a href="https://github.com/AI4Science-WestlakeU/PACE">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">从破坏性时间序列快照中进行单细胞轨迹推断本质上是病态问题：既未观测到跨时间细胞对应关系，也未观测到连续轨迹，因此仅凭快照分布无法唯一确定潜在动力学。现有最优传输和基于流的方法通常按观测时钟时间上的欧氏邻近性耦合细胞，当发育不同步且同一实验时间采样的细胞处于不同潜在伪时间阶段时，这可能导致轨迹错配。我们提出PACE，一个通过三个耦合组件从破坏性时间序列快照中恢复几何一致连续传输动力学的轨迹推断框架。首先，PACE构建状态和时间依赖的各向异性黎曼度量，沿局部支持的切方向赋予低传输成本，同时惩罚法向速度分量。其次，它在诱导路径作用成本下细化跨时间耦合与在相邻快照间拟合保持端点的神经桥之间交替进行。第三，它将学习到的桥动力学蒸馏为细胞状态上的全局连续时间速度场。在涵盖九项留出重建实验的七个受控和生物数据集上，PACE取得最强的整体重建性能，相对于最强竞争基线，MMD、Wasserstein-1距离和Wasserstein-2距离平均降低23.7%。PACE还在胚胎体分化基准上将RNA速度对齐提高15.4%，且训练期间无需显式细胞配对、谱系追踪或RNA速度监督。代码见https://github.com/AI4Science-WestlakeU/PACE。</div>
+</div>
+<div class="card">
+<div class="title">LatComm: Reusable Context Compression for Latent Communication between Large Language Models</div>
+<div class="mono"><b>标题：</b>LatComm：用于大型语言模型间潜在通信的可复用上下文压缩</div>
+<div class="meta-line">Authors: Huawei Lin, Jinting Liu, Tan Yu</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26840v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26840v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">组合多个大型语言模型（LLM）的系统通常对多个问题使用同一上下文。当上下文以文本形式在模型间传递时，接收模型会为每个问题重新处理其所有token。要避免这一开销，需要一种紧凑、可跨问题复用且能被不同LLM读取的上下文表示。现有的压缩与潜在通信方法各自只提供其中部分特性。我们提出LatComm，一种潜在通信接口，通过将编码与读取分离来同时提供这三种特性：上下文在不含问题的情况下被编码一次，接收方为每个问题选择要读取的内容。一个冻结的上下文编码器LLM将上下文压缩为固定大小的数据包，并发送给另一个冻结的接收器LLM，后者通过交叉注意力读取该数据包，其门控由提示计算得出。在12个多项选择问答数据集上，LatComm相较单向量基线将平均准确率提升最多10.2个百分点。在QuALITY上，它将接收器的输入减少57倍，并以3倍速度回答一篇文章的问题。</div>
+</div>
+<div class="card">
+<div class="title">Newton-Based Methods for Bilevel Optimization Beyond Lower-Level Strong Convexity</div>
+<div class="mono"><b>标题：</b>超越下层强凸性的基于牛顿法的双层优化方法</div>
+<div class="meta-line">Authors: Youran Dong, Junfeng Yang, Wei Yao</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26839v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26839v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">双层优化为超参数优化、数据重加权和元学习等机器学习任务提供了框架。现有的基于牛顿法的双层方法通常依赖经典超梯度公式，而当底层解非唯一且底层Hessian矩阵奇异时，该公式通常不可用。我们通过利用底层更新与乘子更新共享的曲率，开发了两种超越底层强凸性的基于牛顿法的方法。基于牛顿法的GALET在正谱隙条件下处理可能奇异的底层曲率，利用其值域结构来避免GALET中使用的平方Hessian乘子系统。基于牛顿法的BAMM在底层目标为凸且上层目标关于底层变量为强凸时，使用强凸聚合模型。我们在相应假设下建立了收敛保证，并给出了相对于GALET和sl-BAMM改进的复杂度界。我们进一步引入了GNBO，这是一个广义的基于牛顿法的框架，它捕捉了所提方法以及若干现有牛顿和拟牛顿双层方法的共享曲率结构。在合成问题、数据超清洗和GPT-2数据重加权上的实验评估了所提方法在不同双层学习任务上的表现。</div>
+</div>
+<div class="card">
+<div class="title">Let the Batch Decide, On- or Off-Policy: Effective Sample Size for RL Post-Training</div>
+<div class="mono"><b>标题：</b>让批次决定同策略或异策略：强化学习后训练中的有效样本量</div>
+<div class="meta-line">Authors: Rasool Fakoor, Murdock Aubry, Nicholas Stranges</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2605.12380v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.12380v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">强化学习（RL）在结构上比监督学习更难，因为策略会改变其学习所依赖的数据分布。这种脆弱性在使用名义上同策略RL的大模型训练中尤为明显，其中训练系统和推演系统可能在数值精度、采样及其他实现细节上存在差异。常见方法通过固定裁剪范围约束更新来处理这种差异，因此算法对其配置更加敏感，并且每当任务、模型规模或分布不匹配发生变化时都必须重新调参。我们认为这种脆弱性源于这一固定范围必须覆盖的两个相互关联的问题。第一个是信赖域问题：更新不应使策略偏离其当前值太远。第二个是异策略问题：来自较旧或不同行为策略的数据只应在更新仍然可靠的程度内影响更新。这两个问题都不是可以预先设定的常数，而当前批次的策略比率显示了每个问题的严重程度。我们采用P3O，这是先前工作中一种简单而有效的批次自适应目标，它用逐token策略比率的归一化有效样本量替代固定裁剪，其中比率是相对于推演引擎的对数概率计算的。同一统计量限制得分函数权重并设定异策略正则化器的强度，因此当比率接近1时，更新保持接近同策略更新。当陈旧或不匹配的数据使比率集中时，更新会收紧，但仍在每个token上保持非零的得分函数权重。数学推理实验表明，P3O与调优后的基线相比具有优势，并且在Qwen3-8B-Base上使用FP8推演时，避免了GRPO的后期崩溃。P3O不增加新的目标超参数，并去除了裁剪范围。</div>
+</div>
+<div class="card">
+<div class="title">Same Simulation, Different Evidence: Where Retrieved Tool Output Costs LLM Agents Accuracy</div>
+<div class="mono"><b>标题：</b>相同的模拟，不同的证据：检索到的工具输出在哪里使 LLM 智能体损失准确率</div>
+<div class="meta-line">Authors: Ke Zhang, Sahchit Chundur, Jerry Peprah Owusu</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26836v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26836v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">能够计算出正确答案的 LLM 智能体仍可能答错。智能体框架越来越多地将冗长的工具输出排除在上下文窗口之外，将其保存到文件中，由智能体按需搜索或读取。我们以一个真实的科学工具来探究这种做法在哪里损失准确率：PHREEQC，这是美国地质调查局（USGS）广泛使用的地球化学模拟器，其报告可达 846.8k 字符，且其确定性使每个打印值都可追溯。智能体用它来回答 158 道经执行验证的多选题。当智能体通过章节索引而非在上下文中读取模拟器报告时，GPT-5.1 和 GPT-5.2 分别损失 11.3 和 7.9 个百分点的准确率，而 Claude Opus 4.6 和 Claude Sonnet 4.6 未表现出可检测的损失。重新运行全部 11,007 次记录的模拟器调用表明，两个 GPT 模型计算出关键值的频率与之前大致相同；变化的是它们作答所依据的证据。在检索条件下，它们常常跳过报告，依据自身更高精度的输出文件作答，并错误舍入到相邻选项，我们将这种失败称为证据替换。在模拟固定的情况下，检索仍使 GPT-5.2 损失 9.4 个百分点。对于 GPT-5.4，更频繁的正确模拟掩盖了约十个百分点的证据使用损失，使净变化与零无法区分。指明权威输出使三个 GPT 模型相比普通检索提升 6.3–7.9 个百分点的准确率；对于 GPT-5.1 和 GPT-5.2，将能容纳的输出内联同样有效，而要求正确舍入则无效。智能体框架中的上下文管理选择应以准确率在哪里损失来评判，而不仅仅看最终准确率。</div>
+</div>
+<div class="card">
+<div class="title">Kronecker Delta Rule for Long Context Linear Attention</div>
+<div class="mono"><b>标题：</b>长上下文线性注意力的Kronecker Delta规则</div>
+<div class="meta-line">Authors: Anamaria-Roberta Hartl, Levente Zólyomi, Michael List</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26834v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26834v1">PDF</a> · <a href="https://github.com/NX-AI/KronLSTM">Code1</a> · <a href="https://huggingface.co/collections/NX-AI/kronlstm">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<div class="mono" style="margin-top:8px">我们提出KronLSTM，一种基于Kronecker Delta规则的线性注意力架构，该规则是一种用于关联矩阵记忆的新型更新规则。KronLSTM扩展了xLSTM家族，引入记忆修正机制，该机制在矩阵空间中仅沿单一方向修改记忆的同时修正目标关联。与delta规则更新相比，这种微创式记忆修正减少了对先前存储信息的干扰，使其特别适合长上下文语言建模。由此产生的记忆动态可在数学上描述为收敛到稳态分布的马尔可夫链，而记忆矩阵的期望范数在整个输入序列中始终保持一致有界。因此，KronLSTM确保了稳定的记忆动态，无需对记忆状态额外引入归一化和稳定化机制。实验表明，KronLSTM与现有线性注意力架构（包括(Gated) DeltaNet家族模型）相比具有竞争力，且往往表现更优，在长上下文基准测试上表现尤为突出。这些结果确立了Kronecker Delta规则作为循环线性注意力架构中稳定关联记忆的有效且可解析处理的基础。我们的代码(https://github.com/NX-AI/KronLSTM)和模型(https://huggingface.co/collections/NX-AI/kronlstm)均已开源。</div>
+</div>
+<div class="card">
+<div class="title">Supervised Learning with Quantum Hamiltonian Embeddings</div>
+<div class="mono"><b>标题：</b>基于量子哈密顿量嵌入的监督学习</div>
+<div class="meta-line">Authors: Riccardo Molteni, Minjun Jeon, Paolo Braccia</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26833v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26833v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">机器学习被广泛认为是有望让量子计算提供计算优势的应用领域。然而，具有性能、可训练性和高效推理可证明保证的通用量子机器学习模型仍然有限。在本工作中，我们引入量子哈密顿量嵌入，这是一种监督学习框架，其中经典训练数据集被编码为单个有效的参数化哈密顿量。训练优化该数据依赖哈密顿量的参数，其近似基态定义分类规则。一旦使用量子算法近似得到基态，推理既可以使用学习状态的经典表示以经典方式进行，也可以使用该状态的量子表示进行。我们建立了梯度估计的高效方法，并证明了有利的泛化保证。此外，在标准密码学假设下，我们表明哈密顿量嵌入可以实现超出高效经典算法能力的假设函数。随后，我们使用标准基准数据集在IBM Heron处理器上大规模演示了该框架。总之，这些结果确立了哈密顿量嵌入作为一种新的量子机器学习框架，将理论保证与在量子硬件上大规模实验研究的路径相结合。</div>
+</div>
+<div class="card">
+<div class="title">ProteinGeoBench: Frontier Structural-Biology Agents Are Fluent at Lookup but Lost in Geometry</div>
+<div class="mono"><b>标题：</b>ProteinGeoBench：前沿结构生物学智能体擅长查找，却在几何中迷失</div>
+<div class="meta-line">Authors: Matt Turk, Brandon L. Neel, Diana M. Lopez</div>
+<div class="meta-line">类别：cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26829v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26829v1">PDF</a> · <a href="https://github.com/Protege-AI/ProteinGeoBench">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">前沿智能体能很好地检索结构元数据，但从坐标计算几何的可靠性较低。我们探究基准分数中有多少反映这一差距，又有多少反映模型周围的评估配置。我们研究 ProteinGeoBench——一套包含 131 个蛋白质结构任务的基准，使用四个前沿模型的 4,249 次 rollout，以及 26 个模型的另外 4,486 次试验。四个前沿模型中有三个彼此相差在 0.031 以内（0.785 至 0.816），它们之间未分辨出差异，而第四个得分为 0.707，且与它的三个差距均排除零。四个中有三个在元数据查找上优于数值计算。第四个在数值上略好。数值任务在 131 个中占 28 个，但在所有四个模型都失败的十二个任务中占一半。排名还取决于评估预算：每个任务运行一次时，23.9% 的 bootstrap 重复将不同模型排在首位。在选定的 15 个任务切片上，移除网络访问比屏蔽八个结构数据库域降低分数更多，但这两个对比在不同轮次中评分，无法清晰分解。换入每个模型自己的命令行智能体使分数变化 -0.071 至 +0.086，这一比较太小，无法排除中等程度的 harness 效应。在 26 个模型中，数值性能随非数值性能上升而非保持平稳。这些实验使用不同的任务子集，因此无法将模型、harness、访问和任务组成相互排名。评估应按任务族报告结果，并附上运行次数、harness 和访问条件。</div>
+</div>
+<div class="card">
+<div class="title">Agent World Model in the Wild: Computer-Use Agent Environment Synthesis</div>
+<div class="mono"><b>标题：</b>野外智能体世界模型：计算机使用智能体环境合成</div>
+<div class="meta-line">Authors: Zhaoyang Wang, Qianhui Wu, Haorui Wang</div>
+<div class="meta-line">类别：cs.AI · cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26828v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26828v1">PDF</a> · <a href="https://github.com/MSR-Orchard/WildAWM">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">智能体学习正从基于人类数据的学习转向通过与世界交互进行学习。然而，在真实计算机系统中直接扩展此类学习具有挑战性，并可能引入重大安全风险。因此，我们提出野外智能体世界模型（WildAWM），一个用于合成可控环境和任务以训练通用计算机使用智能体（CUA）的可扩展流水线。现有方法通常专用于单一智能体交互接口，而我们构建的可执行环境同时支持图形用户界面、模型上下文协议服务和命令行界面，使智能体能够灵活组合视觉交互、工具使用和代码执行。WildAWM完全由开源模型驱动，表明无需专有前沿模型即可生成高质量计算机使用环境。除环境外，我们通过引入基于执行的质量门控——结合异构智能体 rollout、交叉评判一致性检查和判断鲁棒性的反事实探测——解决了任务合成中三个反复出现的挑战：确保可解性、保持足够难度和产生可靠验证器。所得流水线合成了341个长时程环境-任务对，解决这些任务可能需要超过100个智能体步骤，且即使对前沿模型仍具挑战性，GPT-6-Astra仅解决其中60%。我们仅在这些合成世界中训练了两个不同规模的Qwen模型。两个模型在涵盖 web、claw 和计算机使用智能体的8个分布外基准上均取得显著提升，表明在WildAWM合成世界中的学习可广泛泛化到未见过的计算机使用任务。代码公开于 https://github.com/MSR-Orchard/WildAWM。</div>
+</div>
+<div class="card">
+<div class="title">ICON decomposition: Multivariate concept auditing reveals shortcuts that neural networks rely on</div>
+<div class="mono"><b>标题：</b>ICON分解：多变量概念审计揭示神经网络依赖的捷径</div>
+<div class="meta-line">Authors: Roshan Prakash Rane, Marco Simnacher, Manuel Pfeuffer</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.CV，链接：<a href="https://arxiv.org/abs/2608.26083v5">Abs</a> · <a href="https://arxiv.org/pdf/2608.26083v5">PDF</a> · <a href="https://github.com/RoshanRane/ICON_decomposition">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">深度神经网络常利用虚假关联，这种失败称为捷径学习。因此在部署前，应审计模型对采集伪影和患者人口统计学等概念的依赖。现有方法（包括线性探针和概念激活向量）通过判断每个概念能否从某一层解码来衡量概念依赖。我们表明这种框架具有误导性：可解码性不仅反映概念依赖，还反映审计数据集中概念与结果之间的相关性。我们将捷径审计重新表述为用独立典型概念（ICON）对中间表示方差进行分解。ICON量化在给定所有其他概念和结果的条件下，每个概念所解释的层方差份额，并报告未解释的方差。由于ICON解释在各层之间可比，其轨迹能区分驱动预测的概念与仅被编码在表示中的概念。在具有真实标签的模拟数据中，ICON比七个基线更准确地恢复概念重要性。在皮肤癌和神经影像应用中，它将学到的捷径与仅相关的概念区分开，我们通过独立验证检查予以确认。</div>
+</div>
+<div class="card">
+<div class="title">RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development</div>
+<div class="mono"><b>标题：</b>RefCraft：通过网页开发对视觉参考条件化的智能体生成进行基准测试</div>
+<div class="meta-line">Authors: Yuchi Wang, Rongyao Fang, Weihao Yu</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.CV，链接：<a href="https://arxiv.org/abs/2610.26826v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26826v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://wangyuchi369.github.io/refcraft/">Project1</a></div>
+<div class="mono" style="margin-top:8px">除了基本的工具使用和编码技能外，有效地将视觉参考融入智能体生成对于将AI智能体应用于现实生产力任务同样至关重要。我们通过网页开发这一实用且易于评估的场景来研究这一关键能力，而现有基准在很大程度上仍过于理想化：它们通常侧重于重建视觉目标或仅根据文本指令生成网页，忽视了从视觉示例进行开发的更常见工作流程。具体而言，我们引入了RefCraft，一个包含300个现实多模态网页开发任务的基准，这些任务将自然语言指令与来自1至5个参考网页的截图相结合。智能体必须在渲染、视觉检查和迭代优化其输出的过程中选择性地解释和利用这些参考。我们使用可独立验证的关键点以及互补的程序化和VLM评判器来评估生成的开放式产物。在九个前沿（多模态）大语言模型中，最强的系统仅获得总分100分中的52.12分，这表明在当前实际网页开发环境中，视觉参考条件化的智能体生成对现有模型仍是一项重大挑战。</div>
+</div>
+<div class="card">
+<div class="title">MemT-1.0: Towards Memory-Native Evolution</div>
+<div class="mono"><b>标题：</b>MemT-1.0：迈向记忆原生演化</div>
+<div class="meta-line">Authors: Zhiyu Li, Zeyu Zhang, Linyun Liu</div>
+<div class="meta-line">类别：cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26825v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26825v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">记忆原生演化要求将记忆作为基础模型的内在能力，使其能够持续积累和利用信息。为此，我们提出MemT-1.0，一种将记忆内化为模型计算一部分的记忆基础模型新架构。MemT-1.0基于Metis构建，采用Gated DeltaNet-2，并在每轮内使用稳定的token级记忆更新机制。我们进一步引入Mixture-of-Storage以扩展原生记忆容量。经过审慎的主干准备，我们开发了由持续预训练和后训练组成的两阶段训练流程，并由34B tokens的训练数据以及高效的训练和推理基础设施支撑。我们发布了包含MemT-1.0-Nano和MemT-1.0-Flash的模型系列，并对记忆能力和通用能力进行了全面评估。结果表明，它们在平均上优于参数化记忆基线，并与检索增强方法保持竞争力，同时基本保留通用能力。在128K tokens的历史长度下，MemT-1.0-Nano相对于完整上下文KV cache实现了约$1.86\times$的端到端推理加速和$66\times$的持久存储减少。通过内化检索到的程序性经验，MemT-1.0提升了智能体任务的成功率，为迈向记忆原生演化提供了切实的一步。</div>
+</div>
+<div class="card">
+<div class="title">AfriBED: a Speech Recognition Bias Evaluation Dataset for Low Resource African Languages</div>
+<div class="mono"><b>标题：</b>AfriBED：面向低资源非洲语言的语音识别偏见评估数据集</div>
+<div class="meta-line">Authors: Claytone Sikasote, Hussein Suleman, Jan Buys</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26821v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26821v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">尽管自动语音识别系统（ASR）取得了进展，当前系统仍表现出说话人属性偏见，即其语音识别性能会因说话人的性别、口音和说话人类型等人口统计属性而对某些说话人存在偏见。然而，要准确评估给定ASR系统中的说话人属性偏见，需要有一个偏见评估数据集，其中包含说话人属性各子组之间可比的语音。本文介绍了非洲语音偏见评估数据集（AfriBED），这是一个面向两种低资源非洲语言（Bemba和Nyanja）的新型语音识别偏见评估数据集，用于检测和估计ASR系统中的性别和说话人类型偏见。该数据集包含Bemba的9小时语音、由80名说话人录制的3928条话语，而Nyanja集包含6260条话语、约18小时语音，由127名说话人录制。我们的基线实验结果表明，这些数据集有助于考察目标语言中的性别和说话人类型属性偏见。</div>
+</div>
+<div class="card">
+<div class="title">Next Best Action: Causal Constrained Offline RL for Business Action Targeting</div>
+<div class="mono"><b>标题：</b>下一最佳行动：用于业务行动定向的因果约束离线强化学习</div>
+<div class="meta-line">Authors: Surya Ramachandiran, Yiming Li, Juan Mancilla-Caceres</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.IR，链接：<a href="https://arxiv.org/abs/2610.26817v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26817v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">下一最佳行动（NBA）系统必须在客户干预措施（如折扣、促销和生命周期行动）中进行选择，最大化长期经济价值，满足复杂的运营约束，并保持因果基础。现有方法缺乏同时满足这些要求的严格框架。我们通过将NBA建模为约束马尔可夫决策过程（CMDP）来填补这一空白。然后，我们将估计客户动态的离策略因果校正直接集成到CMDP的线性规划（LP）公式中。所得策略基于客户状态选择行动，以最大化长期价值，同时明确执行业务护栏。此外，LP公式产生影子价格，量化运营约束（如公平性和用户福利）的经济权衡，增强策略可解释性。我们在涉及网约车优惠券定向的行业案例研究中验证了所提出的离线强化学习（RL）框架，其中客户状态由最近一次消费、消费频率和消费金额（RFM）阶段定义。我们使用基于模型的离策略评估来评估性能，因果动态从时间留出集中估计。在观察到的优惠券预算和RFM状态表示下，我们的优化策略将客户终身价值（LTV）相比估计的行为策略提高了19%，相比短视基线提高了8%。尽管展示的行动空间是二元的，但所提出的框架与行动无关，为管理多种干预措施的定向系统产生了一个通用决策模块。</div>
+</div>
+<div class="card">
+<div class="title">ISO: An RLVR-Native Optimization Stack</div>
+<div class="mono"><b>标题：</b>ISO：一种RLVR原生优化栈</div>
+<div class="meta-line">Authors: Hanqing Zhu, Wenyan Cong, Zhizhou Sha</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2607.19331v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.19331v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">带可验证奖励的强化学习（RLVR）提升了语言模型的推理能力，但将奖励反馈转化为权重空间更新的优化层仍鲜为人知。我们研究该层并从功能上验证了谱继承：RLVR可以复用基模型的权重谱，同时通过调整相关的输入与输出奇异标架来获得新行为。我们将这一发现实现为等谱优化（ISO），一种RLVR原生优化栈，具有互补的离线和在线实例。离线时，ISO-Merger在固定谱标架坐标中组合共享基专家，无需合并后数据、rollout或蒸馏，并在无数据合并方法中取得最高综合得分。在线时，ISO-Optimizer在固定基谱下将AdamW或Muon直接应用于标架变量，在报告的数学和编码实验中提升了综合准确率。在Qwen3-4B-Base上，ISO-AdamW在280次更新时达到AdamW 400次更新的准确率，更新次数减少1.5倍，实际耗时减少27%，并在第400次更新时超过AdamW 2.2分。这些结果支持一个可复用的RLVR设计原则：继承谱，优化标架。</div>
+</div>
+<div class="card">
+<div class="title">Scaling Parameter-Efficient Fine-Tuning for Brain Encoding</div>
+<div class="mono"><b>标题：</b>扩展参数高效微调用于大脑编码</div>
+<div class="meta-line">Authors: Zhuofan Josh Ying, Guanglong Sun, Nolan Ho</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26802v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26802v1">PDF</a> · <a href="https://github.com/zfying/brain-lora">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">大脑编码模型旨在预测神经对刺激的响应。最广泛使用的方法是从冻结的预训练骨干网络中拟合读出层。使用神经数据从头训练大型模型或在任务预训练后完全微调它们已被证明是困难的，因为神经数据昂贵且有限。我们表明，参数高效微调（PEFT）使我们能够用少量可训练参数有效地将非常大的预训练骨干网络适配于大脑编码。为了使其在计算上可行，我们利用骨干网络的因果结构在一次前向传播中预测多个时间点，而不是使用滑动窗口，显著降低了特征提取成本。这使得能够高效微调多达104B参数的多模态骨干网络，据我们所知这是适配于大脑编码的最大模型。使用低秩适配器（LoRA）和轻量级读出层训练，我们的方法在九个不同的多模态骨干网络上持续提升大脑编码性能。在与先前最先进（SoTA）相同的Qwen3-Omni骨干网络上，我们的方法BrainLoRA在Algonauts 2025挑战赛上取得了已发表的最佳性能。我们还表明，适配后的多模态骨干网络保持可解释性：模态归因恢复了先前工作通常通过从单独单模态编码器构造而获得的经典感觉拓扑，并且神经适配增加了骨干网络内音频输入和跨模态混合的贡献。为了扩展适配模型的数量，我们开发了一种多LoRA内核，加速在共享骨干网络上联合训练多个LoRA。这使得200多个适配模型的集成在撰写时在公开的Algonauts挑战赛后排行榜上排名第一。总之，我们的结果突出了PEFT作为一种高效且强大的大脑编码范式。</div>
+</div>
+<div class="card">
+<div class="title">Mise-en-Video: Fine-Grained 3D Control for Multi-Shot Video Generation</div>
+<div class="mono"><b>标题：</b>Mise-en-Video：面向多镜头视频生成的细粒度3D控制</div>
+<div class="meta-line">Authors: Yingshuang Zou, Xiaoyu Shi, Yawen Luo</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26801v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26801v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">近期文本到视频生成的进展已实现高保真单镜头合成，但实际的故事创作需要兼具强镜头间一致性和细粒度可控性的多镜头视频。现有多镜头视频生成方法虽能实现强一致性，但在可控性方面仍有不足。本文提出Mise-en-Video（MeV），一种高度可控的多镜头视频生成框架，允许视频创作者在3D空间中对多镜头进行场面调度，进而生成相应的多镜头视频。为此，我们的框架将用于多层级叙事一致性的分层注意力机制与用于精确逐镜头空间控制的3D感知布局引导相结合。为支持训练与评估，我们开发了标准化标注流程，并构建了一个包含分层多镜头文本和有向3D边界框的16万视频数据集。大量实验表明，MeV在视频质量、镜头间一致性和主体级可控性方面持续优于强基线。</div>
+</div>
+<div class="card">
+<div class="title">Learning to Refer: Inference-Time Collaboration in Decentralized Federated Learning</div>
+<div class="mono"><b>标题：</b>学习转诊：去中心化联邦学习中的推理时协作</div>
+<div class="meta-line">Authors: Yuheng Ma, Chendi Wang, Qiong Zhang</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26800v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26800v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在去中心化联邦学习中，异构客户端可能发展出互补的专业能力，但每个查询通常仅由它到达的客户端进行评估。为了在没有全局协调的情况下利用这种分布式专业知识，我们将推理时协作表述为有预算的本地专家转诊，即一种图约束的路由过程，其中查询只能在相邻客户端之间移动，且只有被访问的客户端才对其最终预测做出贡献。EdgeDRM通过为每个客户端学习基于密度的路由势来实现该框架：相邻势之间的差异提供了用于选择后续转诊的比较，而本地任务模型生成沿结果路由聚合的预测。训练和推理都是去中心化的，仅使用邻居本地信息，无需中央路由器或图范围的客户端评分。我们为学习到的比较建立了估计保证，并刻画了局部改进和图结构如何支配来自转诊的先验加权密度增益。在基准和真实世界医疗数据上的实验表明，EdgeDRM在大多数设置下优于图匹配的去中心化基线，在稀疏连接下优势最为明显。</div>
+</div>
+<div class="card">
+<div class="title">Deep Learning-based Semantic Segmentation of Dental Radiographs: Comparative Evaluation of PSPNet, DeepLabv3, UNet, and UNet++</div>
+<div class="mono"><b>标题：</b>基于深度学习的牙科X线影像语义分割：PSPNet、DeepLabv3、UNet和UNet++的比较评估</div>
+<div class="meta-line">Authors: Malithi Nawarathne, Nadeesha Herath Mudiyanselage Lihini Sangeetha</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2610.15061v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.15061v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">准确高效地分析牙科X线影像对于疾病诊断和临床决策日益重要。特别是，牙科X线影像分割起着关键作用，但由于图像对比度低、噪声以及图像质量变化等多种原因而具有挑战性。以往研究主要使用基于卷积神经网络（CNN）的模型来应对这些挑战。然而，由于实验设置存在差异，直接比较这些分割模型仍然困难。因此，我们主要在图像尺寸和批量大小等不同条件下，通过公平、受控的实验设置比较了四种分割模型，包括金字塔场景解析网络（PSPNet）、DeepLabV3、UNet和UNet++。为此，我们使用了1269张牙科X线影像，并在训练前实施了一系列预处理技术。为评估模型，我们使用了多种指标，包括Dice系数（DICE）、交并比（IoU）、准确率、精确率、训练和验证损失。根据我们的结果，UNet++取得了最高的IoU分数0.6719和DICE值0.7869，在分割方面表现出更优结果，特别是在图像尺寸为300x300、批量大小为16的配置下。此外，我们还探讨了不同架构下图像分辨率和批量大小对模型性能和准确率的影响。因此，本研究揭示了不同分割模型的优势，以及基于深度学习的语义分割方法在改进自动化牙科X线影像分析方面的潜力。</div>
+</div>
+<div class="card">
+<div class="title">Teacher Supervision, Fixed Representations and Calibration: Exact Risk Calculations for Candidate-Scoring Decision Models</div>
+<div class="mono"><b>标题：</b>教师监督、固定表示与校准：候选评分决策模型的精确风险计算</div>
+<div class="meta-line">Authors: Agus Sudjianto, Denis Burakov</div>
+<div class="meta-line">类别：cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26797v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26797v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">候选评分决策模型对给定的一组答案返回一个概率分布。一个此类系统 Jev 及其开放对应系统 JevAny 的公开文档描述了决定这些概率所估计内容的三个训练要素：来自更大模型的软目标、冻结的预训练骨干网络以及温度校准。我们在高斯替代模型中分析每个要素，其中有限样本风险可以精确计算。在教师目标上训练的学生模型会继承教师的偏差，更多学生数据无法消除该偏差，且与教师的一致性也无法揭示该偏差。固定表示仅在低于明确的样本量阈值时降低风险。在 probit 模型中，精确的重校准映射是温度缩放，仅当教师的系数方向正确时才能消除所有超额风险，否则会留下校准诊断无法检测的残差。在 Luce 选择公理下，候选评分在事件的细化之间保持一致，当且仅当它们通过对数求和指数进行聚合。在消费者金融保护局的 231,521 条信用卡投诉上，决策是投诉是否以货币救济结束，在逻辑教师概率上训练的学生模型最终达到教师的决策成本，而在结果上训练的学生模型比其低 8%，一个 30B 模型零样本读取在重校准后仍比教师差，且该模型偏离一致性条件 17.5 分贝。预训练表示减少了所需的标注数据，校准纠正了概率的尺度，但两者都无法纠正有偏的教师，因此必须根据实际结果检查概率。</div>
+</div>
+<div class="card">
+<div class="title">ForcingDAS: Unified and Robust Data Assimilation via Diffusion Forcing</div>
+<div class="mono"><b>标题：</b>ForcingDAS：通过扩散强制实现统一且鲁棒的数据同化</div>
+<div class="meta-line">Authors: Yixuan Jia, Siyi Chen, Yida Pan</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2605.14285v4">Abs</a> · <a href="https://arxiv.org/pdf/2605.14285v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">数据同化（DA）从含噪、部分观测中估计演化动力系统的状态，广泛应用于科学模拟以及天气和气候科学。在实践中，滤波方法依赖帧到帧的转移模型。然而，当观测是非马尔可夫的（如真实世界天气数据中，观测仅构成高维潜在状态的部分切片）时，这些模型很脆弱：它们往往会在长时程上累积误差。同时，学习型 DA 方法通常固定于单一模式，即滤波（临近预报、实时预报）或平滑（回顾性再分析），从而将本应共享的先验拆分到特定应用的流程中。为解决这两个问题，我们提出 ForcingDAS，一个统一且鲁棒的 DA 框架。ForcingDAS 基于 Diffusion Forcing，为每一帧分配独立的噪声水平，学习联合轨迹先验而非帧到帧转移。这使其能够捕捉长时程时间依赖并减少误差累积。此外，同一个训练好的模型在推理时覆盖从滤波到平滑的完整谱系。具体而言，临近预报、固定滞后平滑和批量再分析仅通过推理调度选择，无需重新训练。我们在二维 Navier-Stokes 涡度、降水临近预报和全球大气状态估计上评估 ForcingDAS。在所有设置中，单一模型与针对个别模式专门化的学习型和经典基线相比具有竞争力或更优，在真实世界天气基准上增益最大。</div>
+</div>
+<div class="card">
+<div class="title">Two hidden layer suffice: the caterpillar net</div>
+<div class="mono"><b>标题：</b>两个隐藏层足够：毛虫网络</div>
+<div class="meta-line">Authors: Jakob Paul Zimmermann</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26795v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26795v1">PDF</a> · <a href="https://github.com/JayPiZimmermann/Max_Caterpillar">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">每个连续分段线性（CPWL）函数都是仿射函数最大值的有限符号和，这使得最大值表示成为研究 ReLU 网络表达能力的一个核心问题。一个现已被否定的猜想曾预测最大值需要对数深度。受 Brunck 等人（2026）证明两个隐藏层足以表示一般 CPWL 函数的启发，我们提出了毛虫网络（Caterpillar Net），这是一种非递归构造，用两个隐藏层（宽度分别为 $O(N^2)$ 和 $2^{O(N\log N)}$）表示 $N$ 个输入的最大值。该构造具有直接的几何解释。</div>
+</div>
+<div class="card">
+<div class="title">On Data Scaling in Tabular ML: More Data, Better Generalization?</div>
+<div class="mono"><b>标题：</b>表格机器学习中的数据缩放：更多数据，更好泛化？</div>
+<div class="meta-line">Authors: Ivan Rubachev, Nikita Lazarev, Artem Babenko</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26794v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26794v1">PDF</a> · <a href="https://github.com/yandex-research/tabular-dl-more-data">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">近期表格机器学习的研究强调了多样且真实的评估设置的重要性。然而，大规模（100万以上）数据这一细分领域仍未被充分探索。为研究训练数据缩放，我们汇集了八个真实世界表格数据集，训练样本最多约一千万，保留任务的自然分布偏移，并使用随机划分评估作为对照。我们发现GBDT和基于MLP的模型表现出大体相似的缩放趋势，从额外训练数据和算法改进中均有收益。表格基础模型表现出更多样的缩放行为，较新版本即使在分布偏移下也能更一致地从更大上下文中获益。然而，在分布偏移下缩放训练数据引入了新挑战：在较小规模下，分布内和分布外性能大多共同提升，但在较大规模下可能分化。我们通过MLP容量扫描以及比较MLP和GBDT中用于调优和早停的验证分布来考察这一点。我们还比较了使用验证数据的常见做法，对比了MLP流程中用于模型选择与表格基础模型流程中用于上下文拟合的用法。在更强偏移下，使用代表评估条件的验证数据选择的MLP通常随着训练数据增长保持或提升性能。相反，在我们的实验中，将此类示例纳入上下文可提升基础模型性能，但并不能防止随训练规模增加而退化。</div>
+</div>
+<div class="card">
+<div class="title">SOMA: Continuous Monitoring and Intervention for System Two Reasoning with System One Models</div>
+<div class="mono"><b>标题：</b>SOMA：用System One模型对System Two推理进行持续监控与干预</div>
+<div class="meta-line">Authors: Ruizhi Qian, Lei Shi, Tianyu Hu</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26793v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26793v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">推理模型常常在未察觉问题的情况下陷入困境，即使症状已在其自身文本中显现。在人类中，元认知将监控与控制分离：快速、直觉的信号在缓慢、审慎的推理展开时保持警觉，并帮助决定是继续、改变方向还是停止。System One（S1）决策模型（如Jev）是这一角色的天然候选：它们通过一次快速调用，针对关于文本的自然语言问题返回校准后的概率，但目前仅被用作推理前的门控。我们提出SOMA（System One Metacognitive Awareness），其中S1模型持续监控System Two（S2）推理模型并在需要时进行干预。SOMA包含三层：场景层用自然语言陈述每个目标并预定义动作，意识层让S1判断所描述的行为是否出现，控制层累积这些判断，首先提醒S2，仅在行为持续时才接管。跨任务共享同一个S1模型和同一个控制器且无需训练，SOMA在两个推理模型上解决了两种不同的失败：在过度思考上，它将推理token减少最多36\%同时提升平均准确率；在不可回答问题，它将弃答率从70.5\%提升至87.2\%。</div>
+</div>
+<div class="card">
+<div class="title">Training with ML-labeled Data via Stochastic First- and Zeroth-Order Optimization</div>
+<div class="mono"><b>标题：</b>通过随机一阶和零阶优化使用ML标注数据进行训练</div>
+<div class="meta-line">Authors: Maria-Eleni Sfyraki, Jun-Kun Wang</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26790v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26790v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">训练机器学习（ML）模型是一个优化过程，通常需要预先获得一组带有真实标签的样本。获取这些真实标签通常需要大量人工劳动，且成本高昂。当需要标注的数据点数量庞大时，人工标注的可扩展性成为问题。为解决这一实际问题，我们考虑一种优化设置：一部分样本具有真实标签，而其余数据点由ML预测器标注，该预测器可能为这些点分配错误的标签。我们提出了用于在由真实标签和ML标注样本混合组成的数据集上训练的一阶和零阶随机优化方法。我们进一步开展了全面的实证研究，从训练线性回归模型到微调大型语言模型（LLM），以展示所提算法在使用ML标注数据进行训练方面的有效性。</div>
+</div>
+<div class="card">
+<div class="title">Cooperative Multi-Agent Reinforcement Learning for Market Making on Prediction-Market Order Books</div>
+<div class="mono"><b>标题：</b>面向预测市场订单簿做市的多智能体协作强化学习</div>
+<div class="meta-line">Authors: Skander Lejmi</div>
+<div class="meta-line">类别：cs.LG · cs.MA，链接：<a href="https://arxiv.org/abs/2610.26789v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26789v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">做市商通过报出买卖价格提供流动性，赚取价差并管理库存风险。我们研究在预测市场（特别是 Polymarket）上用多智能体强化学习训练的做市商，其稀薄订单簿带来独特挑战。本研究基于三个挑战：逆向选择可能使在真实数据上训练的策略停止报价；报价的后果可能在动作后多步才显现；预测市场 L2 数据无法识别模拟所需的单个订单。我们通过从 Polymarket 重建订单级 LOBSTER 格式数据，并在 JaxMARL-HFT 中于 417 个真实市场训练智能体来应对这些挑战。我们用订单簿和近期订单流丰富基线做市商的观测空间，重新设计其动作和库存控制，并提出一种协作多智能体分解：报价器和风险管理器，使用带 RNN 策略的循环独立近端策略优化（IPPO）训练。我们研究奖励塑形，特别是奖励混合和成交后标记，以缓解智能体间的信用分配困难。我们重新设计的单智能体做市商比重新训练的 JaxMARL-HFT 基线报价更频繁，在留出集上的损失更小，尽管联合改变的观测、动作和风险约束的贡献未被单独识别。仅分解表现不佳；精心的奖励设计相对于未塑形的拆分显著改善做市台，并给出我们最好的结果。模型在留出市场上以实际回合末组合价值评估。在周期性留出评估中，没有模型建立正的平均组合价值，且每种配置仅用一个种子训练。环境、数据和协议为同时报价多个关联市场的做市商奠定基础。</div>
+</div>
+<div class="card">
+<div class="title">LG-Bench: A Graph-Structured Evaluation Benchmark for Life Sciences</div>
+<div class="mono"><b>标题：</b>LG-Bench：面向生命科学的图结构评估基准</div>
+<div class="meta-line">Authors: Lu Sun, Xiangyi Zhang, Xiangyang Zhu</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26787v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26787v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">传统评估基准将生命科学中本质相互关联的科学知识简化为扁平的问题列表，忽视了知识底层的拓扑结构。我们提出了首个面向生命科学的图结构基准，涵盖医学、生物学和化学领域的超过10,000道高质量多项选择题。我们的方法通过双向匹配和语义相似度算法构建加权评估图，其中节点表示问题，边权重刻画其语义关系。利用该图拓扑结构，我们设计了两个新颖的评估指标。全局一致性分数（GCS）衡量模型在语义相关邻域内的一致性，而知识平衡分数（KBS）分析模型错误在图上的分布，以揭示概念盲点。LG-Bench通过揭示不同模型在概念一致性和知识组织模式上的差异，促进对大语言模型的细粒度比较。我们的框架将评估范式从扁平准确率指标转变为结构感知分析，为诊断和改进大语言模型在生命科学领域中的表现提供了新视角。</div>
+</div>
+<div class="card">
+<div class="title">Just Initialize: A Training-Free Initialization Component for Large-Scale Routing Optimization</div>
+<div class="mono"><b>标题：</b>Just Initialize：面向大规模路径优化的免训练初始化组件</div>
+<div class="meta-line">Authors: Jiale Zhao, Sirui Mao, Zimu Chen</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2609.35443v3">Abs</a> · <a href="https://arxiv.org/pdf/2609.35443v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大规模路径问题难以高效求解，因为其搜索空间随问题规模迅速增长。现有方法主要改进优化过程本身，往往以不断增加的计算成本为代价。我们转而关注一种有用的初始化，它可以在有限的下游精炼下被精炼为高质量解。我们提出 Just Initialize，一种面向大规模路径优化的免训练且与求解器无关的初始化组件。Just Initialize 将大规模路径实例压缩到紧凑的代理空间，优化其全局路径结构，并将所得解恢复为原空间中利于优化的起点。在旅行商问题（TSP）、带容量约束的车辆路径问题（CVRP）、带时间窗的车辆路径问题（VRPTW）和带收益的旅行商问题（PCTSP）上的大量实验表明，Just Initialize 在 1K 至 100K 节点的实例上取得了与最先进方法相当或更优的高质量解，同时大幅降低计算成本，包括平均约 70$\times$ 的加速、10K 节点实例上亚秒级运行时间，以及 100K 节点实例上数十秒内的运行时间。</div>
+</div>
+<div class="card">
+<div class="title">Game of Phones: Harnessing Game Theory and LLMs in &#x27;Bot Wars&#x27; to Counteract Phone Scams</div>
+<div class="mono"><b>标题：</b>电话博弈：在“机器人战争”中运用博弈论与LLM反制电话诈骗</div>
+<div class="meta-line">Authors: Nardine Basta, Robin Carpentier, Benjamin Zi Hao Zhao</div>
+<div class="meta-line">Venue: Lecture Notes in Computer Science, vol. 16949 (2027) 395-411</div>
+<div class="meta-line">类别：cs.CR · cs.AI · cs.CL · cs.GT，链接：<a href="https://arxiv.org/abs/2610.26781v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26781v1">PDF</a> · <a href="https://github.com/nardinebasta/GameofPhones_/">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">电话诈骗给全球个人和金融系统带来巨大且不断增长的成本，而现有反制措施不会对施害者造成资源消耗。策略性反诈骗诱饵——即由自动化代理与诈骗者周旋以消耗其运营能力——提供了一种主动的替代方案，但需要静态系统无法提供的动态策略适应能力。我们引入一个博弈论框架，使LLM无需微调即可通过上下文经验学习有效的反制策略。该框架将诈骗者与诱饵的交互建模为双人博弈，采用基于实证的策略与效用函数，并以纳什均衡作为评估学习行为的正式基准。在300段模拟对话和三种LLM架构中，自适应策略选择与纳什均衡的接近程度比非自适应基线高28.9%至79.7%。代码及包含300段对话、带轮次级策略标签和效用分数的标注数据集已发布于 https://github.com/nardinebasta/GameofPhones_/ 。</div>
+</div>
+<div class="card">
+<div class="title">TestDG: Test-time Domain Generalization for Continual Test-time Adaptation</div>
+<div class="mono"><b>标题：</b>TestDG：面向持续测试时自适应的测试时域泛化</div>
+<div class="meta-line">Authors: Sohyun Lee, Nayeong Kim, Juwon Kang</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2504.04981v4">Abs</a> · <a href="https://arxiv.org/pdf/2504.04981v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">本文研究持续测试时自适应（CTTA），即在测试中使模型适应不断变化的未见域，同时保留先前学到的知识。现有CTTA方法大多仅关注对当前测试域的自适应，忽视了模型未来可能面对的任意测试域的泛化。为解决这一局限，我们提出一种新的面向CTTA的在线测试时域泛化框架，称为TestDG。TestDG旨在测试过程中即时学习对当前和先前测试域均不变的特征，提升对未来域有效泛化的潜力。为此，我们提出一种新的模型架构和专门用于学习域不变特征的测试时自适应策略，以及用于有效管理先前测试域信息的原型选择和更新机制。TestDG在四个公开CTTA基准中的三个上达到最先进水平，在ImageNet-C上与最佳先前方法表现相当。此外，它对未见测试域展现出更优的泛化能力。</div>
+</div>
+<div class="card">
+<div class="title">Topological Sheaves of Irreducibility: A Theoretical Framework for Multi-Agent Task Obstructions</div>
+<div class="mono"><b>标题：</b>不可约性的拓扑层：多智能体任务障碍的理论框架</div>
+<div class="meta-line">Authors: Steven Motta, Davide Mambelli, Alessandro Rozza</div>
+<div class="meta-line">类别：cs.LG · cs.MA，链接：<a href="https://arxiv.org/abs/2610.26777v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26777v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">多智能体系统在相同智能体和通信预算下，若支持不同形式的联合交互，则可能表现不同。我们引入不可约性的拓扑层（TSI），一个层论框架，将任务级兼容性障碍与系统能力分离。任务由交互复形 $K$ 和容量层 $\mathcal{F}$ 表示；非零的 $H^n(K;\mathcal{F})$ 定义结构签名，而注册干预测试能力。对于余圈数据，当所表示的余调类消失时，余链实现可精确求解。示例表明签名是层相对的，且1次约化产生循环空间见证和观测要求。我们评估两个有限单轮模型。在15,625个1次输入上，全智能体加性原语精确求解决策和修复；最优成对系统在决策上达到88.80%，比88.79%的多数类基线高一个输入，在修复上达到26.63%。在531,441个输入上的2次四面体边界任务中，同2-骨架系统保留所有四个三智能体原语，但在整个注册分离窗口内与仅成对最优匹配，而添加类填充的四智能体原语使两个任务均精确。状态保持的鲁棒性检查保持精确性能，但未与类恢复消融进行成本匹配。在注册原语和成本模型条件下，TSI提供任务相对、可证伪的高阶交互测试。</div>
+</div>
+<div class="card">
+<div class="title">Reinforcement Learning via Advantage Guidance</div>
+<div class="mono"><b>标题：</b>通过优势引导的强化学习</div>
+<div class="meta-line">Authors: Zhiyuan Zhou, Sergey Levine</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.19783v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19783v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">强化学习（RL）有望学习到一种能够超越数据中所展示行为的策略。然而在实践中，此类系统存在不稳定性和超参数敏感性问题。相比之下，监督学习提供了稳定且可扩展的训练目标，但根本上受限于示范行为的质量。在本文中，我们探讨是否能够以像监督学习一样简单稳定、同时又像RL一样高性能的方式执行策略优化。遗憾的是，仅以监督学习方式训练策略并以未来奖励或优势为条件，通常表现不如专门的RL方法。我们提出了一种新的策略提取方法——优势引导（Advantage Guidance），它保留了带有优势条件的简单监督学习结构，同时通过有效的条件训练和采样期间的对比扩散引导，超越了先前的RL方法。我们表明，优势引导能够显著提升模型对条件优势信号的响应能力，并且采样期间的对比引导可以利用学习到的优势条件策略来逼近KL正则化的最优策略。在实证上，我们发现优势引导在26个长时程、稀疏奖励任务上显著优于先前最先进的RL方法，这些任务跨越了具有不同最优程度的数据集。</div>
+</div>
+<div class="card">
+<div class="title">HarnessPro: Recursive Harness Self-Improvement with Pareto Optimization for Performance-Cost Trade-offs</div>
+<div class="mono"><b>标题：</b>HarnessPro：基于帕累托优化的递归Harness自我改进以实现性能-成本权衡</div>
+<div class="meta-line">Authors: Zhuoshi Pan, ZhiYuan Feng, Yukuo Cen</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26770v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26770v1">PDF</a> · <a href="https://github.com/pzs19/HarnessPro">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">Harness开发在构建能力强的AI智能体方面起着关键作用。近期方法通过递归自我改进（RSI）来改进harness，但其性能提升往往伴随更高的执行成本。我们提出HarnessPro，一种无标签方法，用于演化harness以提升任务性能并降低执行成本。在此设定下，候选harness使用LLM生成的测试进行评估，无法访问真实解或官方测试。专用智能体诊断执行轨迹，按不同的性能-成本优先级规划更新，并将其实现为候选harness。HarnessPro不返回单一harness，而是使用归一化加权平方距离选择，为不同部署预算提供成本导向（lite）、均衡（medium）和性能导向（heavy）的harness。选中的harness进入下一轮迭代，执行反馈指导进一步更新。我们的实验涵盖Terminal-Bench 2、SWE-Bench Pro和ProgramBench，使用GPT-5.5配合Codex以及GLM-5.2配合Claude Code。在这些基准上使用GPT-5.5配合Codex时，HarnessPro的heavy模式相对RHO平均通过率提升2.0个百分点，平均每任务成本降低26.1%。该优势在使用GLM-5.2配合Claude Code时同样成立。代码见https://github.com/pzs19/HarnessPro</div>
+</div>
+<div class="card">
+<div class="title">Non-Gaussianity Reveals Interpretable Directions in Language Models</div>
+<div class="mono"><b>标题：</b>非高斯性揭示语言模型中的可解释方向</div>
+<div class="meta-line">Authors: Sida Liu, Feijiang Han, Sarah Wiegreffe</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2606.11722v2">Abs</a> · <a href="https://arxiv.org/pdf/2606.11722v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在语言模型激活中寻找人类可解释的方向对于理解和控制模型行为十分重要。这些方向通常通过稀疏重建等间接学习目标来发现，但现有何种统计结构能够区分可解释方向，以及该结构能否直接用于特征发现，仍不清楚。我们发现非高斯性提供了这样一种特征：自然文本残差流激活沿稀疏自编码器（SAE）解码器方向的投影分布，比沿随机方向的投影分布显著更具非高斯性，其中大多数上下文形成集中的背景，而反复出现的模式往往占据一个尾部。这引出一个自然的问题：如果可解释方向倾向于具有非高斯投影分布，我们能否通过在激活空间中直接搜索非高斯方向来发现它们，而无需训练另一个稀疏字典？为检验这一假设，我们提出 ICA Lens，一个用于高效发现、可靠标注和忠实评估 LLM 残差流激活中非高斯方向的实用工作流。在 GPT-2 Small、Gemma 2 2B 和 Qwen 3.5 9B Base 上，我们发现：(1) 恢复出的非高斯方向在人工和基于 LLM 的评估下均能捕捉连贯的词汇、句法和语义模式；(2) 非高斯性与人工标签置信度和自动化可解释性均呈正相关；(3) 所得坐标在可解释性、稀疏重建、概念预测和定向探针扰动方面与 SAE 具有竞争力，同时每层拟合仅需数分钟，内存占用少 7-43 倍。这些结果表明，非高斯性是发现激活中可解释且有用结构的直接无监督信号。</div>
+</div>
+<div class="card">
+<div class="title">DoAtlas-2: A Foundation for Self-Evolving Causal Biomedical Discovery</div>
+<div class="mono"><b>标题：</b>DoAtlas-2：自我演化因果生物医学发现的基础</div>
+<div class="meta-line">Authors: Yulong Li, Rong Xia, Yuxuan Zhang</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2609.35107v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.35107v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们提出DoAtlas-2，一个围绕因果机制组织知识、并通过来自人类群体的外部证据不断推进的自我演化因果生物医学发现基础。DoAtlas-2整合了771项研究资源，覆盖48个国家超过720,000名参与者，涵盖纵向临床表型、医学影像、连续生理信号至八个分子层次，并构建了约470万条文献衍生记录的证据网络，涉及93,566个概念和149,383个候选因果关联。DoAtlas-2能够从证据空白和未解决机制中自主提出研究问题，预先设定其因果设计，并生成经过验证的分析。支持性、挑战性和未解决的结果持续修正机制解释、因果证据状态和发现前沿，使DoAtlas-2在假设生成、实证检验和重新发现的闭环中自我演化。DoAtlas-2已系统评估2,031个研究问题。在人类表型计划（HPP）中，它针对血管、早期血糖和肝脏代谢系统提出了4,014个候选通路问题，对前1,079个问题的筛查为756个提供了统计支持。代表性研究确定血压是连接肥胖、肝脏和脂质表型与血管结局的汇聚节点，并表明肥胖-炎症-血压通路在联合调整体重指数（BMI）和吸烟后大幅减弱。所发现的血管网络构成了完全可解释的预测基础，允许对每个预测进行精确归因并给出闭式中介效应。DoAtlas-2由此在一个持续演化的基础中统一了因果机制发现、群体证据检验和可解释预测。</div>
+</div>
+<div class="card">
+<div class="title">PDB: Not All Drivers Are the Same -- A Personalized Dataset for Understanding Driving Behavior</div>
+<div class="mono"><b>标题：</b>PDB：并非所有驾驶员都相同——一个用于理解驾驶行为的个性化数据集</div>
+<div class="meta-line">Authors: Chuheng Wei, Ziye Qin, Siyan Li</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2503.06477v2">Abs</a> · <a href="https://arxiv.org/pdf/2503.06477v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">驾驶行为因人而异，然而大多数现有驾驶数据集并不保留驾驶员身份，也未控制可能影响驾驶风格的因素。我们引入个性化驾驶行为（PDB）数据集，这是一个多模态数据集，由9名驾驶员在可比条件下使用同一车辆和路线采集。PDB包含来自128线LiDAR、外部和面向驾驶员的摄像头、GNSS、IMU、CAN总线信号以及心率测量的数据，共有111,060帧LiDAR点云数据和超过133万张图像。基于这些记录，我们构建了PDB-Traj，一个个性化轨迹预测基准，包含1,309个以10 Hz采样的10秒轨迹片段。每个片段包括自车轨迹、周围智能体轨迹和驾驶员身份。我们进一步引入门控选择性个性化（Gate-SP），一个驾驶员感知基线，可选择性地将驾驶员身份纳入轨迹预测。在PDB-Traj上的实验为个性化运动预测提供了参考结果，并表明当选择性应用时，驾驶员信息可以改善预测。PDB和PDB-Traj为研究驾驶员特定行为与个性化轨迹预测提供了基准。</div>
+</div>
+<div class="card">
+<div class="title">Has GPT-6-Astra Achieved Embodied Intelligence?</div>
+<div class="mono"><b>标题：</b>GPT-6-Astra 是否已实现具身智能？</div>
+<div class="meta-line">Authors: SenseNova, Joint Research Team, Zhongang Cai</div>
+<div class="meta-line">类别：cs.RO · cs.CV · cs.LG · cs.MM，链接：<a href="https://arxiv.org/abs/2610.22471v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.22471v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://sensenova.ai/has-gpt-6-astra-achieved-embodied-intelligence">Project1</a></div>
+<div class="mono" style="margin-top:8px">GPT-6-Astra 在机器人操作与导航方面展现出一定能力，挑战了为单个任务和具身形态构建专用模型的传统范式。在本报告中，我们不仅探讨 GPT-6-Astra 的能力有多强，还探讨其能力对该领域意味着什么。首先，我们探究独立 GPT-6-Astra 的极限。我们在 12 个代表性基准上开展大规模评估，涵盖桌面操作、人形机器人、移动平台和灵巧手。在允许从训练集演示中进行上下文学习（ICL）并大幅增加执行步数的统一协议下，GPT-6-Astra 取得了前所未有的性能（图 1）。未来研究可聚焦于改进：1）ICL 的通用性；2）成本与执行时间；3）物理状态验证；4）从不可逆故障中恢复；5）长时程任务的进度保持。其次，我们研究用于具身控制的智能体框架。我们发现，高层“系统 2”推理器（即 GPT-6-Astra）与低层“系统 1”控制器（如 π0.5）之间的闭环协调成本高昂但有效。第三，我们在真实世界部署中考察 GPT-6-Astra。在 8 种机器人配置上的实验揭示了显著差距：1）ICL 所需的机器人演示采集成本高昂；2）在物理约束下，以更长执行时间换取更高成功率并不现实。第四，我们展望下一代具身基准。我们开发了一个原型，其特点为：1）从真实世界需求中派生任务；2）不提供域内演示；3）在世界时钟持续运行的情况下评判智能体。综上，我们的结果表明，GPT-6-Astra 已在很大程度上跨过了具身能力的门槛，但尚未跨过实用具身智能的门槛。</div>
+</div>
+<div class="card">
+<div class="title">Mutual Information Constrained Chernoff Bottleneck</div>
+<div class="mono"><b>标题：</b>互信息约束的Chernoff瓶颈</div>
+<div class="meta-line">Authors: Dier Tang, Guangyue Han</div>
+<div class="meta-line">类别：cs.IT · cs.LG，链接：<a href="https://arxiv.org/abs/2609.37994v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.37994v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">经典信息瓶颈（IB）通过 $I(U;Y)$ 度量 $X$ 的表示 $U$ 与目标 $Y$ 的相关性，但这并不能直接刻画下游决策的误差。对于从许多独立编码的观测中推断的二元假设 $Y$，最优误差指数是给定 $Y$ 时 $U$ 的两个条件分布之间的Chernoff信息。我们研究互信息约束的Chernoff瓶颈，其目标是寻找一个编码器，在速率约束 $I(U;X) \leq R$ 下最大化该Chernoff信息。我们证明其最优值 $C(R)$ 严格递增直至 $R = H(V)$，其中 $V$ 合并了 $X$ 中具有相等似然比的符号，超过该点后保持为未压缩时的指数，并且与IB曲线不同，它不必是凹的。我们进一步证明 $k+1$ 个输出足以达到 $C(R)$，其中 $k$ 是 $V$ 的基数。我们提出一种交替算法，通过广义Blahut--Arimoto算法更新编码器，并通过非线性方程更新Chernoff参数 $s$，并证明其迭代保持可行，且Chernoff信息非递减并收敛。与 $n$ 个样本下的经典IB比较，我们证明，只要两个目标不一致，IB编码器在 $n = 1$ 时具有更小的含糊度 $H(Y|U^{n})$，而Chernoff瓶颈在所有大 $n$ 下具有更小的错误概率和含糊度。数值实验证实了理论，并且在来自20 Newsgroups语料库的真实主题检测数据上，将每个词压缩到仅其熵的 $17\%$ 仍保留了 $90\%$ 的误差指数，并几乎达到未压缩分类器的准确率。</div>
+</div>
+<div class="card">
+<div class="title">Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing</div>
+<div class="mono"><b>标题：</b>面向自主赛车的基于模型强化学习中快速适应的仿真先验</div>
+<div class="meta-line">Authors: Adrian Remonda, Jiajun Xi, Nicklas Hansen</div>
+<div class="meta-line">类别：cs.LG · cs.RO，链接：<a href="https://arxiv.org/abs/2610.26757v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26757v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">强化学习能够学习高性能控制策略，但其对大量交互的依赖限制了在数据采集成本高且失败不安全的物理系统上的部署。我们提出先验信息适应（PIA），一种离线到在线的基于模型强化学习框架，利用结构化仿真先验实现快速适应。PIA在异构低保真和高保真仿真轨迹上预训练世界模型，然后通过不确定性正则化规划，利用有限的目标域交互对其进行适应。PIA不要求精确的仿真器进行策略迁移，而是将仿真轨迹视为有偏先验，并在在线适应过程中校正残余失配。我们在自主赛车中使用高保真仿真和真实全尺寸自主赛车评估PIA。在仿真中，PIA在赛道和路面变化下比强基线适应更快，实现更低的圈速和更少的失败。在硬件上，PIA在少于一小时的车载交互下实现可靠的少样本适应。</div>
+</div>
+<div class="card">
+<div class="title">TokenGate: Adapting LLMs for Fast and Memory-Efficient Prefill with Learned Token Pruning</div>
+<div class="mono"><b>标题：</b>TokenGate：通过学习式Token剪枝使LLM实现快速且内存高效的预填充</div>
+<div class="meta-line">Authors: Liana Patel, Rishabh Ranjan, Ion Stoica</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26754v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26754v1">PDF</a> · <a href="https://github.com/tokengate-models/TokenGate">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">专家级人类读者处理大型输入（如代码仓库和长文档）时，会先略读，再精读真正重要的部分。而语言模型则会让所有输入Token经过每一层模型，导致长上下文输入的处理成本显著增加。我们提出TokenGate，这是一个小型、即插即用的组件，可扩展现有已训练模型，使其在长上下文输入上实现端到端可学习的Token剪枝，从而实现快速且内存高效的预填充。为在Token剪枝中不可微的top-K算子下仍能进行端到端学习，我们引入token门控注意力，这是一种受Mixture-of-Experts启发的机制，利用Token重要性分数对注意力logits重新加权。在多种任务上，TokenGate在transformer预填充中实现$1.4$-$11.3\times$更快的首Token时间（TTFT）和$1.5$-$3.4\times$更低的峰值内存，且无精度损失。与表现最佳的现有Token剪枝方法相比，TokenGate的预填充速度最高快$6.4\times$，峰值内存低$2\times$。TokenGate原生扩展标准transformer（如Qwen3）和混合注意力模型（如Qwen3.5），其轻量适配程度与标准参数高效微调相当。代码见：https://github.com/tokengate-models/TokenGate。</div>
+</div>
+<div class="card">
+<div class="title">Channel-Dependent State Space Model for Multivariate Time Series Forecasting</div>
+<div class="mono"><b>标题：</b>面向多变量时间序列预测的通道相关状态空间模型</div>
+<div class="meta-line">Authors: Yu-Cheng Wu, Fan-Keng Sun, Li-Chun Lu</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2609.36453v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.36453v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">多变量时间序列预测（MTSF）在许多现实领域至关重要。现有深度学习方法分为两种范式，各有明显局限：通道无关（CI）方法无条件忽略跨变量依赖，仅建模时间动态；通道相关（CD）方法同时考虑两者，但通常依赖架构折衷来缓解过拟合和计算开销。因此，我们提出Chameleon，一种专门的CD状态空间模型（SSM），能够实现数据依赖的细粒度变量交互，同时随变量数量线性扩展。通过将选择性SSM与卡尔曼滤波器联系，我们利用前者中缺失的测量更新进行跨变量建模，同时保留SSM主干以实现稳健的时间建模。我们进一步识别GatedDeltaNet对时间序列的有利归纳偏置，将其适配为主干，并通过额外技术提升泛化能力，包括对可逆实例归一化的一种此前未探索的随机扰动。在强依赖的ODE和PEMS数据集上，Chameleon在所有设置下取得最佳MSE和MAE，而其CI消融和先前CD方法平均产生高61-178%的MSE。在28个标准基准设置中，Chameleon分别在至少27和22个案例中取得优于各基线的MSE和MAE。在Traffic和ETT上的训练时间和峰值内存分析进一步表明其具有竞争力的效率，以及在不同变量数量下良好的内存可扩展性。</div>
+</div>
+<div class="card">
+<div class="title">Trajectory Replay: Continuous-Time Mixture Transport for Lifelong Generative Models</div>
+<div class="mono"><b>标题：</b>轨迹回放：面向终身生成模型的连续时间混合传输</div>
+<div class="meta-line">Authors: Alessandro Palma, Charles Jones, Tristan Cinquin</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26749v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26749v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在不遗忘先前任务的前提下，将预训练的连续时间生成模型适配到顺序到来的数据，是终身学习中的核心挑战。一种领先策略——生成式回放——利用在历史任务上训练的生成模型，以来自经验的合成样本增强其自身的持续更新。然而，它需要在每个训练步骤进行完整的轨迹模拟，这会累积离散化误差，并可能使回放的历史分布退化。在此，我们提出轨迹回放，它通过训练一个更新后的速度场，使其在稳定性-可塑性系数的加权下，同时匹配沿其轨迹的冻结历史速度与传入任务的速度场，从而绕过样本生成。从连续时间传输的视角，我们证明所得最优解按各自密度对两个任务速度取平均，并生成其概率路径的混合。结合平均速度蒸馏，轨迹回放在每次持续更新时仅需少量网络评估即可访问历史轨迹。在实验中，它在类增量图像生成上优于生成式回放和蒸馏基线。在两个生物学案例研究中，轨迹回放将生成式扰动模型扩展到两种数据模态下的新情境和实验批次，同时保持治疗效果预测。</div>
+</div>
+<div class="card">
+<div class="title">DashAct: A Progressive Diagnostic Benchmark for GUI Agents in Interactive Dashboard Analysis</div>
+<div class="mono"><b>标题：</b>DashAct：交互式仪表板分析中GUI智能体的渐进式诊断基准</div>
+<div class="meta-line">Authors: Chuhan Zhang, Qi Xie, Ziyue Wang</div>
+<div class="meta-line">类别：cs.HC · cs.AI，链接：<a href="https://arxiv.org/abs/2609.32385v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.32385v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">交互式仪表板要求用户在有状态交互中揭示并连接证据。尽管图形用户界面（GUI）智能体可以自动化这一过程，但现有的仪表板基准主要报告最终答案或任务成功情况，对失败究竟源于维持分析过程、选择动作还是定位视觉目标，提供的洞察有限。我们提出DashAct，一个渐进式诊断基准，在系统变化的上下文与空间支持下评估相同的已标注仪表板交互。DashAct包含348条经人工验证的交互轨迹，带有里程碑依赖关系与分层目标标注。其三个阶段分别在四种视觉条件下评估端到端执行、经验证上下文的动作预测以及目标条件化的定位。对齐的动作与空间标注将这些设置下的结果联系起来，为解释在线失败提供诊断证据。实验揭示了动作预测与细粒度定位方面的持续困难，以及模型对上下文与空间支持的依赖性响应。一项基于Qwen的适配研究进一步提升了目标定位与在线里程碑覆盖率，说明DashAct如何指导实际的智能体改进。</div>
+</div>
+<div class="card">
+<div class="title">Gradient descent reaches arbitrary accuracy in a fixed number of large steps on multiclass logistic regression</div>
+<div class="mono"><b>标题：</b>梯度下降在多类逻辑回归中以固定数量的大步长达到任意精度</div>
+<div class="meta-line">Authors: Andreea-Alexandra Musat, Nicolas Boumal</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26748v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26748v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们证明，步长为 $η$ 的梯度下降（GD）能在与 $\varepsilon$ 无关的迭代次数 $T$ 内，在多类逻辑回归损失上达到 $\varepsilon$ 最优性间隙。为此，步长 $η$ 必须根据 $\varepsilon$（以及线性可分数据集的性质）取得足够大，而 $T$ 是仅依赖于数据的常数。数据的相关性质包括点的数量及其间隔（用于 $T$），以及一个额外量（用于 $η$），该量在维度 $d \geq 3$ 时是必要的。证明基于已知事实：当 $η\to \infty$ 时，适当重新缩放的 GD 变为感知机算法，而后者在 $T$ 次迭代内找到完美分类器。此前使用其他证明技术，在维度 $d = 2$ 的两类情形下已证明了类似结论。该结果补充了先前的工作，这些工作表明逻辑回归损失上的 GD 可通过采用大步长来加速。大步长会引发剧烈振荡的初始阶段，随后是稳定阶段。我们也提供了这种（性质不同的）结果。</div>
+</div>
+<div class="card">
+<div class="title">Post-hoc Disentanglement of Textual and Acoustic Features in Pre-trained Speech Encoders</div>
+<div class="mono"><b>标题：</b>预训练语音编码器中文本与声学特征的事后解缠</div>
+<div class="meta-line">Authors: Hosein Mohebbi, Grzegorz Chrupała, Willem Zuidema</div>
+<div class="meta-line">Venue: ACL</div>
+<div class="meta-line">类别：cs.CL · cs.LG · cs.SD，链接：<a href="https://arxiv.org/abs/2410.03037v2">Abs</a> · <a href="https://arxiv.org/pdf/2410.03037v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">预训练语音模型构建了纠缠的内部表示，以分布式编码捕获多种特征（例如音高、响度、句法或话语语义）。这种纠缠使得难以追踪这些表示在下游应用中如何依赖文本信息与声学信息，限制了其可解释性和透明度。本文探索一种基于信息瓶颈原理的事后解缠方法。我们将预训练语音编码器的表示作为输入，以级联方式将其分离为两个不同分量：首先学习一个仅编码内容（即可转录为文本的信息）的向量；其次学习一个编码与目标任务相关的所有互补声学特征的向量。我们将所提出的设置应用于情感识别和说话人识别目标任务并进行评估，量化每个模型层中文本特征与声学特征的相对贡献。最后，我们将该方法用于解缠特征归因，因为它使我们能够从文本和声学两个视角识别最显著的语音帧。</div>
+</div>
+<div class="card">
+<div class="title">recAMPLIFY: Large-Scale Pretraining of Recursive Protein Language Models</div>
+<div class="mono"><b>标题：</b>recAMPLIFY：递归蛋白质语言模型的大规模预训练</div>
+<div class="meta-line">Authors: Saurav Jha, Qianli Liao, Robert Vernon</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26747v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26747v1">PDF</a> · <a href="https://huggingface.co/chandar-lab/recamplify">Code1</a> · <a href="https://github.com/chandar-lab/AMPLIFY/tree/recamplify">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<div class="mono" style="margin-top:8px">蛋白质语言模型（pLM）是蛋白质注释和突变效应预测的强大工具，但其进展主要依赖于扩大模型规模和数据量，这使其成本高昂且容易发生记忆化。测试时扩展提供了一条互补路径，但为自回归LLM开发的方法无法直接迁移：掩码编码器缺乏生成循环，且氨基酸不会用推理语言进行表述。为此，我们将递归预训练适配到掩码pLM，其中权重共享的Transformer核心在可调周期数内细化残基对齐的隐藏状态。我们将此方案实例化为recAMPLIFY，这是一个具有1.55亿唯一参数的pLM，使用与AMPLIFY-350M相同的2T token进行训练。尽管参数减少了56%，它仍提升了CASP接触恢复率以及四项监督任务中的三项，尤其将折叠准确率提高了22.5%。由于recAMPLIFY的最优深度因任务和测定而异，我们随后引入了门控混合递归（GMR），这是一个从递归过程中访问的隐藏状态的概率加权混合中解码每个蛋白质的框架。GMR采用标量、低秩或逐维分辨率的学习残差门，以控制每个周期提出的更新被接受到状态中的程度。这将停止与门控统一为单一自适应计算目标，同时将PonderNet式停止作为无门的特例恢复。叠加在recAMPLIFY之上，GMR进一步将预期层深度最多减少37%，尽管准确率权衡因任务而异。机制分析表明，残差门控在训练深度之外控制递归稳定性，且停止深度与生物学特性相关。</div>
+</div>
+<div class="card">
+<div class="title">The Computational Complexity of Counting Linear Regions in ReLU Neural Networks</div>
+<div class="mono"><b>标题：</b>ReLU神经网络中计数线性区域的计算复杂性</div>
+<div class="meta-line">Authors: Moritz Stargalla, Christoph Hertrich, Daniel Reichman</div>
+<div class="meta-line">类别：cs.CC · cs.DM · cs.LG · cs.NE，链接：<a href="https://arxiv.org/abs/2505.16716v4">Abs</a> · <a href="https://arxiv.org/pdf/2505.16716v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">衡量给定ReLU神经网络表达能力的一个既定指标是其将输入空间划分成的线性区域数量。关于线性区域究竟是什么，存在许多不同且不等价的定义。我们系统地评估了哪些论文使用了哪些定义，并讨论了它们之间的相互关系。然后，我们分析了在各种定义下计数此类区域数量的计算复杂性。一般而言，这被证明是一个难解的问题。我们证明了即使对于只有一个隐藏层的网络，也存在NP-和#P-困难性结果，并且对于两个或更多隐藏层，存在强近似困难性结果。最后，在算法方面，我们证明了对于某些常见定义，计数线性区域至少可以在多项式空间中实现。</div>
+</div>
+<div class="card">
+<div class="title">Visual Text Compression as Measure Transport</div>
+<div class="mono"><b>标题：</b>作为测度输运的视觉文本压缩</div>
+<div class="meta-line">Authors: Lv Tang, Tianyi Zheng, Yang Liu</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2605.06708v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.06708v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">视觉文本压缩（VTC）通过将文本渲染为图像并用视觉语言模型重新编码，有望实现高效的长上下文处理，通常比子词分词产生少 $3$--$20\times$ 的解码器 token。然而，token 节省并不能可预测地转化为下游效用：在某些任务上视觉路径匹配或超过文本路径，在另一些任务上则崩溃，而压缩比本身并不能预测会出现哪种情形。因此，缺失的量不是又一份效率总结，而是对视觉编码所诱导的任务相关信息损失的有原则度量。我们通过以测度输运的语言表述 VTC 来解决这一问题。将文本和视觉 token 视为经验概率测度，我们表明 ViT patch 编码器诱导一个前推测度映射，其输运代价分解为来自 patch 内聚合的精度代价和来自跨 patch 碎片化的覆盖代价。两项均可由无需下游标签的探针估计。该表述产生两个可操作结果：一个无需下游标签的路由准则，用于选择对给定输入或基准实例是否使用视觉路径；以及一个输运信息引导的中央凹机制，以更高分辨率重新编码高代价区域。在 Qwen3-4B 上的 $24$ 个 NLP 数据集上，我们的无标签规则在 $17/24$ 个数据集（$70.8\%$）上匹配逐数据集 oracle，并且相对于纯 LLM 将平均任务得分提高 $+3.3\%$，平均 token 减少 $-10.3\%$。</div>
+</div>
+<div class="card">
+<div class="title">Dimension-Optimal Dynamic Regret in Exp-Concave Online Learning</div>
+<div class="mono"><b>标题：</b>指数凹在线学习中的维度最优动态遗憾</div>
+<div class="meta-line">Authors: Yanyi Li, Wendao Wu, Haihan Zhang</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.20187v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.20187v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">跟踪变化的比较器是在线学习的核心问题。对于指数凹损失，先前工作在固定维度下建立了对时间跨度 $T$ 和欧几里得路径长度 $P_T$ 的 $T^{1/3}P_T^{2/3}$ 依赖关系，而维度的最优代价仍未解决。我们通过建立尖锐的 $d^{1/3}$ 弯曲维度因子解决了这一问题，改进了近期切换与区间归约 [1, 2] 的 $d^{2/3}$ 因子。为实现这一改进，我们开发了一种在 $\mathbb{R}^d$ 的紧凸子集上的恰当全信息学习器，它适应未知路径长度，并在固定且与维度无关的直径、梯度和曲率参数下保证
+  $$\operatorname{Reg}_T(u_{1:T}) \le \widetilde{O}\left(d+\min\left\{d^{1/3}T^{1/3}P_T^{2/3},\sqrt{TP_T},T\right\}\right).$$
+  在直径为一的欧几里得球上的匹配下界在 $T\gtrsim d^2$ 时确立了对数因子范围内的极小极大前沿，包括从弯曲速率到更大路径预算的过渡。该下界已对每轮仅依赖一个坐标的损失成立，隔离出跨方向学习的不可避免代价。我们的上界来自对比较器运动的平方根高斯 KL 控制以及为历史重启付出代价的抵消论证。该弯曲学习器维护 $O(\log^2 T)$ 个高斯状态，每轮使用一个梯度，并在马氏投影预言机下以接近 $T$ 线性的时间运行。</div>
+</div>
+<div class="card">
+<div class="title">FDE-Bench: Evaluating End-to-End Delivery from Underspecified Real-World Business Requests</div>
+<div class="mono"><b>标题：</b>FDE-Bench：评估从欠明确真实业务请求出发的端到端交付</div>
+<div class="meta-line">Authors: Huaiming Li, Can Huang, Chufan Wu</div>
+<div class="meta-line">类别：cs.AI · cs.MA，链接：<a href="https://arxiv.org/abs/2610.14539v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.14539v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://baidubce.github.io/FM-Agent/FDE-Bench/">Project1</a></div>
+<div class="mono" style="margin-top:8px">真实业务请求常因一线从业者难以表述其凭经验所知的规则而遗漏关键需求。前置部署工程师（FDE）必须通过对话引出这些需求，并迭代优化方案直至满足客户验收标准。现有优化基准通常从明确目标出发，而澄清类基准往往在既有任务中引入信息缺口。我们提出 FDE-Bench，这是首个基于真实客户项目构建的基准，用于评估智能体在需要交互式需求澄清与迭代优化的端到端交付任务上的表现。其 49 个案例涵盖组合优化与机器学习。澄清目标提炼自一线从业者与 FDE 的讨论。智能体从模拟客户处引出缺失需求，案例特定评估器以客户认可的 FDE 方案为质量参考，依据验收标准评估最终产物。在 18 种智能体配置中，最高平均交付得分仅为 0.5510，而 FDE 参考值为 1.0。最高交付成功率（DSR，即达到该参考值的计划运行占比）仅为 6.12%。这些结果表明，在欠明确的真实业务任务上，所评估的智能体仍无法实现可靠的 FDE 级端到端交付。基准项目页面见 https://baidubce.github.io/FM-Agent/FDE-Bench/。</div>
+</div>
+<div class="card">
+<div class="title">Polar Switch: Fast Muon Orthogonalization with Polynomial Circuits</div>
+<div class="mono"><b>标题：</b>Polar Switch：基于多项式电路的快速 Muon 正交化</div>
+<div class="meta-line">Authors: Zhehang Du, Weijie Su</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26742v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26742v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">Muon 是 2024 年提出的语言模型优化器，它与 2015 年提出的谱梯度下降的主要区别在于使用快速、对 GPU 友好的 Newton--Schulz 多项式对梯度矩阵进行正交化。据此，一系列研究提出了更快的梯度正交化多项式迭代方法，例如 Polar Express 和 Gram Newton--Schulz，二者均基于五次多项式。本文提出 Polar Switch，一种新的多项式梯度正交化方法。借助简单的多项式电路，Polar Switch 以低于五次迭代的 FLOP 成本达到给定的高多项式次数。我们将电路定义为在少量方缓冲区上进行的短序列对称矩阵乘积，含 $k$ 个乘积的电路构成一个受限的奇多项式族，其次数最高为 $2^{k+1}+1$。我们通过数值最小化极分解近似误差的最坏情况界，来选择每个电路中的乘积序列、其系数以及电路的组合方式。该最小化受限于一个 FLOP 预算（计入对称矩阵乘法内核）以及半精度下数值稳定性的舍入约束。我们推荐的两种 Polar Switch 方法在方阵上比 Polar Express 运行时低 15.5--18.7\%，在长宽比为 3.25、3.5 和 8 的矩形矩阵上比 Gram Newton--Schulz 运行时低 8.6--16.2\%，且近似精度相当。在 Modded-NanoGPT \#91、Qwen3-0.6B 和 Gemma 3-1B 的预训练中，Polar Switch 达到的最终验证损失与已有正交化方法相近。在这些运行中，两种推荐方法各自正交化了超过 1400 万个矩阵，估计的输出谱范数从未超出设计界 3\% 以上，证明了其数值稳定性。</div>
+</div>
+<div class="card">
+<div class="title">CAVA: Complementary-Label-Aware Data Valuation</div>
+<div class="mono"><b>标题：</b>CAVA：互补标签感知的数据估值</div>
+<div class="meta-line">Authors: Tan-Ha Mai, Hsuan-Tien Lin, Vu Nguyen</div>
+<div class="meta-line">类别：cs.LG · cs.CV，链接：<a href="https://arxiv.org/abs/2610.26734v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26734v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">互补标签学习（CLL）从指明实例不属于某一类别的标签中训练分类器。此类标签易于从众包工作者或视觉语言模型（VLM）处廉价收集，因而对大规模标注颇具吸引力。然而，这两种来源都可能错误地将真实类别指定为互补标签。此类标注错误在CLL中尤为有害，因为模型被显式训练以抑制正确答案。最优传输（OT）数据估值通过将训练数据与干净验证集进行比较来识别有害样本，但直接将其迁移到CLL会产生语义错配：标签$c$在训练中表示非类别$c$，而在验证中表示类别$c$。我们表明，这会使OT标签组成为噪声混合体，其行为取决于噪声率。迁移后的得分仅在噪声足够高时具有信息量，在$M$个类别的交叉率$1/M$处变得无信息量，并在其下发生反转，而实际的CLL标注通常在该区间运行。我们提出CAVA，引入互补标签代价和标签间隔，以分离每个互补标签对传输势的贡献。该间隔在噪声率变化时保持一致方向，以闭式精度的无参数阈值检测对角噪声，并允许将检测到的样本回收为普通标签监督。在合成和人工标注基准上，CAVA几乎完美地分离对角噪声，而直接迁移的OT估值表现比随机更差。仅使用一小部分干净验证数据，它还能改善我们评估的每一个CLL目标，表明一旦显式建模互补监督的语义，基于OT的估值就变得可靠。</div>
+</div>
+<div class="card">
+<div class="title">Cross-Fitting for Neural Posterior Estimation</div>
+<div class="mono"><b>标题：</b>神经后验估计的交叉拟合</div>
+<div class="meta-line">Authors: Jeffrey Regier</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26733v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26733v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">神经后验估计（NPE）将摊销条件密度估计器拟合到完整数据实现的模拟训练集上。NPE的训练目标（对数似然）倾向于给训练点分配任意高密度的后验近似，而典型的摊销条件密度估计器族（如归一化流、高斯编码器）足够灵活以满足这一要求。由此产生的极端过度自信策略难以泛化到留出数据。早停和其他正则化方法可以防止这种退化，但它们仅限于沿着由样本内残差设定的不利优化轨迹选择后验近似，其中后验均值欠拟合而后验方差过拟合。为避免这种权衡，我们提出交叉拟合NPE（CF-NPE），它使用样本拆分将条件均值估计与后验高阶矩的估计分开。使用$K$折交叉拟合，CF-NPE拟合$K$个后验均值回归器，然后对得到的折外残差拟合条件密度估计器。在合成数据和宇宙学应用的实验中，CF-NPE比标准NPE获得更高的留出对数似然，并且通常改善校准。CF-NPE在高维、模拟受限的设置中最有用。</div>
+</div>
+<div class="card">
+<div class="title">From Solvers to Research: Large Language Model-Driven Formal Mathematics at the Research Frontier</div>
+<div class="mono"><b>标题：</b>从求解器到研究：大语言模型驱动的研究前沿形式化数学</div>
+<div class="meta-line">Authors: Eric Jiang, Xiao Liang, Yingjia Wan</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2607.07779v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.07779v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">近期，AI for Mathematics（AI4Math）领域的发展，尤其是大语言模型（LLM）驱动的定理证明器，已通过交互式定理证明（ITP）语言在针对定义明确数学问题的形式化证明生成方面取得了显著成功。然而，当前系统在应对前沿研究数学（如发现新定理或解决开放猜想）方面仍存在根本性局限，这类问题往往具有开放性、欠明确性，并涉及多层抽象。我们认为，AI4Math 系统的下一次飞跃需要实现从预定义问题求解器到研究智能体的决定性转变，使其能够以严格的形式化数学推理应对前沿数学挑战。在本立场论文中，我们对该领域进行了系统综述，涵盖数据集、自动形式化与证明合成。更重要的是，我们识别了现有系统在充当数学研究智能体方面的核心局限，考察了数据集、关系结构、数学探索、工具生态与人机协作等方面的问题，并勾勒出 AI4Math 未来的战略路线图。</div>
+</div>
+<div class="card">
+<div class="title">CTFS : Collaborative Teacher Framework for Forward-Looking Sonar Image Semantic Segmentation with Extremely Limited Labels</div>
+<div class="mono"><b>标题：</b>CTFS：面向标签极度有限的前视声呐图像语义分割的协同教师框架</div>
+<div class="meta-line">Authors: Ping Guo, Chengzhou Li, Guanchen Meng</div>
+<div class="meta-line">Venue: CVPR 2026</div>
+<div class="meta-line">类别：cs.CV · cs.AI，链接：<a href="https://arxiv.org/abs/2603.21071v3">Abs</a> · <a href="https://arxiv.org/pdf/2603.21071v3">PDF</a> · <a href="https://github.com/pingggg516/CTFS">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">作为最重要的水下感知技术之一，前视声呐具有独特的成像特性。声呐图像常受严重斑点噪声、低纹理对比度、声影和几何畸变的影响。这些因素使得传统教师-学生框架在标签数据极度有限的条件下难以在声呐语义分割任务中取得令人满意的性能。为解决该问题，我们提出了一种面向前视声呐图像的协同教师语义分割框架。该框架引入由一个通用教师和多个声呐专用教师组成的多教师协同机制。通过采用多教师交替引导策略，学生模型能够在学习通用语义表示的同时捕捉声呐图像的独特特征，从而实现更全面、更鲁棒的特征建模。考虑到声呐图像的挑战性可能导致教师生成大量噪声伪标签，我们进一步设计了跨教师可靠性评估机制。该机制通过评估多视图和多教师间预测的一致性与稳定性来动态量化伪标签的可靠性，从而减轻噪声伪标签带来的负面影响。值得注意的是，在FLSMD数据集上，当仅有2%的数据被标注时，我们的方法相比其他最先进方法在mIoU上提升了5.08%。</div>
+</div>
+<div class="card">
+<div class="title">Injection of Space Radiation Errors on Low-power NVM using Generative Deep Learning</div>
+<div class="mono"><b>标题：</b>使用生成式深度学习在低功耗NVM上注入空间辐射错误</div>
+<div class="meta-line">Authors: Eleonora Giudici, Antonio Miele, Luca Mottola</div>
+<div class="meta-line">类别：cs.AR · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26724v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26724v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们为非易失性存储器（NVM）器件开发了一个错误模型，用于表示低地球轨道（LEO）CubeSat任务中所经历的物理故障效应。该CubeSat搭载一款现成的低功耗铁电RAM（FRAM）芯片，并按照预定义模式运行重复的读/写测试。我们将从卫星接收到的每个内存快照与参考位图进行比较，以识别位错误。我们目视分析内存快照中的错误值分布，发现它们经常按照规则的空间模式分布。我们定义了一种生成式深度学习技术，以自动学习这些空间模式，并合成生成模仿所观察模式的额外错误模式。该模型能够为一般应用级实验产生内存错误。我们的初步验证表明，在将模型输出与我们收集的数据进行比较时，生成的位翻转中有0.92对应于内存快照中的位翻转，且模型捕获了所观察位翻转的0.91。对10,000个生成错误模式中位翻转空间分布的比较还提供了0.073的Wasserstein距离，表明两种分布在其概率质量最大可能位移上相差约7%。</div>
+</div>
+<div class="card">
+<div class="title">Copying Under Repetition: From Prefix Matching to Position Hashing</div>
+<div class="mono"><b>标题：</b>重复下的复制：从前缀匹配到位置哈希</div>
+<div class="meta-line">Authors: Anxin Guo, Tianlong Huang, Chenxiao Yang</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26722v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26722v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">前沿LLM几乎能完美复制随机文本，但常常在长重复字符块上越界或截断。在重复字符串中，局部内容匹配不再能可靠地确定复制应继续的位置或何时停止。尽管如此，我们证明一个具有$O(\log\log N)$位精度和$O(\log N/\log\log N)$宽度的两层Transformer可以复制直到选定设计视野$N$的每个字符串，并在任意重复下正确终止。我们使用注意力值和输出的RoPE式旋转（VO旋转），以小素数周期编码分隔符锚点距离对这些素数的模。根据中国剩余定理，这些周期编码共同区分所有所需距离，使一个检索规则能够选择下一个源token或结束标记。相比之下，我们证明了在顺序有限精度softmax累积下复制的一个与宽度无关的不可能性结果。它适用于唯一位置输入是最终变为常数的加性注意力偏置的Transformer，包括NoPE和ALiBi的递归实现。一旦相同token连续段超过由此产生的饱和阈值，进一步重复使logits保持不变。如果该阈值随$N$亚线性增长，这些模型无法既完成长的全相同复制又正确停止，这一模式类似于前沿LLM的终止错误。在合成复制实验中，基线Transformer模型即使在训练范围内也在长重复字符串上失败。相比之下，训练后的VO模型以接近完美的准确率泛化到训练长度之外，直到长度$\approx 5005$，即所选素数的周期乘积。</div>
+</div>
+<div class="card">
+<div class="title">Deep Pontryagin Learning for Continuous-Time Stochastic Control with Jumps</div>
+<div class="mono"><b>标题：</b>带跳跃的连续时间随机控制的深度庞特里亚金学习</div>
+<div class="meta-line">Authors: Jean-Loup Dupret, Patrick Cheridito</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26718v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26718v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们开发了一个深度庞特里亚金学习框架，用于自然容纳跳跃扩散的高维连续时间随机控制问题。与直接策略优化（通过整个时间离散化动力学反复对目标求导）不同，我们的方法通过显式纳入庞特里亚金随机最大值原理中的状态敏感性信息，将伴随学习与策略改进分离。对于固定的马尔可夫控制，我们首先沿模拟状态轨迹通过时间反向传播奖励来计算路径伴随标签，并通过监督回归步骤将这些标签投影到马尔可夫状态上。然后通过强制逐点哈密顿平稳条件来更新控制。我们证明所得投影伴随过程满足离散时间庞特里亚金原理，并且当时间步长趋于零时收敛到相应连续时间伴随倒向随机微分方程的解。数值实验说明了该方法的准确性、稳定性和可扩展性。</div>
+</div>
+<div class="card">
+<div class="title">Doubly Robust Learning of Heterogeneous Survival Treatment Effects under Time-Varying Treatments</div>
+<div class="mono"><b>标题：</b>时变治疗下异质生存治疗效应的双稳健学习</div>
+<div class="meta-line">Authors: Tomàs Garriga, Munib Mesinovic, Luke De Bretton-Gordon</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26710v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26710v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在医学等领域（例如，决定哪种治疗序列在生存概率方面更优），从时变治疗下的时间-事件数据中估计异质生存治疗效应（HSTEs）非常重要。然而，这项任务具有挑战性，因为治疗决策、患者特征和删失概率往往共同演变，需要对治疗和删失进行序贯调整。现有的生存学习器大多考虑单一的基线治疗分配，而纵向治疗效应学习器通常假设结局未删失。在本文中，我们提出了一种新颖的双稳健学习器，用于时变治疗和历史依赖删失下的异质生存治疗效应。我们的框架将干预窗口与生存期分离，治疗在有限时期内处方，之后护理遵循其自然过程。我们进一步建立了Neyman正交性、速率双稳健性和准神谕效率等有利的理论性质。该框架适应于灵活机器学习模型进行干扰估计和治疗效应回归。我们通过若干数值实验评估我们的学习器，证明了其有效性。</div>
+</div>
+<div class="card">
+<div class="title">GeoSplit: Selective Edge--Server Map Acquisition for Cross-User Travel-Mode Recognition</div>
+<div class="mono"><b>标题：</b>GeoSplit：面向跨用户出行模式识别的选择性边缘—服务器地图获取</div>
+<div class="meta-line">Authors: Zepu Wang, Luyao Niu, Ruolin Li</div>
+<div class="meta-line">类别：cs.LG · cs.DC，链接：<a href="https://arxiv.org/abs/2610.26707v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26707v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">网络化移动感知将本地轨迹推断与远程地理空间上下文耦合，使通信决策成为预测系统的一部分。我们提出GeoSplit，一种用于出行模式识别的边缘—服务器框架，它将地图证据的效用、其训练时迁移以及运行时的选择性获取分离开来。在仅使用10%标签的GeoLife上，我们在用户—日分组和用户不相交分组下评估这些组件。对于未见用户，对齐的全地图上下文将宏F1从0.7154提升至0.7864，而地图信息蒸馏得到一个仅运动学生模型，达到0.7225。通过紧凑查询接口，熵门控达到0.7729宏F1，而全查询为0.7738，查询了39.5%的轨迹并将应用负载减少60.5%。在用户—日分组下，选择性查询与全查询得分在21.6%查询率下同样接近。学习价值估计和概率融合未带来一致改进。这些结果说明了面向智能交通感知任务的通信高效边缘—服务器推理。</div>
+</div>
+<div class="card">
+<div class="title">Democratizing MoE inference on commodity GPUs with CoMoE</div>
+<div class="mono"><b>标题：</b>用CoMoE在消费级GPU上普及MoE推理</div>
+<div class="meta-line">Authors: Ruwen Fan, Yuezhi Zu, Minhui Xie</div>
+<div class="meta-line">类别：cs.DC · cs.LG，链接：<a href="https://arxiv.org/abs/2610.09424v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.09424v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">部署混合专家（MoE）模型高度依赖专家并行，这会产生密集的GPU间通信。因此，最先进的推理系统需要数据中心GPU中高带宽的P2P互连（如NVLink）来处理海量token路由，导致部署成本高得难以承受。消费级GPU以显著更低的成本提供相当的计算能力，有望为个人普及MoE推理并实现隐私保护的本地部署。然而，其带宽受限（仅有较弱的PCIe总线带宽）且由主机中介的互连（不支持P2P）引入了严重的通信瓶颈。
+  我们提出CoMoE，一种通信高效的MoE推理系统，通过新颖的以主机为中心的路由解决这一不匹配问题。我们的关键洞察是，独特的通信拓扑提供了将主机提升为主动路由枢纽的机会，这可以从根本上减少通信量并消除全局同步引起的停顿。具体而言，对于token分发，我们引入主机支持的token多播，将共享token仅向主机写入一次，从而消除出站传输冗余。对于token合并，我们提出一种使用主机暂存缓冲区的细粒度、token级聚合机制，它取代了僵化的全局同步并缓解了掉队者效应。在RTX 5090 GPU上的评估表明，CoMoE将推理吞吐量提升高达1.46倍，仅以23.4%的硬件成本接近支持NVLink的A800 GPU的性能。</div>
+</div>
+<div class="card">
+<div class="title">Towards Robust Model Organisms for Eliciting Latent Knowledge</div>
+<div class="mono"><b>标题：</b>面向稳健模型生物以引出潜在知识</div>
+<div class="meta-line">Authors: Lennart Finke, Hardik Bhatnagar, Euodia Dodd</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26698v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26698v1">PDF</a> · <a href="https://huggingface.co/collections/lennart-finke/sandbagging">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">AI安全中的一个关键问题是引出潜在知识（ELK），即从比其监督者更有知识且未对齐的模型中提取信息。例如，一个用于扫描代码漏洞的未对齐模型可能希望隐瞒其发现，即故意保留（sandbag），以便日后利用这些漏洞。为了实证研究ELK，我们需要反映这一设定的模型生物。现有的模型生物在多个方面存在不足。在这项工作中，我们训练模型生物在漏洞检测任务中隐瞒解决方案。我们结合转录蒸馏、反提示和防篡改训练，以灌输我们认为对有用的ELK测试平台至关重要的三个特性：1）选择性，模型在认为监督者不知道答案时故意保留，否则配合；2）稳健性，模型抵抗引出；3）保留性，模型保持对监督者的知识优势，而不是失去相关能力。我们训练了一系列模型生物，并表明我们最强的模型在稳健性上大幅优于先前模型，同时保持其他两个特性不变。我们希望我们的模型生物能为社区提供有用的ELK测试平台，并且我们的方法能激发开发越来越具有挑战性的模型生物。
+  我们所有的代码、模型和数据集均可在 https://huggingface.co/collections/lennart-finke/sandbagging 获取。</div>
+</div>
+<div class="card">
+<div class="title">Hierarchical Token Merging with Recursive Autoencoders for Unsupervised Grammar Induction</div>
+<div class="mono"><b>标题：</b>用于无监督语法归纳的递归自编码器分层词元合并</div>
+<div class="meta-line">Authors: Murat Guney Kemal, Robert Lieck</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26695v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26695v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">分层抽象是许多数据模态的基本原理，使复杂序列能够在多个层次上以组合方式表示。在没有显式结构监督的情况下直接从数据中学习此类层次结构，仍然是表示学习的核心挑战。我们研究仅通过压缩能否涌现出有意义的层次结构。虽然自编码器通过重建学习压缩表示，但这一目标并不必然倾向于有意义的组合结构。我们通过无监督语法归纳来研究这一挑战，其中底层层次结构可以被显式评估。我们引入一种分层词元合并自编码器，它递归地将相邻词元组合成越来越抽象的表示，通过变分信息瓶颈压缩整个序列。该模型通过使用动态规划对可能的二叉树进行边缘化，联合学习表示和层次结构。为解决训练不稳定性，我们通过无监督共识和蒸馏组合独立训练的模型。在合成歧义语法上的实验表明，在没有结构监督的情况下涌现出了有意义的层次结构。所得模型在留出序列上达到93%的语法解析有效性和93%的精确重建，而最强的平凡基线解析有效性为42%。这些发现为分层词元合并作为无监督结构发现和抽象学习的机制提供了概念验证。</div>
+</div>
+<div class="card">
+<div class="title">Parallel Language Models via Variational Decoding</div>
+<div class="mono"><b>标题：</b>通过变分解码的并行语言模型</div>
+<div class="meta-line">Authors: Felix Draxler, Robin C. Geyer, Daniel Geyfman</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26693v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26693v1">PDF</a> · <a href="https://github.com/mandt-lab/plm">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">自回归语言模型每次前向传播只生成一个词元。这导致高推理延迟，尤其是当模型为提升质量而扩大规模时。本文提出并行语言模型（PLMs），通过潜在辅助变量路由依赖关系，在一次前向传播中生成相互一致的词元。PLMs 使用变分界进行训练，该界可简化为自回归损失加并行解码损失。实验表明，PLMs 在帕累托前沿上比自回归和离散扩散基线更快且更优。预训练的 PLMs 在 80M 到 3B 参数模型规模上达到接近自回归的预训练损失，且加速比随模型规模呈幂律增长。经后训练后，我们的 1.3B 模型在数学、编程和指令遵循基准上匹配或超越同等训练的自回归模型，推理加速 $2.3\text{-}5.7\times$。综上，我们表明并行生成可以通过单一训练目标以自回归质量进行训练。代码将发布于 https://github.com/mandt-lab/plm。</div>
+</div>
+<div class="card">
+<div class="title">Intra-Rubric Reward Divergence: Mitigating Rubric Hacking through Latent Dimension Recovery and Balancing</div>
+<div class="mono"><b>标题：</b>评分细则内奖励分歧：通过潜在维度恢复与平衡缓解评分细则攻击</div>
+<div class="meta-line">Authors: Jianqiang Xia, Han Xu, Dianxi Shi</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26685v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26685v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">评分细则攻击限制了基于评分细则的强化学习中的性能和训练鲁棒性。通过将评分细则分解为子维度，我们揭示了评分细则内奖励分歧：随着总评分细则分数的增加，某些子维度分数系统性下降，表明模型牺牲特定质量方面以优化聚合目标。从子维度视角，我们观察到两种现象：（1）维度不平衡，导致策略偏向覆盖较多的维度；（2）维度缺失，导致奖励与真实质量之间的系统性差距。为缓解这些问题，我们提出公平竞争维度聚合（FRDA），其让生成结果在每个维度内分别竞争以缓解评分细则不平衡，以及残差语义维度补全（RSDC），其挖掘整体偏好信号中隐式编码的评估维度以补全评分细则覆盖。在聊天、科学和医学领域的实验表明，FRDA以更稳定的改进缓解评分细则攻击，而RSDC优于单奖励训练和朴素多奖励聚合，产生总体更高质量的响应。</div>
+</div>
+<div class="card">
+<div class="title">LLM-Driven Autonomous Vehicles Can Inherit Human Driver Biases in Pedestrian Yielding: Results and Implications From a New Benchmark</div>
+<div class="mono"><b>标题：</b>LLM驱动的自动驾驶汽车在行人让行中可能继承人类驾驶员偏见：来自新基准的结果与启示</div>
+<div class="meta-line">Authors: Irem Yoldas, Jie Zhang, Odinaldo Rodrigues</div>
+<div class="meta-line">类别：cs.AI · cs.CL · cs.CV · cs.CY，链接：<a href="https://arxiv.org/abs/2609.00192v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.00192v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">公众对自动驾驶汽车（AV）的信任可能不仅取决于技术成功，还取决于其决策的公平性。尽管AV研究近期趋势是使用通用“常识”模型来指导AV决策，但这些模型在多大程度上继承人类驾驶偏见仍研究不足。鉴于心理学研究表明人类驾驶员偏见存在，例如美国对黑人行人的让行率较低，我们认为模型偏见分析也应成为AV评估的一部分。具体而言，本文提出两种针对大语言模型（LLM）和视觉语言模型（VLM）的新偏见测试方法——“其他条件相同”测试和“自一致性”测试，以及一个新基准（FairYield）来评估行人让行决策中的偏见。我们的发现表明，LLM和VLM的让行决策都可能受模型对行人性别、族裔、宗教、残疾、年龄、肤色和社会经济地位预测的影响。虽然偏见的类型和程度因模型而异，但我们强调了常见模式，并对“常识”模型范式提出质疑，特别是需要要么修订该范式，要么解决下游偏见问题。</div>
+</div>
+<div class="card">
+<div class="title">StepBench: Diagnosing Real-World Procedural Understanding in AI Agents</div>
+<div class="mono"><b>标题：</b>StepBench：诊断AI智能体中的真实世界程序理解</div>
+<div class="meta-line">Authors: Hossein A. Rahmani, Bin Wu, Chaeeun Lee</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26679v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26679v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">评估智能体的规划能力在开放域任务中仍具挑战性，因为通过执行来验证程序往往不切实际。现有评估通常只评估最终计划，无法区分缺失、错误或顺序错乱等程序性错误。我们提出STEPBENCH，一个包含从wikiHow爬取的6,885个经核实程序的基准，覆盖81个开放域类别。从每个程序中，我们衍生出5个诊断任务：四个具有确定性答案，涉及被保留、错误或打乱的步骤，一个要求生成下一步。我们还评估完整计划生成，以考察诊断性能与端到端计划有效性之间的相关性。在各任务中使用相同程序，使我们能够直接比较不同的规划能力。对于生成，STEPEVAL识别阻碍目标完成的关键失败。在12个模型的14种配置中，我们发现各规划能力之间存在显著差异，其中步骤排序最为困难：最强模型仅能正确排序63.0%的程序，对于步骤数达九个或以上的程序，该比例降至33.1%。错误步骤检测还能预测各模型被评判的计划有效性，表明这是一种评估生成质量的更低成本替代方案。在包含2026年发布的214个程序的STEPBENCH-Val上，理解分数和排名保持稳定，表明记忆的影响有限。</div>
+</div>
+<div class="card">
+<div class="title">Which Model for Which Role? Cost-Efficient Pareto Recommendation for LLM Agentic Workflows</div>
+<div class="mono"><b>标题：</b>哪个角色用哪个模型？面向LLM智能体工作流的成本高效帕累托推荐</div>
+<div class="meta-line">Authors: Qian Xie, Wenyue Hua, Yueli He</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">类别：cs.LG · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26676v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26676v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">LLM智能体工作流越来越多地为专门化角色采用不同模型。用户可能偏好任务质量与部署成本之间的不同权衡，有时还会考虑延迟。找到好的分配方案会带来独立于评估多个候选方案的搜索成本。我们提出成本耦合Gittins（CC-Gittins），这是单目标成本感知Gittins搜索的多目标扩展，用于帕累托推荐。它利用了评估成本与部署成本之间的耦合：部署成本更高的分配方案，其评估成本也更高。该搜索在追求更高质量与更低部署成本之间交替进行，并复用每次评估来同时为两种搜索提供信息。每批之后，CC-Gittins推荐在经不确定性调整的质量与部署成本估计下非支配的分配方案。我们在来自具有2至5个角色、最多1,681个候选分配方案的工作流的八个质量—成本矩阵上评估CC-Gittins。我们还以延迟作为第三个目标评估该方法。在八个基准上，CC-Gittins以约10%的穷举评估成本恢复了真实帕累托前沿的相当大一部分，并在30%时以少量假阳性恢复了前沿的大部分。</div>
+</div>
+<div class="card">
+<div class="title">PACT: Plan-Augmented Coordination via Trace-Graphs for Dynamic Multi-Agent Combinatorial Optimization</div>
+<div class="mono"><b>标题：</b>PACT：通过轨迹图实现计划增强协调以用于动态多智能体组合优化</div>
+<div class="meta-line">Authors: Xiao Zhou, Alex Schutz, Victor-Alexandru Darvariu</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26671v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26671v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">近期已有研究探索多智能体方法，以提升神经组合优化中强化学习的可扩展性。现有方法假设问题实例的所有信息都是预先已知的。然而，现实问题往往是动态的：相关信息随着智能体采取动作而逐步揭示（例如，在路径问题中到达某条边时才发现其不可通行）。在这种情况下，现有方法无法协调智能体去探索和利用逐步揭示的信息。为应对由此产生的协调挑战，我们提出 PACT（Plan-Augmented Coordination via Trace-graphs，通过轨迹图实现计划增强协调）。PACT 用表示智能体计划的辅助节点增强环境图，这些节点与资源节点相连以指示未来的依赖关系。所提出的在增强图上的消息传递方案将智能体间协调建立在环境之上，并实现主动而非被动的冲突解决。我们表明，PACT 在动态问题上相对于基线提升了求解质量，并且在更大实例上表现出最佳的迁移效果，值得注意的是，在这些实例上它优于拥有实例不确定性特权访问的集中式预言机。</div>
+</div>
+<div class="card">
+<div class="title">Nested Shared-Operator Recursion on ARC-AGI-1: An Empirical Study of HRM, TRM and URM</div>
+<div class="mono"><b>标题：</b>ARC-AGI-1 上的嵌套共享算子递归：HRM、TRM 与 URM 的实证研究</div>
+<div class="meta-line">Authors: Sara Neri, Eugenio Gaeta, Andrea Ceschini</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26666v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26666v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">递归推理模型通过反复应用学习到的算子来精炼持久的内部状态。我们研究：在参数数量匹配的情况下，增加一个持久中间状态——该状态通过同一算子整合较快状态的重复更新——是否能相对于各模型家族的基线提升预测性能。我们在操作层面定义了这种组织方式，并在三种架构中实现：分层推理模型（HRM）、微型递归模型（TRM）和通用推理模型（URM）。使用 ARC-AGI-1 上的官方代码库，我们将每个基线与其参数匹配的嵌套变体进行比较。我们评估来自训练期间演示可用的任务的留出查询。实验使用单 GPU 预算，远低于已发表的训练协议。在测试条件下，嵌套变体在 token 准确率、预测损失或精确求解方面均未显示出一致优势，所有配置的精确求解率仍接近零。因此，结果使该假设仍悬而未决。我们指定了一项验证性比较，包含有信息量的基线、多个随机种子、隔离嵌套的对照以及预定义标准，以确定这种组织方式是否值得进一步开发。</div>
+</div>
+<div class="card">
+<div class="title">Honeypots for AI Agent Insider Threats</div>
+<div class="mono"><b>标题：</b>面向AI代理内部威胁的蜜罐</div>
+<div class="meta-line">Authors: Jan Wehner, Jam Kraprayoon</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26664v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26664v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">部署在组织内部的AI代理若犯错、被攻击者攻陷或追求不一致目标，可能构成内部威胁。我们提出将蜜罐作为一种AI控制方法，以提升内部代理部署的安全性。防御者不应仅将蜜罐用于部署前评估，而应在整个生产环境中布置有害行为的诱饵机会，以检测不当行为、归罪恶意代理并威慑攻击。此类蜜罐可在真实部署条件下诱发不当行为，即使思维链可监控性下降也能识别恶意代理，向安全团队提供关于代理不当行为的可靠警告，并能低成本扩展到大量代理实例。蜜罐的存在还引入了哪些机会是真实的不确定性，从而威慑恶意代理发动攻击并降低不当行为发生率。我们讨论蜜罐的局限性，并给出理由预期其随代理能力提升仍将有效。最后，我们概述关键研究问题，以衡量并改进蜜罐有效性：测试蜜罐鲁棒性、比较其检测效果与其他监控方法、理解其归罪与威慑效应，以及构建支撑基础设施。</div>
+</div>
+<div class="card">
+<div class="title">AllPath: Layered Verification for a Deployed, Self-Revising LLM Trading Agent under Human-Gated and Autonomous Regimes</div>
+<div class="mono"><b>标题：</b>AllPath：面向已部署、可自我修订的LLM交易代理的分层验证——人类把关与自主两种机制</div>
+<div class="meta-line">Authors: Tian Zhang, Meng Li</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26662v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26662v1">PDF</a> · <a href="https://github.com/dukesky/allpath-trading-agent">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">LLM交易代理几乎只在回测和自主基准测试框架中评估。而在部署场景中，动作不可逆，这引出了另一个问题：谁来验证代理的动作，以及每个验证者能在结构上捕获哪些失败？我们报告了AllPath，一个部署在实时模拟经纪账户上的个人LLM交易代理。系统通过确定性规则引擎监控持仓，每晚回顾自身当日表现并提出对自身交易策略的修订。验证分为三层。代码验证不依赖判断的部分：确定性门控执行风险限制，并阻止任何未通过完整性检查的策略修订。代理在固定边界内自我验证：其夜间回顾有迭代上限，且没有可执行动作的工具。人类通过展示每个提案当前状态的审批界面来验证判断。我们还比较了实时系统上代理自我修订的两种验证策略：两周半内所有自我修订均经人类把关，随后五周内反思修订在相同代码门控后自动应用，而操作员的聊天通道始终经人类把关。每一层捕获了不同类型的失败。代码门控未拒绝任何提案；其作用是保持修订的一致性。人类拒绝了两个通过所有代码检查的提案，均因对市场的分歧，随后移除了代理自行添加的19条规则中的11条，中位滞后为八天。最具启发性的生产事故，例如策略被静默地置于未监控状态，通过了所有门控；操作员手动发现了它们，每次的修复都是接口变更，使该状况可见。我们贡献了分层架构、两种机制的记录以及生产事故分类法，这些在回测中均不可观察。</div>
+</div>
+<div class="card">
+<div class="title">Tandem: Serving Hybrid Linear-Attention GUI Agents on Mobile NPUs</div>
+<div class="mono"><b>标题：</b>Tandem：在移动NPU上服务混合线性注意力GUI智能体</div>
+<div class="meta-line">Authors: Zhuomin Chen, Jingchao Ni, Xu Zheng</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26660v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26660v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">智能手机GUI智能体通过反复读取屏幕并向模型询问下一步操作，在移动应用中完成任务。移动神经处理单元（NPU）支持本地执行，使屏幕内容保留在手机上，但模型延迟会随每个操作累积。混合线性注意力模型降低了内存需求，但复用其循环状态需要在适当的输入位置设置检查点。智能体请求保留指令但重写近期历史，因此为聊天续写设计的检查点策略可能错过可复用的前缀。为推测解码保留回滚状态还可能使提示处理离开NPU的矩阵单元，增加的开销超过短操作输出上的解码节省。已加载的模型还可能使NPU在任务之间保持唤醒。我们提出Tandem，一种用于移动NPU上混合GUI智能体的运行时。Tandem在连续提示出现分歧处保存循环状态，使后续请求能够复用先前处理的上下文。它将大部分预填充保留在矩阵单元上，并通过短的逐令牌尾部生成回滚状态。其验证内核为所有候选令牌一次性读取每个权重块。在请求突发之间，Tandem释放NPU功耗投票而不卸载模型。我们在llama.cpp中实现Tandem，并在两代骁龙上对录制的智能体交互进行评估。在骁龙8 Elite上，相对于llama.cpp最快的NPU配置，Tandem将基于文本的屏幕描述的每步延迟降低30%，截图降低16%，将每文本步能耗降低33%，并在模型加载时将待机功耗从0.76 W降至0.22 W。</div>
+</div>
+<div class="card">
+<div class="title">The Development of Sycophancy in Language Models: Tracing Vulnerabilities from Pretraining to Post-Training</div>
+<div class="mono"><b>标题：</b>语言模型中谄媚行为的发展：从预训练到后训练追踪脆弱性</div>
+<div class="meta-line">Authors: Haonan Huang, Chengkun Cai</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26655v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26655v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">语言模型可以在没有新证据的情况下改变已确定的答案以迎合用户的观点或反驳。然而，这种行为在训练过程中何时发展，以及已发布模型从早期阶段继承了什么，仍不清楚。我们追踪了30个开放模型谱系的741个检查点，从早期预训练到已发布模型。我们在道德场景中植入初始判断，并测量模型在多大程度上遵循用户陈述的观点或在压力下放弃其判断。在大多数谱系中，该行为在后训练之前就已存在，其平均强度在不同谱系的不同阶段朝任一方向变化。在单个问题层面上出现了更清晰的模式。除无压力下的回答外，预训练行为几乎不能预测已发布模型会在哪些问题上让步。该模式在后训练期间形成：在有监督微调的路径上，微调检查点能预测其中一部分，偏好优化检查点能预测其中大部分。从同一基础模型沿另一路径训练的兄弟模型预测能力要低得多：对于Tülu-3 8B，其自身的偏好阶段检查点消除了85%的剩余预测误差，而兄弟模型仅消除19%。内部状态增加了预测信息，但不改变这一排序。相似的平均分数掩盖了不同的脆弱性，训练历史对于审计已发布模型很重要。</div>
+</div>
+<div class="card">
+<div class="title">HyWe: Unifying Search and Operation for Real-World Hybrid Web Tasks</div>
+<div class="mono"><b>标题：</b>HyWe：为真实世界混合网页任务统一搜索与操作</div>
+<div class="meta-line">Authors: Zijian Cai, Haowei Liu, Kailai Chen</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.16319v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.16319v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">真实世界的混合网页任务既需要信息收集，也需要页面交互，然而基于搜索和基于操作的智能体却是分别开发和评估的。为弥合这一差距，我们提出 HyWe，一个在单一模型和轨迹中统一这两种能力的框架。其两种模式使用专用提示和工具集来维持子目标执行；显式切换选择所需能力，共享历史使每种模式能够基于另一模式的发现继续推进。为提供这些行为的演示，我们开发了 HyWeCollector，一个全自动流水线，利用任务原型、四种切换模式和多智能体合成来生成经过验证的混合轨迹。我们在这些演示上训练 HyWe-35B，以在单个 35B 网页智能体中统一高效信息收集与浏览器交互。为评估混合任务完成情况，我们提出 HyWeBench：100 个由人工编写、位于与训练不同网站上的任务，配有手写子目标检查表和基于结果的评估流水线。混合训练使 HyWe-35B 在该基准上达到 47.0% 的成功率，较未训练的基座模型提升 19.0 个百分点，并优于现有的基于搜索和基于操作的智能体。即使在训练之前，同一基座模型使用 HyWe 也能解决 28.0% 的任务，而在单一提示下使用所有工具时为 11.0%。除混合任务外，HyWe-35B 在 Online-Mind2Web 和 WebVoyager 上分别达到 59.0% 和 88.3% 的成功率，优于现有开源基线，并且与 Fara-7B 相比，将每个成功任务的动作成本分别降低 48.3% 和 51.9%。</div>
+</div>
+<div class="card">
+<div class="title">The Effectiveness and Durability of Pretraining Data Filtering in Protein Language Models</div>
+<div class="mono"><b>标题：</b>蛋白质语言模型中预训练数据过滤的有效性与持久性</div>
+<div class="meta-line">Authors: Aaron Maiwald, Roderick McNeill, Jaeyoung Lee</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26651v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26651v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">预训练过滤是开放权重语言模型最常见的防护措施之一。本文以ESM-2系列蛋白质语言模型为对象，研究其有效性、持久性与可扩展性。我们发现，从预训练数据中过滤病毒蛋白质会显著降低模型在病毒蛋白质上的掩码语言建模、突变效应预测和长程接触预测性能，同时在很大程度上保持非病毒蛋白质上的性能。这些效应集中在感染人类的病毒蛋白质上，并随着模型规模从8M扩展到3B参数而增强。随着模型规模增大，我们发现严格过滤变得更有效。然而，在来自被移除病毒家族的序列上进行微调可恢复失去的性能。尽管恢复性能的成本随模型规模增加，即使对最大的模型，也仅需约80美元的H100计算时间。本工作表明，预训练过滤在选择性降低病毒蛋白质性能方面具有中等有效性，但在适度的计算资源和相关数据获取条件下，无法持久抵御微调。</div>
+</div>
+<div class="card">
+<div class="title">From Outcomes to Components: A Counterfactual Evaluation Framework for LLM-Proposed Repairs</div>
+<div class="mono"><b>标题：</b>从结果到组件：面向LLM提出修复的反事实评估框架</div>
+<div class="meta-line">Authors: Hengyu Ye, Songhua Hu</div>
+<div class="meta-line">类别：cs.AI · cs.CL，链接：<a href="https://arxiv.org/abs/2610.26650v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26650v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">LLM生成的修复动作指定要更改哪些记录以及更改多少。一个失败的动作仍可能包含有用的目标集或数值更新，具体取决于两者的配对方式。我们在交通网络和数据库中评估该问题，其中聚合观测掩盖了需要纠正的记录。我们从相同初始状态执行每种组合来检验配对，使用一个恢复受影响记录的参考动作。在114个交通动作中，有76个动作同时纠正两部分所带来的增益超过分别单独纠正各部分增益之和。其中六个动作在单独纠正任一部分后变差，但同时纠正两部分后改善。在数据库修复中，仅将提议的更新替换为参考更新会使108个模型动作中的17个变差，这些动作均选择了未受影响的记录。我们还测试了两个提案的部分能否被复用。在留出观测上，从提案及其重组的目标-更新对中进行选择，恢复了参考动作损失降低的61.6%，而仅从提案之间选择则为58.0%。</div>
+</div>
+<div class="card">
+<div class="title">Machine Can Automatically Discover Parametric Functions to Model HEP Data</div>
+<div class="mono"><b>标题：</b>机器可自动发现参数函数以建模HEP数据</div>
+<div class="meta-line">Authors: Ho Fung Tsoi, Dylan Rankin, Cecile Caillol</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2607.19750v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.19750v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">在HEP数据分析中，为分箱数据寻找合适的建模函数主要依赖人工过程：凭直觉猜测函数形式、拟合、检查，然后重复直至成功。我们表明，这一迭代过程可由机器使用符号回归实现自动化，符号回归在函数空间中进行数据驱动的搜索，无需事先了解合适函数应具有何种形式。我们提出SymbolFit软件包，它将符号回归与不确定性建模相结合，以面向HEP分析用例，并在CMS和ATLAS Run 2双喷注谱上进行了演示：在七种简单拟合配置下进行的560次独立带种子运行生成了1000多个以$χ^2/\text{NDF}\approx 1$拟合谱的函数，其中111次运行重新发现了已发表双喷注搜索中所使用的双喷注函数和UA2函数。</div>
+</div>
+<div class="card">
+<div class="title">Reasoning-Aware Multicalibrated Reliability Predictors for Language Models</div>
+<div class="mono"><b>标题：</b>面向语言模型的推理感知多校准可靠性预测器</div>
+<div class="meta-line">Authors: Ekaterina Fedorova, Alessandro Morosini, Chara Podimata</div>
+<div class="meta-line">类别：cs.CY · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26645v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26645v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">随着人们日益依赖大语言模型（LLM）获取信息，模型提供方需要传达有意义的估计，以判断单个回答是否正确或更一般地是否可靠。在幻觉背景下，现有工作使用多校准使此类可靠性预测在应用相关群体（如提示主题）上有意义。然而，仅按主题分组可能掩盖系统性错误：在同一主题和置信水平内，具有不同思维链（CoT）属性的回答可能表现出相互抵消的平均错误。在本工作中，我们引入推理感知多校准，这是一个框架，用由CoT轨迹的可观察属性导出的分组来补充应用相关主题分组。我们指出，从理论上讲，基于CoT的分组是“内部重要”的，即对于此类分组，多校准保证并不像对高风险主题那样具有社会关键性，但将其纳入多校准过程可以轻松且显著地提高最终可靠性预测器的预测准确性。在实证上，我们将该框架应用于多种基准上的幻觉预测和不安全回答检测，发现将CoT分组加入基于主题的校准可降低两项任务中的Brier分数。有趣的是，我们发现仅针对CoT分组（不含任何主题信息）进行多校准已能改善跨主题的校准，这表明预测器的错误取决于模型如何推理，而非提示中询问的内容。</div>
+</div>
+<div class="card">
+<div class="title">Uncovering and Fixing Collider Bias in Bayesian PINNs</div>
+<div class="mono"><b>标题：</b>揭示并修复贝叶斯PINN中的碰撞偏倚</div>
+<div class="meta-line">Authors: Michael Obermayr, Robert Peharz</div>
+<div class="meta-line">类别：cs.LG · cs.AI，链接：<a href="https://arxiv.org/abs/2610.11737v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.11737v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">贝叶斯物理信息神经网络（B-PINNs）是一种流行的框架，用于从稀疏或噪声观测中进行参数和状态推断。它们通常通过碰撞结构来构建，其中物理参数和轨迹参数被假定为先验独立，并通过微分方程残差上的虚拟似然耦合，以强制物理一致性。我们表明，这种建模选择可能在物理参数的后验中引入严重的系统性偏差：即使先验有利地以真实参数为中心，所得后验也可能偏离并集中在远离它们的位置。作为补救，我们提倡一种分层链模型，其中物理生成轨迹，轨迹再生成观测。链模型不受这种后验偏差的影响，但由于依赖于物理的归一化常数，它提出了一个更难的所谓双不可解推断问题。这一挑战可以通过离散化底层随机动力学来解决，之后链后验可以用粒子MCMC精确采样。我们识别了表征碰撞偏倚的两种不同机制，推导了其幅度的解析近似，并建立了预测标准B-PINNs何时保持可靠的诊断标准。实验证实了预测的偏差，并表明链公式成功避免了它。</div>
+</div>
+<div class="card">
+<div class="title">Revision-Based Learning from Interactive Experience and Feedback</div>
+<div class="mono"><b>标题：</b>基于修订的交互经验与反馈学习</div>
+<div class="meta-line">Authors: Jiawen Li, Chenming Ge, Alice Gao</div>
+<div class="meta-line">类别：cs.AI，链接：<a href="https://arxiv.org/abs/2610.26636v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26636v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">代码生成模型越来越多地用于生成交互式产物，如网站和用户界面。决定这些界面是否有用的许多属性只有通过真实交互才能显现，因此难以纳入模型训练。本文提出 RELIEF（基于修订的交互经验与反馈学习），一种利用生成界面反馈改进代码生成模型的方法。RELIEF 使用编码智能体修订这些界面，然后将改进融入原始生成轨迹，以生成用于微调的监督信号。为评估 RELIEF，我们收集了一个包含 200 个合成生成网站、355 条交互记录以及来自 24 名用户反馈的数据集。我们使用源自代码检查、自动交互、显式人类反馈和人类交互记录的评论来微调两个代码生成模型的变体。结果表明，反馈有效性随基础模型能力而变化；在我们测试的模型下，从人类交互记录推断出的评论总体上带来了最大的可用性提升。</div>
+</div>
+<div class="card">
+<div class="title">When the harness decides success: state that cannot be re-observed</div>
+<div class="mono"><b>标题：</b>当测试框架决定成功：无法再次观测的状态</div>
+<div class="meta-line">Authors: Raimondas Lencevicius</div>
+<div class="meta-line">类别：cs.AI · cs.CL · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26632v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26632v1">PDF</a> · <a href="https://github.com/raimondasl/persistgym">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<div class="mono" style="margin-top:8px">Agent 测试框架决定语言模型跨轮次看到什么：它们丢弃旧轮次、对其进行摘要，或重放模型自己先前的推理。我们追问这些选择何时会改变 agent 是否成功，而不仅是其成本，并报告三项发现。第一，在一项预注册的合成探针中，当所需事实可以再次查找时，截断上下文窗口不会让低成本推理模型在成功率上付出任何代价（它会转而查找该事实），但当该事实无法再次观测时，其成功率会降至随机水平：两种惩罚相差 92.5 个百分点（90% CI [89.5, 95.5]）。在来自第二家提供商的某个模型上进行的预注册复现显示了相同对比。一旦该事实丢失，该模型会选择不作答，而不是猜测。第二，在 ARC-AGI-3 上，该基准的 Standard 测试框架大幅落后于其 Provider Adapter 测试框架，我们针对一个模型在四个游戏上，逐组件分解这一差距。对旧轮次进行摘要而不是丢弃它们，同时保留 Standard 测试框架的记笔记邀请，可在不重放模型推理的情况下恢复 63 分差距中的 86%。同一测试框架在没有该邀请时恢复 43%，而加入提供商对模型推理的原生重放则恢复剩余的 57%。这些是每个配置和游戏各一次计数运行得到的点估计，且重放占比依赖于单次运行。第三，在该基准已发布的运行和我们的运行中，Adapter 在通过其已达到关卡的几率上的优势在深层关卡比在早期关卡更大。这很大程度上只是重述了运行停止的位置，并未区分出增长的优势与恒定的优势。</div>
+</div>
+<div class="card">
+<div class="title">VaDar: Implicit Goal Conditioning via Value Disaggregation</div>
+<div class="mono"><b>标题：</b>VaDar：通过价值分解实现隐式目标条件化</div>
+<div class="meta-line">Authors: Shashwat Saxena, Mehul Goel, Sreyas Venkataraman</div>
+<div class="meta-line">类别：cs.LG · cs.AI · cs.RO，链接：<a href="https://arxiv.org/abs/2610.26629v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26629v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">长时程任务对现代人工智能和机器人学很重要，却给强化学习带来挑战。历史上，一种流行的方法是将任务分解为子目标，并学习一个以子目标为条件的策略来依次执行每个子任务。
+我们提出一种替代方法，称为价值分解（VaDar），它训练一个与子目标无关的单一策略，以最大化各子目标评论家值的线性组合。由于子目标信息仅在训练时需要，VaDar 消除了策略部署期间可能代价高昂或繁琐的子目标选择需求。此外，通过精心设计的实验，我们表明 VaDar（1）始终与目标条件化等自然基线具有竞争力，且经常优于它们；（2）在具有非序列目标结构和多个优化目标的任务上取得成功。特别是，VaDar 是首个在 RoboCasa 套件中解决具有挑战性的长时程任务的算法，即使从通过行为克隆预训练、初始任务成功率接近零的策略开始也是如此。综上所述，VaDar 的成功表明，子目标信息通过增强评论家学习的有效性而使演员-评论家强化学习受益，而策略目标条件化往往是不必要的。</div>
+</div>
+<div class="card">
+<div class="title">SleepPairNet: Learning Multimodal Pediatric Sleep Representations with Random-Pair Cross-Attention</div>
+<div class="mono"><b>标题：</b>SleepPairNet：基于随机配对交叉注意力学习多模态儿科睡眠表征</div>
+<div class="meta-line">Authors: Saurav Raj Pandey, Harlin Lee</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26628v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26628v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">分析生理睡眠信号对于评估睡眠质量和检测睡眠相关障碍具有重要意义。学习生理信号间的跨模态关系可为下游睡眠分析提供更丰富的表征。我们提出SleepPairNet，一种多模态自监督学习（SSL）框架，通过交叉注意力学习生理信号间的成对交互。我们提出随机模态配对选择策略，在预训练期间使模型接触多样化的信号配对，从而在测试时能够灵活适应不同模态组合。在NCH数据集上预训练的SleepPairNet在所有呼吸任务上优于所评估的SSL基线，在脑电相关任务上保持竞争力，并且在迁移至外部CHAT数据集时表现出更强的结果。</div>
+</div>
+<div class="card">
+<div class="title">Global Time-Aware Conditioning (GTC): A Mechanism for Time-Aware Pediatric Sleep Representation Learning</div>
+<div class="mono"><b>标题：</b>全局时间感知条件（GTC）：一种用于时间感知儿科睡眠表征学习的机制</div>
+<div class="meta-line">Authors: Saurav Raj Pandey, Harlin Lee</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26618v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26618v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">睡眠生理在整个夜间不断演变，睡眠周期、呼吸稳定性和心血管动力学均发生变化。然而，睡眠的自监督学习（SSL）方法通常处理短时固定时长窗口，未显式建模每个窗口在整个睡眠会话中的位置。我们提出全局时间感知条件（GTC），该机制通过将每个输入窗口的潜在表征以其全局睡眠时间作为条件，补充局部位置编码。我们将GTC集成到三个代表性SSL框架中，并在两个独立儿科队列中评估其在五个临床相关任务上的表现，这些任务存在极端类别不平衡。GTC在多种架构和任务上普遍提升F1和AUPRC，且增益在跨队列迁移下依然保持，凸显了全局时间上下文对睡眠表征学习的价值。</div>
+</div>
+<div class="card">
+<div class="title">Arbitrage-Aware Probabilistic Multi-Step Forecasting of Implied Volatility Surfaces: Joint Generation of Surface-Return Trajectories Using Latent Diffusion</div>
+<div class="mono"><b>标题：</b>套利感知的隐含波动率曲面概率多步预测：使用潜在扩散联合生成曲面-收益轨迹</div>
+<div class="meta-line">Authors: Dominik Manuel Buchegger, Lukas Gonon</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2608.22478v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.22478v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">隐含波动率曲面概括了期权市场，是许多金融应用的核心。对其未来演化的概率预测需要建模二维几何结构、时间依赖性和预测不确定性，同时保持经济可容许性。我们提出一个条件潜在扩散框架，用于生成隐含波动率曲面和标的收益的联合30步轨迹。一个套利感知的自编码器学习曲面表示，而扩散过程捕捉其演化。在SPX曲面上评估时，该框架生成逼真的概率多步情景。其预测均值在最短期限之外也优于持续性基准。</div>
+</div>
+<div class="card">
+<div class="title">Conducting Reliable Keyword Estimation with Unreliable ASR in Police Audio Data</div>
+<div class="mono"><b>标题：</b>在警方音频数据中使用不可靠的ASR进行可靠的关键词估计</div>
+<div class="meta-line">Authors: Robert Cole Molloy, Rhiannon N. Miller, Stephen Morgan</div>
+<div class="meta-line">类别：cs.CL · cs.AI，链接：<a href="https://arxiv.org/abs/2610.26614v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26614v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">使用人工转录从大型音频数据集中提取洞见既昂贵又耗时。现成的自动语音识别（ASR）系统提供了一种易于使用的可扩展替代方案，但系统性的转录错误，尤其是在特定领域环境中，可能会使下游分析产生偏差并导致不可靠的结论。我们遵循预测驱动推断和基于设计的监督学习框架，研究是否可以通过将模型输出与少量人工标注样本相结合，利用不完美的ASR转录获得统计上有效的关键词频率估计。我们在巴尔的摩和芝加哥的警方无线电通信上评估了该方法，在该领域中关键词分布可为警方活动提供有价值的洞见，但现成的ASR系统在操作上重要的术语上表现出系统性错误。以基于自助法的置信区间覆盖率作为评估指标，我们发现该方法大幅增加了可用统计上有效的置信区间进行分析的领域特定关键词数量，在巴尔的摩数据集中从仅使用ASR的43.0%和仅使用少量人工标注转录的27.2%提高到56.2%，在芝加哥数据中也观察到类似改进。我们的结果表明，即使对于质量较差的转录，事后错误校正也能提高下游分析的统计有效性，为更好地利用现成ASR模型进行大规模语音分析提供了一条途径。</div>
+</div>
+<div class="card">
+<div class="title">Degree Bounds for Separating Polynomial and Neural Invariants for Point Clouds</div>
+<div class="mono"><b>标题：</b>分离点云的多项式与神经不变量的度数界</div>
+<div class="meta-line">Authors: Snir Hordan, Harm Derksen, Mircea Petrache</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26612v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26612v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">尊重点云对称性的神经网络通常计算旋转群的高阶表示以提升其表达能力。已知此类模型在使用足够高阶表示时具有通用性，因而能够分离任意一对点云，但此前尚无关于该阶数作为点数函数的精确界。我们建立了首个用于分离 n 个点云（在旋转与置换意义下）的多项式的二次下界与上界。通过证明 Tensor Field Networks 与 MACE 在足够表示阶数下能够表达给定次数的所有不变多项式，我们进一步推导出首个显式的二次表示阶数界，该界足以使这些架构具有完备性，从而以具体保证取代了此前的存在性结果。我们进一步表明，在局部正则性假设下，点云分离可由基于消息传递的模型实现，其所用不变量的次数仅取决于局部邻域的大小，而非整个点云的大小。最后，我们给出反例，表明 MACE 必须计算高阶不可约表示才能分离局部正则点云。</div>
+</div>
+<div class="card">
+<div class="title">EngTrace: A Symbolic Benchmark for Verifiable Process Evaluation of Engineering Reasoning</div>
+<div class="mono"><b>标题：</b>EngTrace：用于工程推理可验证过程评估的符号基准</div>
+<div class="meta-line">Authors: Ayesha Gull, Muhammad Usman Safder, Rania Elbadry</div>
+<div class="meta-line">类别：cs.CL · cs.AI · cs.LG，链接：<a href="https://arxiv.org/abs/2511.01650v4">Abs</a> · <a href="https://arxiv.org/pdf/2511.01650v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">大多数工程问题涉及通过可检验的中间量进行复杂的多步推导。仅对最终答案评分会误判大语言模型，既会把通过有缺陷步骤得出正确答案的情况判为正确，也会惩罚建立在基本合理步骤上的错误答案。然而，现有基准如SuperGPQA和EEE-Bench仅对最终答案评分，而TPS-CalcBench等步骤级基准依赖大语言模型评判或人工评分，或仅覆盖单一领域。因此，我们提出EngTrace，一个用于工程推理可验证过程评估的符号基准。其150个经专家认证的模板涵盖五个分支、15个领域和42个区域，为每个问题生成带有金标准推理轨迹的题目，从而使每个中间量都精确已知。我们设计并验证了一个评估器，可在大多无需大语言模型评判的情况下检查最终答案、对金标准轨迹中间量（里程碑）的覆盖情况以及展示的算术过程。在11个大语言模型上，最终答案几乎无法区分最强模型，而它们的推导过程却存在差异。错误答案仍会陈述约一半的金标准里程碑，领域专家将大多数错误答案归因于计算失误，且概念性错误在简单问题上比在较难问题上更少见。总体而言，随着大语言模型接近最终答案上限，像EngTrace这样检查推导过程能揭示最终答案所遗漏的差异。</div>
+</div>
+<div class="card">
+<div class="title">A Probabilistic, Rotation-Preserving Kernel Operator Surrogate for Continuum-Robot Design Spaces</div>
+<div class="mono"><b>标题：</b>面向连续体机器人设计空间的概率保旋转核算子代理模型</div>
+<div class="meta-line">Authors: Branden Frieden, Alan Kuntz, Varun Shankar</div>
+<div class="meta-line">Venue: ICRA</div>
+<div class="meta-line">类别：cs.RO · cs.LG，链接：<a href="https://arxiv.org/abs/2610.26605v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26605v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">我们开发了一种面向腱驱动连续体机器人（TDCR）的不确定性感知、基于算子学习的代理模型，该模型可泛化于机器人设计与驱动，同时预测完整的平衡构型。我们的核心思想是一个非平稳高斯过程（GP）核，其度量由浅层神经网络从力学感知的设计坐标中学习得到。该网络学习相似性在设计空间中的变化方式，而所得核定义了从设计到位姿的算子、其后验不确定性，以及用于顺序仿真器采集的准则。我们用空间核表示主干位置与旋转应变，并直接在SO(3)上重建姿态，从而保持有效的材料坐标系与腱几何。我们使用带Nystrom预条件的ASkotch进行可扩展的核算子求解，并使用单独的Nystrom近似计算后验协方差。实验表明，相对于IID采样，核覆盖采集将平均轨迹误差降低约15%，而后验方差随设计支持度降低而增大。与先前的神经算子TDCR模型相比，该方法在使用约少5倍的训练设计的情况下精度提高30-50%，并额外提供后验不确定性估计。</div>
+</div>
+<div class="card">
+<div class="title">ITU-DESC: a missingness-aware machine-learning dementia risk score in the UK Biobank cohort</div>
+<div class="mono"><b>标题：</b>ITU-DESC：英国生物银行队列中一种缺失感知的机器学习痴呆风险评分</div>
+<div class="meta-line">Authors: Abdullah Kavaklı, Faik Boray Tek</div>
+<div class="meta-line">类别：cs.LG，链接：<a href="https://arxiv.org/abs/2610.26604v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26604v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="mono" style="margin-top:8px">背景：现有的痴呆风险评分依赖于固定的、预先选择的特征和线性模型，或忽略了队列数据中信息性缺失带来的偏倚。在此，我们介绍伊斯坦布尔技术大学痴呆风险评分（ITU-DESC），这是一种可解释的机器学习评分，用于新发全因痴呆，它结合了在约8,000个候选特征中的广泛特征选择与对缺失偏倚的显式控制。
+结果：我们研究了约500,000名英国生物银行参与者，中位随访时间为16.6年。我们使用无条件随机热卡插补将缺失模式从模型中隐藏。我们通过使用十个随机插补种子重复基于BorutaSHAP的特征选择，并选择在十个种子中至少八个被选中的预测因子，从而稳定特征选择，最终得到38个预测因子。我们训练了一个CatBoost梯度提升决策树模型，并在50,041名参与者的保留测试集上对其进行评估。对于全因新发痴呆，ITU-DESC的平均精确率为0.138（95%置信区间0.123-0.156），受试者工作特征曲线下面积（ROC AUC）为0.853（0.844-0.863），显著优于其他风险评分，包括最强的比较对象——英国生物银行痴呆风险预测模型（0.118和0.841）。我们识别出了现有评分中缺失的痴呆风险预测因子，包括白细胞端粒长度和肝酶。结论：ITU-DESC是首个将广泛特征选择与对缺失偏倚的显式控制相结合的痴呆风险评分。</div>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261020_0644.html">20261020_0644</a>
+<a href="archive/20261019_0512.html">20261019_0512</a>
+<a href="archive/20261018_0514.html">20261018_0514</a>
+<a href="archive/20261017_0556.html">20261017_0556</a>
+<a href="archive/20261016_0558.html">20261016_0558</a>
+<a href="archive/20261015_0604.html">20261015_0604</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0906.html">20261013_0906</a>
+<a href="archive/20261012_0638.html">20261012_0638</a>
+<a href="archive/20261011_0613.html">20261011_0613</a>
+<a href="archive/20261010_0703.html">20261010_0703</a>
+<a href="archive/20261009_0740.html">20261009_0740</a>
+<a href="archive/20261008_0729.html">20261008_0729</a>
+<a href="archive/20261007_0655.html">20261007_0655</a>
+<a href="archive/20261006_0832.html">20261006_0832</a>
+<a href="archive/20261005_0609.html">20261005_0609</a>
+<a href="archive/20261004_0600.html">20261004_0600</a>
+<a href="archive/20261002_0702.html">20261002_0702</a>
+<a href="archive/20261001_0649.html">20261001_0649</a>
+<a href="archive/20260930_0651.html">20260930_0651</a>
+<a href="archive/20260929_0737.html">20260929_0737</a>
+<a href="archive/20260928_0548.html">20260928_0548</a>
+<a href="archive/20260927_0548.html">20260927_0548</a>
+<a href="archive/20260926_0600.html">20260926_0600</a>
+<a href="archive/20260925_0558.html">20260925_0558</a>
+<a href="archive/20260924_0600.html">20260924_0600</a>
+<a href="archive/20260923_0548.html">20260923_0548</a>
+<a href="archive/20260922_0624.html">20260922_0624</a>
+<a href="archive/20260921_0508.html">20260921_0508</a>
+<a href="archive/20260920_0516.html">20260920_0516</a>
+<a href="archive/20260919_0528.html">20260919_0528</a>
+<a href="archive/20260918_0555.html">20260918_0555</a>
+<a href="archive/20260917_0557.html">20260917_0557</a>
+<a href="archive/20260916_0556.html">20260916_0556</a>
+<a href="archive/20260915_0618.html">20260915_0618</a>
+<a href="archive/20260913_0512.html">20260913_0512</a>
+<a href="archive/20260912_0534.html">20260912_0534</a>
+<a href="archive/20260911_0524.html">20260911_0524</a>
+<a href="archive/20260910_0532.html">20260910_0532</a>
+<a href="archive/20260909_0532.html">20260909_0532</a>
+<a href="archive/20260908_0552.html">20260908_0552</a>
+<a href="archive/20260907_0500.html">20260907_0500</a>
+<a href="archive/20260906_0458.html">20260906_0458</a>
+<a href="archive/20260905_0515.html">20260905_0515</a>
+<a href="archive/20260904_0537.html">20260904_0537</a>
+<a href="archive/20260903_0535.html">20260903_0535</a>
+<a href="archive/20260902_0538.html">20260902_0538</a>
+<a href="archive/20260901_0705.html">20260901_0705</a>
+<a href="archive/20260831_0549.html">20260831_0549</a>
+<a href="archive/20260830_0534.html">20260830_0534</a>
+<a href="archive/20260829_1003.html">20260829_1003</a>
+<a href="archive/20260828_1029.html">20260828_1029</a>
+<a href="archive/20260827_0538.html">20260827_0538</a>
+<a href="archive/20260826_0330.html">20260826_0330</a>
+<a href="archive/20260825_0323.html">20260825_0323</a>
+<a href="archive/20260824_0318.html">20260824_0318</a>
+<a href="archive/20260823_0323.html">20260823_0323</a>
+<a href="archive/20260822_0326.html">20260822_0326</a>
+<a href="archive/20260821_0331.html">20260821_0331</a>
+<a href="archive/20260820_0326.html">20260820_0326</a>
+<a href="archive/20260819_0335.html">20260819_0335</a>
+<a href="archive/20260818_0322.html">20260818_0322</a>
+<a href="archive/20260817_0316.html">20260817_0316</a>
+<a href="archive/20260816_0322.html">20260816_0322</a>
+<a href="archive/20260815_0349.html">20260815_0349</a>
+<a href="archive/20260814_0359.html">20260814_0359</a>
+<a href="archive/20260813_0404.html">20260813_0404</a>
+<a href="archive/20260812_0403.html">20260812_0403</a>
+<a href="archive/20260811_0350.html">20260811_0350</a>
+<a href="archive/20260810_0327.html">20260810_0327</a>
+<a href="archive/20260809_0329.html">20260809_0329</a>
+<a href="archive/20260808_0354.html">20260808_0354</a>
+<a href="archive/20260807_0843.html">20260807_0843</a>
+<a href="archive/20260806_0427.html">20260806_0427</a>
+<a href="archive/20260805_0426.html">20260805_0426</a>
+<a href="archive/20260804_1906.html">20260804_1906</a>
+<a href="archive/20260804_1850.html">20260804_1850</a>
+<a href="archive/20260804_1826.html">20260804_1826</a>
+<a href="archive/20260804_1759.html">20260804_1759</a>
+<a href="archive/20260804_1719.html">20260804_1719</a>
+<a href="archive/20260804_1708.html">20260804_1708</a>
+<a href="archive/20260804_0422.html">20260804_0422</a>
+<a href="archive/20260803_0407.html">20260803_0407</a>
+<a href="archive/20260802_0409.html">20260802_0409</a>
+<a href="archive/20260801_0420.html">20260801_0420</a>
+<a href="archive/20260731_0415.html">20260731_0415</a>
+<a href="archive/20260730_0412.html">20260730_0412</a>
+<a href="archive/20260729_0415.html">20260729_0415</a>
+<a href="archive/20260728_0418.html">20260728_0418</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0408.html">20260726_0408</a>
+<a href="archive/20260725_0415.html">20260725_0415</a>
+<a href="archive/20260724_0413.html">20260724_0413</a>
+<a href="archive/20260723_0413.html">20260723_0413</a>
+<a href="archive/20260722_0419.html">20260722_0419</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0405.html">20260720_0405</a>
+<a href="archive/20260719_0403.html">20260719_0403</a>
+<a href="archive/20260718_0405.html">20260718_0405</a>
+<a href="archive/20260717_0401.html">20260717_0401</a>
+<a href="archive/20260716_0407.html">20260716_0407</a>
+<a href="archive/20260715_0409.html">20260715_0409</a>
+<a href="archive/20260714_0408.html">20260714_0408</a>
+<a href="archive/20260713_0404.html">20260713_0404</a>
+<a href="archive/20260712_0404.html">20260712_0404</a>
+<a href="archive/20260711_0422.html">20260711_0422</a>
+<a href="archive/20260710_0447.html">20260710_0447</a>
+<a href="archive/20260709_0422.html">20260709_0422</a>
+<a href="archive/20260708_0450.html">20260708_0450</a>
+<a href="archive/20260707_0449.html">20260707_0449</a>
+<a href="archive/20260706_0409.html">20260706_0409</a>
+<a href="archive/20260705_0408.html">20260705_0408</a>
+<a href="archive/20260704_0418.html">20260704_0418</a>
+<a href="archive/20260703_0421.html">20260703_0421</a>
+<a href="archive/20260702_0451.html">20260702_0451</a>
+<a href="archive/20260701_0458.html">20260701_0458</a>
+<a href="archive/20260630_0447.html">20260630_0447</a>
+<a href="archive/20260629_0409.html">20260629_0409</a>
+<a href="archive/20260627_0448.html">20260627_0448</a>
+<a href="archive/20260626_0457.html">20260626_0457</a>
+<a href="archive/20260625_0448.html">20260625_0448</a>
+<a href="archive/20260624_0501.html">20260624_0501</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0421.html">20260622_0421</a>
+<a href="archive/20260621_0415.html">20260621_0415</a>
+<a href="archive/20260620_0430.html">20260620_0430</a>
+<a href="archive/20260619_0527.html">20260619_0527</a>
+<a href="archive/20260618_0510.html">20260618_0510</a>
+<a href="archive/20260617_0543.html">20260617_0543</a>
+<a href="archive/20260616_0540.html">20260616_0540</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0414.html">20260614_0414</a>
+<a href="archive/20260613_0506.html">20260613_0506</a>
+<a href="archive/20260612_0522.html">20260612_0522</a>
+<a href="archive/20260611_0529.html">20260611_0529</a>
+<a href="archive/20260610_0458.html">20260610_0458</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0409.html">20260607_0409</a>
+<a href="archive/20260606_0452.html">20260606_0452</a>
+<a href="archive/20260604_0550.html">20260604_0550</a>
+<a href="archive/20260603_0549.html">20260603_0549</a>
+<a href="archive/20260602_0558.html">20260602_0558</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0410.html">20260531_0410</a>
+<a href="archive/20260530_0514.html">20260530_0514</a>
+<a href="archive/20260527_0455.html">20260527_0455</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260524_0407.html">20260524_0407</a>
+<a href="archive/20260523_0434.html">20260523_0434</a>
+<a href="archive/20260522_0453.html">20260522_0453</a>
+<a href="archive/20260521_0502.html">20260521_0502</a>
+<a href="archive/20260520_0431.html">20260520_0431</a>
+<a href="archive/20260519_0422.html">20260519_0422</a>
+<a href="archive/20260518_0402.html">20260518_0402</a>
+<a href="archive/20260517_0407.html">20260517_0407</a>
+<a href="archive/20260516_0421.html">20260516_0421</a>
+<a href="archive/20260515_0433.html">20260515_0433</a>
+<a href="archive/20260514_0438.html">20260514_0438</a>
+<a href="archive/20260513_0439.html">20260513_0439</a>
+<a href="archive/20260512_0431.html">20260512_0431</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0410.html">20260510_0410</a>
+<a href="archive/20260509_0420.html">20260509_0420</a>
+<a href="archive/20260508_0429.html">20260508_0429</a>
+<a href="archive/20260507_0429.html">20260507_0429</a>
+<a href="archive/20260506_0413.html">20260506_0413</a>
+<a href="archive/20260505_0412.html">20260505_0412</a>
+<a href="archive/20260504_0351.html">20260504_0351</a>
+<a href="archive/20260503_0357.html">20260503_0357</a>
+<a href="archive/20260502_0413.html">20260502_0413</a>
+<a href="archive/20260501_0416.html">20260501_0416</a>
+<a href="archive/20260430_0418.html">20260430_0418</a>
+<a href="archive/20260429_0416.html">20260429_0416</a>
+<a href="archive/20260428_0405.html">20260428_0405</a>
+<a href="archive/20260427_0342.html">20260427_0342</a>
+<a href="archive/20260426_0344.html">20260426_0344</a>
+<a href="archive/20260425_0356.html">20260425_0356</a>
+<a href="archive/20260424_0414.html">20260424_0414</a>
+<a href="archive/20260423_0435.html">20260423_0435</a>
+<a href="archive/20260422_0430.html">20260422_0430</a>
+<a href="archive/20260421_0357.html">20260421_0357</a>
+<a href="archive/20260420_0337.html">20260420_0337</a>
+<a href="archive/20260419_0353.html">20260419_0353</a>
+<a href="archive/20260418_0424.html">20260418_0424</a>
+<a href="archive/20260417_0427.html">20260417_0427</a>
+<a href="archive/20260416_0427.html">20260416_0427</a>
+<a href="archive/20260415_0425.html">20260415_0425</a>
+<a href="archive/20260414_0401.html">20260414_0401</a>
+<a href="archive/20260413_0335.html">20260413_0335</a>
+<a href="archive/20260412_0344.html">20260412_0344</a>
+<a href="archive/20260411_0403.html">20260411_0403</a>
+<a href="archive/20260410_0419.html">20260410_0419</a>
+<a href="archive/20260409_0415.html">20260409_0415</a>
+<a href="archive/20260408_0406.html">20260408_0406</a>
+<a href="archive/20260407_0349.html">20260407_0349</a>
+<a href="archive/20260406_0330.html">20260406_0330</a>
+<a href="archive/20260405_0338.html">20260405_0338</a>
+<a href="archive/20260404_0357.html">20260404_0357</a>
+<a href="archive/20260403_0409.html">20260403_0409</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0352.html">20260331_0352</a>
+<a href="archive/20260328_0403.html">20260328_0403</a>
+<a href="archive/20260327_0419.html">20260327_0419</a>
+<a href="archive/20260326_0406.html">20260326_0406</a>
+<a href="archive/20260325_0413.html">20260325_0413</a>
+<a href="archive/20260324_0344.html">20260324_0344</a>
+<a href="archive/20260323_0321.html">20260323_0321</a>
+<a href="archive/20260322_0333.html">20260322_0333</a>
+<a href="archive/20260321_0403.html">20260321_0403</a>
+<a href="archive/20260320_0417.html">20260320_0417</a>
+<a href="archive/20260319_0414.html">20260319_0414</a>
+<a href="archive/20260318_0417.html">20260318_0417</a>
+<a href="archive/20260317_0351.html">20260317_0351</a>
+<a href="archive/20260316_0324.html">20260316_0324</a>
+<a href="archive/20260315_0338.html">20260315_0338</a>
+<a href="archive/20260314_0403.html">20260314_0403</a>
+<a href="archive/20260313_0414.html">20260313_0414</a>
+<a href="archive/20260312_0402.html">20260312_0402</a>
+<a href="archive/20260311_0355.html">20260311_0355</a>
+<a href="archive/20260310_0336.html">20260310_0336</a>
+<a href="archive/20260309_0319.html">20260309_0319</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0402.html">20260307_0402</a>
+<a href="archive/20260306_0422.html">20260306_0422</a>
+<a href="archive/20260305_0408.html">20260305_0408</a>
+<a href="archive/20260304_0407.html">20260304_0407</a>
+<a href="archive/20260303_0333.html">20260303_0333</a>
+<a href="archive/20260302_0319.html">20260302_0319</a>
+<a href="archive/20260301_0329.html">20260301_0329</a>
+<a href="archive/20260228_0403.html">20260228_0403</a>
+<a href="archive/20260227_0400.html">20260227_0400</a>
+<a href="archive/20260226_0405.html">20260226_0405</a>
+<a href="archive/20260224_0355.html">20260224_0355</a>
+<a href="archive/20260223_0321.html">20260223_0321</a>
+<a href="archive/20260222_0327.html">20260222_0327</a>
+<a href="archive/20260221_0347.html">20260221_0347</a>
+<a href="archive/20260220_0349.html">20260220_0349</a>
+<a href="archive/20260219_0406.html">20260219_0406</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0329.html">20260217_0329</a>
+<a href="archive/20260216_0321.html">20260216_0321</a>
+<a href="archive/20260215_0335.html">20260215_0335</a>
+<a href="archive/20260213_0416.html">20260213_0416</a>
+<a href="archive/20260212_0417.html">20260212_0417</a>
+<a href="archive/20260211_0421.html">20260211_0421</a>
+<a href="archive/20260210_0359.html">20260210_0359</a>
+<a href="archive/20260209_0321.html">20260209_0321</a>
+<a href="archive/20260208_0336.html">20260208_0336</a>
+<a href="archive/20260207_0400.html">20260207_0400</a>
+<a href="archive/20260206_0358.html">20260206_0358</a>
+<a href="archive/20260205_0400.html">20260205_0400</a>
+<a href="archive/20260204_0411.html">20260204_0411</a>
+<a href="archive/20260202_0320.html">20260202_0320</a>
+<a href="archive/20260201_0343.html">20260201_0343</a>
+<a href="archive/20260131_0357.html">20260131_0357</a>
+<a href="archive/20260130_0355.html">20260130_0355</a>
+<a href="archive/20260129_0353.html">20260129_0353</a>
+<a href="archive/20260128_0342.html">20260128_0342</a>
+<a href="archive/20260127_0320.html">20260127_0320</a>
+<a href="archive/20260126_0313.html">20260126_0313</a>
+<a href="archive/20260125_0321.html">20260125_0321</a>
+<a href="archive/20260124_0344.html">20260124_0344</a>
+<a href="archive/20260123_0345.html">20260123_0345</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0408.html">20260121_0408</a>
+<a href="archive/20260120_0316.html">20260120_0316</a>
+<a href="archive/20260119_0312.html">20260119_0312</a>
+<a href="archive/20260118_0323.html">20260118_0323</a>
+<a href="archive/20260117_0337.html">20260117_0337</a>
+<a href="archive/20260116_0346.html">20260116_0346</a>
+<a href="archive/20260115_0345.html">20260115_0345</a>
+<a href="archive/20260114_0337.html">20260114_0337</a>
+<a href="archive/20260113_0317.html">20260113_0317</a>
+<a href="archive/20260112_0312.html">20260112_0312</a>
+<a href="archive/20260111_0330.html">20260111_0330</a>
+<a href="archive/20260110_0347.html">20260110_0347</a>
+<a href="archive/20260109_0343.html">20260109_0343</a>
+<a href="archive/20260108_0342.html">20260108_0342</a>
+<a href="archive/20260107_0328.html">20260107_0328</a>
+<a href="archive/20260106_0317.html">20260106_0317</a>
+<a href="archive/20260105_0312.html">20260105_0312</a>
+<a href="archive/20260104_0312.html">20260104_0312</a>
+<a href="archive/20260103_0318.html">20260103_0318</a>
+<a href="archive/20260102_0327.html">20260102_0327</a>
+<a href="archive/20260101_0321.html">20260101_0321</a>
+<a href="archive/20251231_0326.html">20251231_0326</a>
+<a href="archive/20251230_0531.html">20251230_0531</a>
+<a href="archive/20251230_0518.html">20251230_0518</a>
+<a href="archive/20251230_0505.html">20251230_0505</a>
+<a href="archive/20251230_0350.html">20251230_0350</a>
+<a href="archive/20251230_0331.html">20251230_0331</a>
+<a href="archive/20251229_0320.html">20251229_0320</a>
+<a href="archive/20251228_0338.html">20251228_0338</a>
+<a href="archive/20251227_0324.html">20251227_0324</a>
+<a href="archive/20251226_0323.html">20251226_0323</a>
+<a href="archive/20251225_0321.html">20251225_0321</a>
+<a href="archive/20251224_0329.html">20251224_0329</a>
+<a href="archive/20251223_0325.html">20251223_0325</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
